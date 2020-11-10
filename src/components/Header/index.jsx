@@ -5,7 +5,6 @@ import "./style.scss";
 
 const Header = () => {
   const locationList = [
-    "Hồ Chí Minh",
     "Hà Nội",
     "Đà Nẵng",
     "Hải Phòng",
@@ -62,8 +61,12 @@ const Header = () => {
 
   const renderLocation = () =>
     locationList.map((location, index) => {
-      console.log(location);
-      return <li key={index}>{location}</li>;
+      return (
+        <div className="header__location__option">
+          <input type="radio" className="radio" id={index} name="category" />
+          <label htmlFor={index}>{location}</label>
+        </div>
+      );
     });
   // console.log(renderLocation());
   return (
@@ -103,8 +106,10 @@ const Header = () => {
           </a>
         </div>
         <div className="header__location">
-          <div className="header__selected">Hồ chí minh</div>
-          <ul>{renderLocation()}</ul>
+          <div className="header__location__container">
+            {renderLocation()}
+            <div className="header__selected">Hồ Chí Minh</div>
+          </div>
         </div>
       </div>
     </header>

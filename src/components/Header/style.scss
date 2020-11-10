@@ -46,62 +46,76 @@
     }
   }
   &__location {
-    position: relative;
-    .header__selected {
-      color: color("lightgrey");
-      padding-left: spacing(3);
-      padding-right: spacing(4);
-      position: relative;
-      cursor: pointer;
-      &::before,
-      &::after {
-        width: 20px;
-        height: 20px;
-      }
-      &::before {
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: url("../../assets/images/logos/location-header.png")
-          no-repeat;
-      }
-      &::after {
-        position: absolute;
-        top: 4px;
-        left: initial;
-        right: 0;
-        background: url("../../assets/images/logos/dropdown-icon.png") no-repeat;
-      }
-    }
-    .header__dropdown {
-      background-color: color("white");
-      position: absolute;
-      top: 40px;
-      left: 0;
-      @include list-default;
-      width: 100%;
-      max-height: 300px;
-      overflow-y: scroll;
-      padding: spacing(1, 0);
-      opacity: 0;
-      visibility: hidden;
-      @include bd-radius(4px);
-      box-shadow: 0 6px 12px rgba(color("black"), 0.2);
+    &__container {
+      // max-height: 0;
+      // opacity: 0;
       @include transition-all;
-      z-index: 999;
-      &.active {
-        opacity: 1;
-        visibility: visible;
-        @include animation(FadeUp 0.3s);
-      }
-      li {
-        padding: spacing(0.3, 1.5);
-        cursor: pointer;
-        &:hover {
-          background-color: color("secondary");
-          color: color("white");
-        }
-      }
+      @include bd-radius(8px);
+      overflow: hidden;
+    }
+    &__option {
     }
   }
+  // &__location {
+  //   position: relative;
+  //   .header__selected {
+  //     color: color("lightgrey");
+  //     padding-left: spacing(3);
+  //     padding-right: spacing(4);
+  //     position: relative;
+  //     cursor: pointer;
+  //     &::before,
+  //     &::after {
+  //       width: 20px;
+  //       height: 20px;
+  //     }
+  //     &::before {
+  //       position: absolute;
+  //       content: "";
+  //       top: 0;
+  //       left: 0;
+  //       right: 10px;
+  //       background: url("../../assets/images/logos/location-header.png")
+  //         no-repeat;
+  //     }
+  //     &::after {
+  //       position: absolute;
+  //       content: "";
+  //       top: 4px;
+  //       left: initial;
+  //       right: 0;
+  //       background: url("../../assets/images/logos/dropdown-icon.png") no-repeat;
+  //     }
+  //   }
+  //   .header__dropdown {
+  //     background-color: color("white");
+  //     position: absolute;
+  //     top: 40px;
+  //     left: 0;
+  //     @include list-default;
+  //     width: 100%;
+  //     max-height: 300px;
+  //     overflow-y: scroll;
+  //     padding: spacing(1, 0);
+  //     opacity: 0;
+  //     visibility: hidden;
+  //     @include bd-radius(4px);
+  //     box-shadow: 0 6px 12px rgba(color("black"), 0.2);
+  //     @include transition-all;
+  //     z-index: 999;
+  //     &.active {
+  //       opacity: 1;
+  //       visibility: visible;
+  //       @include animation(FadeUp 0.3s);
+  //     }
+  //     li {
+  //       padding: spacing(0.3, 1.5);
+  //       cursor: pointer;
+  //       &:hover {
+  //         background-color: color("secondary");
+  //         color: color("white");
+  //       }
+  //     }
+  //   }
+  // }
 }
