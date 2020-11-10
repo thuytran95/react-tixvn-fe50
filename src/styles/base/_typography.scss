@@ -1,0 +1,30 @@
+.image {
+  img {
+    min-width: 100%;
+    width: 100%;
+  }
+}
+// .customscroll {
+//     &::-webkit-scrollbar {
+//         width: 4px;
+//         background-color: color('whitegray');
+//     }
+//     &::-webkit-scrollbar-thumb {
+//         @include box-shawdow(inset 0 0 6px rgba(color('black'),0.3));
+//         @include bd-radius(10px);
+//     }
+//     &::-webkit-scrollbar-track {
+//         @include bd-radius(10px);
+//     }
+// }
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

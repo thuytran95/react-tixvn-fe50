@@ -1,0 +1,107 @@
+@import "../../styles/index.scss";
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: spacing(0.5, 1.5);
+  box-shadow: 0 0 15px rgba(color("black"), 0.3);
+  &__logo {
+    width: 50px;
+  }
+  &__navbar {
+    flex-grow: 1;
+  }
+  &__nav {
+    @include list-default;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+    &__link {
+      color: color("black");
+      padding: spacing(0, 1);
+
+      &:hover,
+      &:focus {
+        color: color("primary");
+        text-decoration: none;
+      }
+    }
+  }
+  &__login {
+    padding-right: spacing(1);
+    margin-right: spacing(1);
+    border-right: 1px solid color("lightgrey");
+    img {
+      width: 30px;
+      margin-right: spacing(0.5);
+      @include bd-radius(50%);
+    }
+    a {
+      color: color("lightgrey");
+    }
+  }
+  &__location {
+    position: relative;
+    .header__selected {
+      color: color("lightgrey");
+      padding-left: spacing(3);
+      padding-right: spacing(4);
+      position: relative;
+      cursor: pointer;
+      &::before,
+      &::after {
+        width: 20px;
+        height: 20px;
+      }
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: url("../../assets/images/logos/location-header.png")
+          no-repeat;
+      }
+      &::after {
+        position: absolute;
+        top: 4px;
+        left: initial;
+        right: 0;
+        background: url("../../assets/images/logos/dropdown-icon.png") no-repeat;
+      }
+    }
+    .header__dropdown {
+      background-color: color("white");
+      position: absolute;
+      top: 40px;
+      left: 0;
+      @include list-default;
+      width: 100%;
+      max-height: 300px;
+      overflow-y: scroll;
+      padding: spacing(1, 0);
+      opacity: 0;
+      visibility: hidden;
+      @include bd-radius(4px);
+      box-shadow: 0 6px 12px rgba(color("black"), 0.2);
+      @include transition-all;
+      z-index: 999;
+      &.active {
+        opacity: 1;
+        visibility: visible;
+        @include animation(FadeUp 0.3s);
+      }
+      li {
+        padding: spacing(0.3, 1.5);
+        cursor: pointer;
+        &:hover {
+          background-color: color("secondary");
+          color: color("white");
+        }
+      }
+    }
+  }
+}
