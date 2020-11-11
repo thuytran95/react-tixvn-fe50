@@ -106,10 +106,10 @@ const Header = () => {
           </a>
         </div>
         <div className="header__location">
-          <div className="header__location__container">
+          <div className="header__location__container active">
             {renderLocation()}
-            <div className="header__selected">Hồ Chí Minh</div>
           </div>
+          <div className="header__location__selected">Hồ Chí Minh</div>
         </div>
       </div>
     </header>

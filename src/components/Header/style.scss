@@ -46,14 +46,73 @@
     }
   }
   &__location {
+    display: flex;
+    flex-direction: column;
     &__container {
-      // max-height: 0;
-      // opacity: 0;
+      max-height: 0;
+      opacity: 0;
       @include transition-all;
       @include bd-radius(8px);
       overflow: hidden;
+      order: 1;
+      &::-webkit-scrollbar {
+        width: 4px;
+        background-color: color("white");
+        border-radius: 0 10px 10px 0;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: color("lightgrey");
+        border-radius: 0 10px 10px 0;
+      }
+      &.active {
+        max-height: 400px;
+        opacity: 1;
+        overflow-y: scroll;
+        & + .header__location__selected::after {
+        }
+      }
     }
     &__option {
+      padding: spacing(0.5) spacing(0.5) spacing(0.5) spacing(2);
+      cursor: pointer;
+      label {
+        &:hover {
+          background-color: color("lighterwhite");
+        }
+      }
+      .radio {
+        display: none;
+      }
+    }
+    &__selected {
+      position: relative;
+      padding: spacing(0.5) spacing(0.5) spacing(0.5) spacing(2);
+      cursor: pointer;
+      @include bd-radius(8px);
+      margin-bottom: spacing(0.8);
+      order: 0;
+      &::before,
+      &::after {
+        width: 20px;
+        height: 20px;
+      }
+      &::before {
+        content: "";
+        background: url("../../assets/images/logos/location-header.png")
+          no-repeat;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        @include transition-all;
+      }
+      &::after {
+        content: "";
+        background: url("../../assets/images/logos/dropdown-icon.png") no-repeat;
+        position: absolute;
+        top: 10px;
+        right: 0;
+        @include transition-all;
+      }
     }
   }
   // &__location {
