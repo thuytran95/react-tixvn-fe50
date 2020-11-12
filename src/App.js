@@ -1,12 +1,10 @@
 import "./App.scss";
-import Dropdown from "./components/Dropdown";
-import Header from "./components/Header";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <>
-      <Header />
-      {/* <Dropdown /> */}
+      <Home />
     </>
   );
 }

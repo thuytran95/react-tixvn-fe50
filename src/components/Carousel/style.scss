@@ -1,0 +1,81 @@
+@import "../../styles/index.scss";
+.carousel {
+  position: relative;
+  &__overlay {
+    &__play {
+      position: relative;
+      z-index: 99;
+    }
+    &::after {
+      background: linear-gradient(
+        to top,
+        color("black"),
+        color("transparent"),
+        20%
+      );
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      content: "";
+      z-index: 9;
+    }
+  }
+  &.owl-theme {
+    .owl-nav {
+      margin: 0;
+      z-index: 99;
+      .owl-prev,
+      .owl-next {
+        background-color: rgba(black, 0.3);
+        color: color("primary");
+        position: absolute;
+        top: 50%;
+        left: 20px;
+        margin: 0;
+        font-size: fontSize(3);
+        line-height: 50px;
+        // transform: translateY(-50px);
+        @include transform(translateY(-50%));
+        &:hover,
+        &:focus {
+          background-color: rgba(black, 0.5);
+        }
+        i {
+          width: 50px;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          @include bd-radius(50px);
+        }
+      }
+      .owl-next {
+        right: 20px;
+        left: initial;
+      }
+    }
+    .owl-dots {
+      position: absolute;
+      bottom: 30px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      z-index: 99;
+      .owl-dot {
+        outline: none;
+        span {
+          width: 12px;
+          height: 12px;
+          background-color: color("lightgrey");
+        }
+        &.active,
+        &:hover {
+          span {
+            background-color: color("primary");
+          }
+        }
+      }
+    }
+  }
+}
