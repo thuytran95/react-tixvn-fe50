@@ -1,10 +1,14 @@
 import React from "react";
-import OwlCarousel from "react-owl-carousel";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
+import { useState } from "react";
+import Carousel from "react-bootstrap/Carousel";
 import "./style.scss";
 
-const Carousel = () => {
+const CarouselSlider = () => {
+  const [index, setIndex] = useState(0);
+
+  const handleSelect = (selectedIndex, e) => {
+    setIndex(selectedIndex);
+  };
   const movieList = [
     {
       maPhim: 1329,
@@ -18,19 +22,7 @@ const Carousel = () => {
       ngayKhoiChieu: "2020-08-18T00:00:00",
       danhGia: 7,
     },
-    {
-      maPhim: 1344,
-      tenPhim: "13 reason why",
-      biDanh: "13-reason-why",
-      trailer: "https://www.youtube.com/embed/rCitoVqfyM8",
-      hinhAnh:
-        "http://movie0706.cybersoft.edu.vn/hinhanh/13-reason-why_gp01.jpg",
-      moTa:
-        "Remember when this show first came out and everyone started realizing that the way they treat others actually matters, but only for about a week, then everyone went back to pushing ppl towards suicide again.",
-      maNhom: "GP01",
-      ngayKhoiChieu: "2020-08-28T00:00:00",
-      danhGia: 10,
-    },
+
     {
       maPhim: 1359,
       tenPhim: "Vợ ba",
@@ -54,49 +46,46 @@ const Carousel = () => {
       danhGia: 9,
     },
   ];
-  const options = {
-    items: 1,
-    nav: true,
-    merge: true,
-    loop: true,
-    autoplay: true,
-    autoplayTimeout: 5000,
-    video: true,
-    lazyLoad: true,
-    center: true,
-    navText: [
-      '<i class="fa fa-angle-left"></i>',
-      '<i class="fa fa-angle-right"></i>',
-    ],
-  };
 
   const renderMovieList = () => {
-    return movieList.map((movie, index) => {
+    return movieList.map((movie, idx) => {
       const { maPhim, tenPhim, hinhAnh, trailer } = movie;
       return (
-        <div className="item " key={maPhim}>
-          <div className="image">
-            <div className="carousel__overlay overlay">
-              <div className="carousel__overlay__play btn-play">
-                <a className="carousel_popup" href={trailer}>
-                  <i className="fa fa-play" />
-                </a>
-              </div>
+        <Carousel.Item key={idx}>
+          <div className="carousel__overlay overlay">
+            <div className="carousel__overlay__play btn-play">
+              <a className="carousel_popup" href={trailer}>
+                <i className="fa fa-play"></i>
+              </a>
             </div>
-            <img src={hinhAnh} alt={tenPhim} />
           </div>
-        </div>
+          <img className="d-block w-100" src={hinhAnh} alt={tenPhim} />w
+        </Carousel.Item>
       );
     });
   };
 
   return (
-    <>
-      <OwlCarousel className="owl-theme" nav items={1} options>
+    <section id="carousel">
+      <Carousel
+        id="carouselCustomize"
+        activeIndex={index}
+        onSelect={handleSelect}
+        prevIcon={
+          <span className=" carousel-control-btn">
+            <i className="fa fa-angle-left"></i>
+          </span>
+        }
+        nextIcon={
+          <span className="carousel-control-btn">
+            <i className="fa fa-angle-right"></i>
+          </span>
+        }
+      >
         {renderMovieList()}
-      </OwlCarousel>
-    </>
+      </Carousel>
+    </section>
   );
 };
 
-export default Carousel;
+export default CarouselSlider;
