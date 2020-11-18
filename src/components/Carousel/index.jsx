@@ -49,18 +49,50 @@ const CarouselSlider = () => {
 
   const renderMovieList = () => {
     return movieList.map((movie, idx) => {
-      const { maPhim, tenPhim, hinhAnh, trailer } = movie;
+      const { hinhAnh, trailer } = movie;
       return (
         <Carousel.Item key={idx}>
+          <div
+            style={{
+              backgroundImage: `url('${hinhAnh}')`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              paddingBottom: "43%",
+            }}
+          ></div>
           <div className="carousel__overlay overlay">
             <div className="carousel__overlay__play btn-play">
-              <a className="carousel_popup" href={trailer}>
+              <a
+                className="carousel_popup"
+                href={trailer}
+                data-toggle="modal"
+                data-target={`#modal-${idx}`}
+              >
                 <i className="fa fa-play"></i>
               </a>
             </div>
           </div>
-          <img className="d-block w-100" src={hinhAnh} alt={tenPhim} />w
         </Carousel.Item>
+      );
+    });
+  };
+
+  const renderTrailer = () => {
+    return movieList.map((movie, idx) => {
+      const { trailer } = movie;
+      return (
+        <div className="modal modal-customize" id={`modal-${idx}`}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-body">
+                <button type="button" className="close" data-dismiss="modal">
+                  &times;
+                </button>
+                <iframe src={trailer} frameborder="0"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
       );
     });
   };
@@ -84,6 +116,7 @@ const CarouselSlider = () => {
       >
         {renderMovieList()}
       </Carousel>
+      <div id="carousel__trailer">{renderTrailer()}</div>
     </section>
   );
 };

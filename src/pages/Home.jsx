@@ -8,8 +8,8 @@ const Home = () => {
   return (
     <>
       <Header />
-      {/* <CarouselSlider /> */}
-      <Footer />
+      <CarouselSlider />
+      {/* <Footer /> */}
     </>
   );
 };

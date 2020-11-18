@@ -2,9 +2,6 @@
 
 #carousel {
   .carousel {
-    &-inner {
-      height: 800px;
-    }
     &-indicators {
       li {
         width: 10px;
@@ -46,6 +43,30 @@
         background-color: rgba(color("black"), 0.3);
         color: color("primary");
         font-size: fontSize(4);
+      }
+    }
+  }
+  .modal {
+    &-dialog {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      @include transform(translate(-50%, -50%));
+      margin: 0;
+    }
+    &-body {
+      padding: 0;
+      padding-bottom: 56.25%;
+      padding-top: 25px;
+      height: 0;
+      .close {
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        opacity: 1;
+        z-index: 2;
+      }
+      iframe {
       }
     }
   }
