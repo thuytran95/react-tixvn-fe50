@@ -81,14 +81,14 @@ const CarouselSlider = () => {
     return movieList.map((movie, idx) => {
       const { trailer } = movie;
       return (
-        <div className="modal modal-customize" id={`modal-${idx}`}>
-          <div className="modal-dialog">
+        <div className="modal modal-customize" id={`modal-${idx}`} key={idx}>
+          <div className="modal-dialog modal-lg">
             <div className="modal-content">
               <div className="modal-body">
                 <button type="button" className="close" data-dismiss="modal">
                   &times;
                 </button>
-                <iframe src={trailer} frameborder="0"></iframe>
+                <iframe src={trailer} frameBorder="0"></iframe>
               </div>
             </div>
           </div>

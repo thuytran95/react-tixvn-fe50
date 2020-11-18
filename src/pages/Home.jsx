@@ -9,7 +9,7 @@ const Home = () => {
     <>
       <Header />
       <CarouselSlider />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
