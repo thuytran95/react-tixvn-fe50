@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
+import BookingMovie from "../BookingMovie";
 import "./style.scss";
 
 const CarouselSlider = () => {
@@ -38,7 +39,7 @@ const CarouselSlider = () => {
       maPhim: 1374,
       tenPhim: "Natra Two",
       biDanh: "natra-two",
-      trailer: "https://www.youtube.com/embed/U-MxFzqU3QA",
+      trailer: "https://www.youtube.com/embed/L2EodPu-3DY?autoplay=1",
       hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/natra-two_gp01.png",
       moTa: "abcd",
       maNhom: "GP01",
@@ -117,6 +118,7 @@ const CarouselSlider = () => {
         {renderMovieList()}
       </Carousel>
       <div id="carousel__trailer">{renderTrailer()}</div>
+      <BookingMovie />
     </section>
   );
 };
