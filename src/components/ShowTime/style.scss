@@ -39,14 +39,23 @@
         line-height: 50px;
         text-align: center;
         @include bd-radius(50%);
+<<<<<<< HEAD
         background-color: rgba(color("black"), 0.3);
         @include text(color("primary"), fontSize(5), $fwRegular);
         z-index: 3;
+=======
+        // top: 45%;
+        // @include transform(translate(45%));
+        background-color: rgba(color("black"), 0.3);
+        color: color("primary");
+        font-size: fontSize(4);
+>>>>>>> c327ddb155d3f96f6805deb215ff61e718d2012f
         &::before {
           display: none;
         }
       }
     }
+<<<<<<< HEAD
     &__image {
       padding-top: 147%;
       @include bd-radius(4px);
@@ -113,5 +122,7 @@
       -o-transition: all 0.2s ease-in-out;
       opacity: 1;
     }
+=======
+>>>>>>> c327ddb155d3f96f6805deb215ff61e718d2012f
   }
 }
