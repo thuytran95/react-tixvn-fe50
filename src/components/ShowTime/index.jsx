@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import Carousel from "react-bootstrap/Carousel";
+import Slider from "react-slick";
 import MovieItem from "../MovieItem";
 import "./style.scss";
 
@@ -67,6 +68,28 @@ const ShowTime = () => {
     },
   ];
 
+  const ref = useRef({});
+
+  const next = () => {
+    ref.current.slickNext();
+  };
+
+  const previous = () => {
+    ref.current.slickPrev();
+  };
+  const settings = {
+    dots: true,
+    arrows: false,
+    centerMode: true,
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 4,
+    speed: 500,
+    rows: 2,
+    slidesPerRow: 1,
+    dots: true,
+  };
+
   const renderMovieList = () => {
     return movieList.map((movie, idx) => {
       return <MovieItem key={movie.maPhim} />;
@@ -111,7 +134,68 @@ const ShowTime = () => {
             role="tabpanel"
             aria-labelledby="showing-tab"
           >
-            <Carousel className="showtime"></Carousel>
+            <Slider ref={ref} {...settings}>
+              <div>
+                <h3>1</h3>
+              </div>
+              <div>
+                <h3>2</h3>
+              </div>
+              <div>
+                <h3>3</h3>
+              </div>
+              <div>
+                <h3>4</h3>
+              </div>
+              <div>
+                <h3>5</h3>
+              </div>
+              <div>
+                <h3>6</h3>
+              </div>
+              <div>
+                <h3>1</h3>
+              </div>
+              <div>
+                <h3>2</h3>
+              </div>
+              <div>
+                <h3>3</h3>
+              </div>
+              <div>
+                <h3>4</h3>
+              </div>
+              <div>
+                <h3>5</h3>
+              </div>
+              <div>
+                <h3>6</h3>
+              </div>
+              <div>
+                <h3>2</h3>
+              </div>
+              <div>
+                <h3>3</h3>
+              </div>
+              <div>
+                <h3>4</h3>
+              </div>
+              <div>
+                <h3>5</h3>
+              </div>
+              <div>
+                <h3>6</h3>
+              </div>
+              <div>
+                <h3>4</h3>
+              </div>
+              <div>
+                <h3>5</h3>
+              </div>
+              <div>
+                <h3>6</h3>
+              </div>
+            </Slider>
           </div>
         </div>
       </div>
