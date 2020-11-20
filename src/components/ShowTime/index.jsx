@@ -1,6 +1,7 @@
 import React from "react";
-import Carousel from "react-bootstrap/Carousel";
-import MovieItem from "../MovieItem";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./style.scss";
 
 const ShowTime = () => {
@@ -67,19 +68,32 @@ const ShowTime = () => {
     },
   ];
 
-  const renderMovieList = () => {
-    return movieList.map((movie, idx) => {
-      return <MovieItem key={movie.maPhim} />;
-    });
+  const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
+    <span {...props} className="slick-prev slick-arrow showtime-arrow">
+      <i className="fa fa-angle-left"></i>
+    </span>
+  );
+  const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
+    <span {...props} className="slick-next slick-arrow showtime-arrow">
+      <i className="fa fa-angle-right"></i>
+    </span>
+  );
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
   };
 
   return (
     <section id="showtime">
       <div className="container">
-        <ul class="nav nav-tabs" id="showstime-tab" role="tablist">
-          <li class="nav-item">
+        <ul className="nav nav-tabs" id="showstime-tab" role="tablist">
+          <li className="nav-item">
             <a
-              class="nav-link active"
+              className="nav-link active"
               id="showing-tab"
               data-toggle="tab"
               href="#showing"
@@ -90,9 +104,9 @@ const ShowTime = () => {
               Đang Chiếu
             </a>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <a
-              class="nav-link"
+              className="nav-link"
               id="comingsoon-tab"
               data-toggle="tab"
               href="#comingsoon"
@@ -111,7 +125,47 @@ const ShowTime = () => {
             role="tabpanel"
             aria-labelledby="showing-tab"
           >
-            <Carousel className="showtime"></Carousel>
+            <Slider
+              className="showtime-slider"
+              {...settings}
+              nextArrow={<SlickArrowRight />}
+              prevArrow={<SlickArrowLeft />}
+            >
+              {movieList.map(function (movie) {
+                console.log(movie);
+                return (
+                  <React.Fragment key={movie.maPhim}>
+                    <div className="col" key={movie.maPhim}>
+                      <div className="card showtime__card">
+                        <div
+                          className="showtime__image"
+                          style={{
+                            backgroundImage: `url('${movie.hinhAnh}')`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "cover",
+                          }}
+                        >
+                          <div className="showtime__overlay">
+                            <div className="btn-play">
+                              <a href="#">
+                                <i className="fa fa-play" />
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="card-body">
+                          <h4 className="card-title showtime__title">
+                            {movie.tenPhim}
+                          </h4>
+                          <p className="card-text mt-2">100 phút</p>
+                        </div>
+                      </div>
+                    </div>
+                  </React.Fragment>
+                );
+              })}
+            </Slider>
           </div>
         </div>
       </div>

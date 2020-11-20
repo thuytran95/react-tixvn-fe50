@@ -10,6 +10,10 @@ import "../node_modules/jquery/dist/jquery.slim";
 import "../node_modules/popper.js/dist/popper";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 
+// SlICK CAROUSEL
+import "../node_modules/slick-carousel/slick/slick.css";
+import "../node_modules/slick-carousel/slick/slick-theme.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
