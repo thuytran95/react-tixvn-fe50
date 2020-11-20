@@ -30,4 +30,24 @@
     color: color("secondary");
     font-size: $h2;
   }
+  .showtime {
+    &-slider {
+      .slick-prev,
+      .slick-next {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        @include bd-radius(50%);
+        // top: 45%;
+        // @include transform(translate(45%));
+        background-color: rgba(color("black"), 0.3);
+        color: color("primary");
+        font-size: fontSize(4);
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
 }

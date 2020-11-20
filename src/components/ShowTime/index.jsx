@@ -3,6 +3,8 @@ import Carousel from "react-bootstrap/Carousel";
 import Slider from "react-slick";
 import MovieItem from "../MovieItem";
 import "./style.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const ShowTime = () => {
   const movieList = [
@@ -78,31 +80,71 @@ const ShowTime = () => {
     ref.current.slickPrev();
   };
   const settings = {
+    arrows: true,
     dots: true,
-    arrows: false,
-    centerMode: true,
     infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 4,
     speed: 500,
     rows: 2,
-    slidesPerRow: 1,
-    dots: true,
+    slidesToShow: 4,
+    slidesToScroll: 4,
   };
 
-  const renderMovieList = () => {
-    return movieList.map((movie, idx) => {
-      return <MovieItem key={movie.maPhim} />;
+  const renderShowingMovie = () => {
+    return movieList.map((movie) => {
+      return (
+        <div key={movie.maPhim} className="showstime__wrapper">
+          <div className="showstime__wrapper__img">
+            <img src="./images/showstime/diep-vien-sieu-lay-my-spy-p-15959969936666_215x318.png" />
+            <span className="showstime__wrapper__earlyshowing btn-default">
+              Xuất Chiếu Sớm
+            </span>
+            <div className="showstime__wrapper__prebooked">
+              <img src="./images/showstime/film_type_3.png" />
+            </div>
+            <div className="showstime__wrapper__overlay">
+              <div className="btn-play">
+                <a href="#">
+                  <i className="fa fa-play" />
+                </a>
+              </div>
+            </div>
+            <div className="showstime__wrapper__star">
+              <p>8.2</p>
+              <p className="showstime__wrapper__star__list">
+                <img src="./images/showstime/star1.png" />
+                <img src="./images/showstime/star1.png" />
+                <img src="./images/showstime/star1.png" />
+                <img src="./images/showstime/star1.png" />
+                <img src="./images/showstime/star1.2.png" />
+              </p>
+            </div>
+          </div>
+          <div className="showstime__wrapper__content">
+            <div className="showstime__content__title">
+              <span className="filmAge">C13</span>
+              Điệp Viên Siêu Lầy - My Spy - (13)
+            </div>
+            <div className="showstime__content__time">
+              <p> 100 phút</p>
+            </div>
+            <div className="showstime__content__overlay">
+              <a href="#" className="btn-default">
+                MUA VÉ
+              </a>
+            </div>
+          </div>
+        </div>
+      );
     });
   };
 
   return (
     <section id="showtime">
       <div className="container">
-        <ul class="nav nav-tabs" id="showstime-tab" role="tablist">
-          <li class="nav-item">
+        <ul className="nav nav-tabs" id="showtime-tab" role="tablist">
+          <li className="nav-item">
             <a
-              class="nav-link active"
+              className="nav-link active"
               id="showing-tab"
               data-toggle="tab"
               href="#showing"
@@ -113,9 +155,9 @@ const ShowTime = () => {
               Đang Chiếu
             </a>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <a
-              class="nav-link"
+              className="nav-link"
               id="comingsoon-tab"
               data-toggle="tab"
               href="#comingsoon"
@@ -127,74 +169,30 @@ const ShowTime = () => {
             </a>
           </li>
         </ul>
-        <div className="tab-content" id="showstime-content">
+        <div className="tab-content" id="showtime-content">
           <div
             className="tab-pane fade active show"
             id="showing"
             role="tabpanel"
             aria-labelledby="showing-tab"
           >
-            <Slider ref={ref} {...settings}>
-              <div>
-                <h3>1</h3>
-              </div>
-              <div>
-                <h3>2</h3>
-              </div>
-              <div>
-                <h3>3</h3>
-              </div>
-              <div>
-                <h3>4</h3>
-              </div>
-              <div>
-                <h3>5</h3>
-              </div>
-              <div>
-                <h3>6</h3>
-              </div>
-              <div>
-                <h3>1</h3>
-              </div>
-              <div>
-                <h3>2</h3>
-              </div>
-              <div>
-                <h3>3</h3>
-              </div>
-              <div>
-                <h3>4</h3>
-              </div>
-              <div>
-                <h3>5</h3>
-              </div>
-              <div>
-                <h3>6</h3>
-              </div>
-              <div>
-                <h3>2</h3>
-              </div>
-              <div>
-                <h3>3</h3>
-              </div>
-              <div>
-                <h3>4</h3>
-              </div>
-              <div>
-                <h3>5</h3>
-              </div>
-              <div>
-                <h3>6</h3>
-              </div>
-              <div>
-                <h3>4</h3>
-              </div>
-              <div>
-                <h3>5</h3>
-              </div>
-              <div>
-                <h3>6</h3>
-              </div>
+            <Slider
+              className="showtime-slider"
+              ref={ref}
+              {...settings}
+              arrows={true}
+              nextArrow={
+                <span className="showtime-arrow">
+                  <i className="fa fa-angle-right"></i>
+                </span>
+              }
+              prevArrow={
+                <span className=" showtime-arrow">
+                  <i className="fa fa-angle-left"></i>
+                </span>
+              }
+            >
+              {renderShowingMovie()}
             </Slider>
           </div>
         </div>

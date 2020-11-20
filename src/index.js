@@ -11,8 +11,8 @@ import "../node_modules/popper.js/dist/popper";
 import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 
 // Slick
-import "../node_modules/slick-carousel/slick/slick.css";
-import "../node_modules/slick-carousel/slick/slick-theme.css";
+// import "../node_modules/slick-carousel/slick/slick.css";
+// import "../node_modules/slick-carousel/slick/slick-theme.css";
 import "../node_modules/slick-carousel/slick/slick.min.js";
 ReactDOM.render(
   <React.StrictMode>
