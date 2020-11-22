@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-=======
-import React, { useRef } from "react";
-import Carousel from "react-bootstrap/Carousel";
-import Slider from "react-slick";
-import MovieItem from "../MovieItem";
->>>>>>> c327ddb155d3f96f6805deb215ff61e718d2012f
 import "./style.scss";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -75,9 +68,141 @@ const ShowTime = () => {
       ngayKhoiChieu: "2019-07-29T00:00:00",
       danhGia: 5,
     },
+    {
+      maPhim: 1450,
+      tenPhim: "True Detective",
+      biDanh: "true-detective",
+      trailer: "https://www.youtube.com/embed/TXwCoNwBSkQ",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/truedetective.jpg",
+      moTa:
+        "An anthology series in which police investigations unearth the personal and professional secrets of those involved, both within and outside the law.",
+      maNhom: "GP02",
+      ngayKhoiChieu: "2019-07-29T00:00:00",
+      danhGia: 5,
+    },
+    {
+      maPhim: 1465,
+      tenPhim: "The Longest Ride",
+      biDanh: "the-longest-ride",
+      trailer: "https://www.youtube.com/embed/FUS_Q7FsfqU",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/thelongestride.jpg",
+      moTa:
+        "After an automobile crash, the lives of a young couple intertwine with a much older man, as he reflects back on a past love.",
+      maNhom: "GP02",
+      ngayKhoiChieu: "2019-07-29T00:00:00",
+      danhGia: 5,
+    },
+    {
+      maPhim: 1435,
+      tenPhim: "Mad Max: Fury Road",
+      biDanh: "mad-max-fury-road",
+      trailer: "https://www.youtube.com/embed/hEJnMQG9ev8",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/madmax.jpg",
+      moTa:
+        "In a stark desert landscape where humanity is broken, two rebels just might be able to restore order: Max, a man of action and of few words, and Furiosa, a woman of action who is looking to make it back to her childhood homeland.",
+      maNhom: "GP02",
+      ngayKhoiChieu: "2019-07-29T00:00:00",
+      danhGia: 5,
+    },
+    {
+      maPhim: 1480,
+      tenPhim: "The Walking Dead",
+      biDanh: "the-walking-dead",
+      trailer: "https://www.youtube.com/embed/R1v0uFms68U",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/thewalkingdead.jpg",
+      moTa:
+        "Sheriff's Deputy Rick Grimes leads a group of survivors in a world overrun by zombies.",
+      maNhom: "GP02",
+      ngayKhoiChieu: "2019-07-29T00:00:00",
+      danhGia: 5,
+    },
+    {
+      maPhim: 1495,
+      tenPhim: "Southpaw",
+      biDanh: "southpaw",
+      trailer: "https://www.youtube.com/embed/Mh2ebPxhoLs",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/southpaw.jpg",
+      moTa:
+        "Boxer Billy Hope turns to trainer Tick Willis to help him get his life back on track after losing his wife in a tragic accident and his daughter to child protection services.",
+      maNhom: "GP02",
+      ngayKhoiChieu: "2019-07-29T00:00:00",
+      danhGia: 5,
+    },
+    {
+      maPhim: 1510,
+      tenPhim: "Specter",
+      biDanh: "specter",
+      trailer: "https://www.youtube.com/embed/LTDaET-JweU",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/spectre.jpg",
+      moTa:
+        "A cryptic message from Bond's past sends him on a trail to uncover a sinister organization. While M battles political forces to keep the secret service alive, Bond peels back the layers of deceit to reveal the terrible truth behind SPECTRE.",
+      maNhom: "GP02",
+      ngayKhoiChieu: "2019-07-29T00:00:00",
+      danhGia: 5,
+    },
+    {
+      maPhim: 1525,
+      tenPhim: "Avengers: Infinity War ",
+      biDanh: "avengers-infinity-war",
+      trailer: "https://www.youtube.com/embed/DKqu9qc-5f4",
+      hinhAnh:
+        "http://movie0706.cybersoft.edu.vn/hinhanh/avengers-infinity-war.jpg",
+      moTa:
+        "Biệt đội siêu anh hùng Avengers và những đồng minh sẽ phải sẵn sàng hi sinh tính mạng để chống lại siêu ác nhân hùng mạnh Thanos trước khi hắn phá huỷ mọi thứ và đặt dấu chấm hết cho vũ trụ. ",
+      maNhom: "GP02",
+      ngayKhoiChieu: "2019-07-29T00:00:00",
+      danhGia: 5,
+    },
+    {
+      maPhim: 1540,
+      tenPhim: "truedetective",
+      biDanh: "truedetective",
+      trailer: "https://www.youtube.com/watch?v=tSoy8TpUt20",
+      hinhAnh:
+        "http://movie0706.cybersoft.edu.vn/hinhanh/truedetective_gp02.png",
+      moTa:
+        "Biệt đội siêu anh hùng Avengers và những đồng minh sẽ phải sẵn sàng hi sinh tính mạng để chống lại siêu ác nhân hùng mạnh Thanos trước khi hắn phá huỷ mọi thứ và đặt dấu chấm hết cho vũ trụ. ",
+      maNhom: "GP02",
+      ngayKhoiChieu: "2019-07-29T00:00:00",
+      danhGia: 10,
+    },
+    {
+      maPhim: 4125,
+      tenPhim: "Ròm",
+      biDanh: "rom",
+      trailer: "https://www.youtube.com/watch?v=XRm1P7oGpMQ",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/rom_gp02.jpg",
+      moTa:
+        "Lấy bối cảnh từ một khu chung cư cũ đang chờ giải tỏa tại Sài Gòn, Ròm kể câu chuyện về cuộc sống của những người dân lao động nơi đây. Họ đều chơi số đề với hy vọng kiếm được một khoản tiền lớn để đổi đời. Ròm là cậu bé làm “cò đề” để kiếm sống qua ngày, chuyên tư vấn cho người dân những con số may mắn để họ có cơ may trúng đề. Một hôm cậu giúp bà già kia trúng đề lớn nên được mọi người tin tưởng nhưng sau nhiều lần thua cậu bị người dân mất tin tưởng",
+      maNhom: "GP02",
+      ngayKhoiChieu: "2020-10-11T00:00:00",
+      danhGia: 10,
+    },
+    {
+      maPhim: 4684,
+      tenPhim: "Em Chua 19",
+      biDanh: "em-chua-19",
+      trailer: "https://www.youtube.com/watch?v=ZM719KtmKzs",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/em-chua-19_gp02.jpg",
+      moTa: "asdasdasd",
+      maNhom: "GP02",
+      ngayKhoiChieu: "2020-11-18T00:00:00",
+      danhGia: 10,
+    },
+    {
+      maPhim: 4695,
+      tenPhim: "Righ6",
+      biDanh: "righ6",
+      trailer: "https://www.youtube.com/watch?v=ZM719KtmKzs",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/righ6_gp02.jpg",
+      moTa: "king of rap 123",
+      maNhom: "GP02",
+      ngayKhoiChieu: "2020-12-04T00:00:00",
+      danhGia: 10,
+    },
   ];
+  console.log(movieList);
 
-<<<<<<< HEAD
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
     <span {...props} className="slick-prev slick-arrow showtime-arrow">
       <i className="fa fa-angle-left"></i>
@@ -94,85 +219,14 @@ const ShowTime = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
-=======
-  const ref = useRef({});
-
-  const next = () => {
-    ref.current.slickNext();
-  };
-
-  const previous = () => {
-    ref.current.slickPrev();
-  };
-  const settings = {
-    arrows: true,
-    dots: true,
-    infinite: true,
-    speed: 500,
-    rows: 2,
-    slidesToShow: 4,
     slidesToScroll: 4,
-  };
-
-  const renderShowingMovie = () => {
-    return movieList.map((movie) => {
-      return (
-        <div key={movie.maPhim} className="showstime__wrapper">
-          <div className="showstime__wrapper__img">
-            <img src="./images/showstime/diep-vien-sieu-lay-my-spy-p-15959969936666_215x318.png" />
-            <span className="showstime__wrapper__earlyshowing btn-default">
-              Xuất Chiếu Sớm
-            </span>
-            <div className="showstime__wrapper__prebooked">
-              <img src="./images/showstime/film_type_3.png" />
-            </div>
-            <div className="showstime__wrapper__overlay">
-              <div className="btn-play">
-                <a href="#">
-                  <i className="fa fa-play" />
-                </a>
-              </div>
-            </div>
-            <div className="showstime__wrapper__star">
-              <p>8.2</p>
-              <p className="showstime__wrapper__star__list">
-                <img src="./images/showstime/star1.png" />
-                <img src="./images/showstime/star1.png" />
-                <img src="./images/showstime/star1.png" />
-                <img src="./images/showstime/star1.png" />
-                <img src="./images/showstime/star1.2.png" />
-              </p>
-            </div>
-          </div>
-          <div className="showstime__wrapper__content">
-            <div className="showstime__content__title">
-              <span className="filmAge">C13</span>
-              Điệp Viên Siêu Lầy - My Spy - (13)
-            </div>
-            <div className="showstime__content__time">
-              <p> 100 phút</p>
-            </div>
-            <div className="showstime__content__overlay">
-              <a href="#" className="btn-default">
-                MUA VÉ
-              </a>
-            </div>
-          </div>
-        </div>
-      );
-    });
->>>>>>> c327ddb155d3f96f6805deb215ff61e718d2012f
+    rows: 2,
   };
 
   return (
     <section id="showtime">
       <div className="container">
-<<<<<<< HEAD
         <ul className="nav nav-tabs" id="showstime-tab" role="tablist">
-=======
-        <ul className="nav nav-tabs" id="showtime-tab" role="tablist">
->>>>>>> c327ddb155d3f96f6805deb215ff61e718d2012f
           <li className="nav-item">
             <a
               className="nav-link active"
@@ -209,13 +263,11 @@ const ShowTime = () => {
           >
             <Slider
               className="showtime-slider"
-<<<<<<< HEAD
               {...settings}
               nextArrow={<SlickArrowRight />}
               prevArrow={<SlickArrowLeft />}
             >
               {movieList.map(function (movie) {
-                console.log(movie);
                 return (
                   <React.Fragment key={movie.maPhim}>
                     <div className="col" key={movie.maPhim}>
@@ -235,36 +287,34 @@ const ShowTime = () => {
                               </a>
                             </div>
                           </div>
+                          <div className="showtime__rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>({movie.danhGia})</span>
+                          </div>
                         </div>
 
-                        <div className="card-body">
-                          <h4 className="card-title showtime__title">
-                            {movie.tenPhim}
-                          </h4>
-                          <p className="card-text mt-2">100 phút</p>
+                        <div className="card-body showtime__card__body">
+                          <div className="showtime__content">
+                            <h4 className="card-title showtime__title text-capitalize">
+                              <span className="btn-age">C16</span>
+                              {movie.tenPhim}
+                            </h4>
+                            <p className="card-text mt-2">100 phút</p>
+                          </div>
+                          <div className="showtime__addToCart">
+                            <a href="#" className="btn-default">
+                              Mua vé
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </React.Fragment>
                 );
               })}
-=======
-              ref={ref}
-              {...settings}
-              arrows={true}
-              nextArrow={
-                <span className="showtime-arrow">
-                  <i className="fa fa-angle-right"></i>
-                </span>
-              }
-              prevArrow={
-                <span className=" showtime-arrow">
-                  <i className="fa fa-angle-left"></i>
-                </span>
-              }
-            >
-              {renderShowingMovie()}
->>>>>>> c327ddb155d3f96f6805deb215ff61e718d2012f
             </Slider>
           </div>
         </div>

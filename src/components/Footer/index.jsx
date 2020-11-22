@@ -128,11 +128,7 @@ const Footer = () => {
             </div>
             <div className="col-12 col-sm-2">
               <div className="ft__site__item image">
-<<<<<<< HEAD
-                <img src="./images/logos/dathongbao.png" alt="logo" />
-=======
                 <img src="./images/logos/dathongbao.png" alt="kiemduyet" />
->>>>>>> c327ddb155d3f96f6805deb215ff61e718d2012f
               </div>
             </div>
           </div>
