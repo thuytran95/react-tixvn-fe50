@@ -17,10 +17,10 @@
       background-color: transparent;
       color: color("black");
       line-height: 24px;
-      font-size: fontSize(3);
+      font-size: fontSize(2.4);
       @include transition-all($time: 0.2s);
       &:hover {
-        font-size: $h2 * 1.5;
+        font-size: $h2 * 0.8;
       }
     }
   }
@@ -28,7 +28,7 @@
   .nav-tabs .nav-item.show .nav-link {
     border: none;
     color: color("secondary");
-    font-size: fontSize(3);
+    font-size: fontSize(2.4);
   }
   .showtime {
     &-slider {
@@ -112,7 +112,7 @@
         .showtime__overlay {
           opacity: 1;
         }
-        .showtime__content {
+        .showtime__content__overlay {
           opacity: 0;
         }
         .showtime__addToCart {
@@ -129,12 +129,15 @@
 
     &__title {
       margin-bottom: spacing(1);
-      height: 60px;
-      max-height: 60px;
+      height: 42px;
+      max-height: 42px;
       overflow: hidden;
-      @include text(color("black"), $h2, $fwMedium);
-      line-height: 24px;
+      @include text(color("black"), $h1, $fwMedium);
+      line-height: 18px;
       @include transition-all(0.2s);
+      .btn-age--general {
+        background-color: color("darkgreen");
+      }
     }
     &__addToCart {
       position: absolute;

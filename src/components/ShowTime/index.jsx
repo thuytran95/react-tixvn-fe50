@@ -154,16 +154,16 @@ const ShowTime = () => {
       danhGia: 5,
     },
     {
-      maPhim: 1540,
-      tenPhim: "truedetective",
-      biDanh: "truedetective",
-      trailer: "https://www.youtube.com/watch?v=tSoy8TpUt20",
+      maPhim: 4327,
+      tenPhim: "Tiệc trăng máu",
+      biDanh: "tiec-trang-mau-c18-",
+      trailer: "https://youtu.be/ql5Ro6jtbII",
       hinhAnh:
-        "http://movie0706.cybersoft.edu.vn/hinhanh/truedetective_gp02.png",
+        "http://movie0706.cybersoft.edu.vn/hinhanh/tiec-trang-mau-c18-_gp05.jpg",
       moTa:
-        "Biệt đội siêu anh hùng Avengers và những đồng minh sẽ phải sẵn sàng hi sinh tính mạng để chống lại siêu ác nhân hùng mạnh Thanos trước khi hắn phá huỷ mọi thứ và đặt dấu chấm hết cho vũ trụ. ",
-      maNhom: "GP02",
-      ngayKhoiChieu: "2019-07-29T00:00:00",
+        "Trong buổi họp mặt của nhóm bạn thân, một thành viên bất ngờ đề xuất trò chơi chia sẻ điện thoại nhằm tăng tinh thần đoàn kết. Từ đó, những góc khuất của từng người dần hé lộ và khiến cho mối quan hệ vốn khắng khít của họ bắt đầu lay chuyển.",
+      maNhom: "GP05",
+      ngayKhoiChieu: "2020-10-23T00:00:00",
       danhGia: 10,
     },
     {
@@ -202,6 +202,159 @@ const ShowTime = () => {
     },
   ];
   console.log(movieList);
+
+  const comingSoonMovieList = [
+    {
+      maPhim: 2850,
+      tenPhim: "Goá Phụ Đen",
+      biDanh: "goa-phu-den",
+      trailer: "https://www.youtube.com/embed/D0sq0FqwV_E",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/goa-phu-den_gp09.jpg",
+      moTa:
+        "Phần phim riêng của Natasha Romanoff bất ngờ tung teaser chính thức với những cảnh hành động mãn nhãn, mang đậm chất điệp viên. Bên cạnh đó, phần phim này cũng sẽ hé lộ quá khứ đen tối và quá trình biến cô trở thành một Black Widow.",
+      maNhom: "GP09",
+      ngayKhoiChieu: "2020-05-02T00:00:00",
+      danhGia: 7,
+    },
+    {
+      maPhim: 2966,
+      tenPhim: "Bloodshot (C18)",
+      biDanh: "bloodshot-c18-",
+      trailer: "https://www.youtube.com/embed/TP6MkGUZMQI",
+      hinhAnh:
+        "http://movie0706.cybersoft.edu.vn/hinhanh/bloodshot-c18-_gp09.jpg",
+      moTa:
+        "Based on the bestselling comic book, Vin Diesel stars as Ray Garrison, a soldier recently killed in action and brought back to life as the superhero Bloodshot by the RST corporation. With an army of nanotechnology in his veins, he's an unstoppable force -- stronger than ever and able to heal instantly. But in controlling his body, the company has sway over his mind and memories, too. Now, Ray doesn't know what's real and what's not -- but he's on a mission to find out.",
+      maNhom: "GP09",
+      ngayKhoiChieu: "2020-10-29T00:00:00",
+      danhGia: 10,
+    },
+    {
+      maPhim: 3046,
+      tenPhim: "Vì Anh Vẫn Tin",
+      biDanh: "vi-anh-van-tin",
+      trailer: "https://www.youtube.com/embed/OGfm7CNM5BY",
+      hinhAnh:
+        "http://movie0706.cybersoft.edu.vn/hinhanh/vi-anh-van-tin_gp09.jpg",
+      moTa:
+        "Phim là bản tình ca ngọt ngào nhưng cũng thấm đượm nước mắt dựa trên cuốn hồi ký cùng tên của ca sĩ, nhạc sĩ người Mỹ Jeremy Camp. Phim kể về chính anh và Melissa Lynn Henning-Camp - người con gái mình yêu, người vợ và cũng là một trong những người có ảnh hưởng lớn nhất tới âm nhạc và cuộc đời của Jeremy từ lúc hai người gặp gỡ, kết hôn rồi đồng hành cùng nhau chiến đấu với căn bệnh ung thư đang dần cướp đi sinh mạng của Melissa.",
+      maNhom: "GP09",
+      ngayKhoiChieu: "2020-05-15T00:00:00",
+      danhGia: 7,
+    },
+    {
+      maPhim: 3047,
+      tenPhim: "Nắng 3",
+      biDanh: "nang-3",
+      trailer: "https://www.youtube.com/embed/DymKqNH_m8w",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/nang-3_gp09.jpeg",
+      moTa:
+        "Phim kể về hành trình đặc biệt của Hồng Ân (Ngân Chi) cùng với người mẹ “bá đạo” Quế Phương (Khả Như) trong việc chinh phục lại ông bố Tùng Sơn (Kiều Minh Tuấn). Nhưng, đời không như là mơ, Tùng Sơn kiên quyết không nhận con và luôn tìm cách hoá giải những chiêu trò của mẹ con Quế Phương – Hồng Ân. Chưa dừng lại ở đó, sự xuất hiện chướng ngại “khó nhằn” là cô nàng “chanh xả” Thuỳ Linh (Oanh Kiều) lại càng khiến hành trình “cảm hoá” trái tim người cha của Hồng Ân trở nên rối tung.  \nRốt cuộc, mẹ con Quế Phương – Hồng Ân sẽ dùng tuyệt chiêu gì để lay động Tùng Sơn? Và sau tất cả, khi những hy vọng lẫn khát khao hạnh phúc của một đứa trẻ gửi đến một người cha có giúp Tùng Sơn học cách để trưởng thành?",
+      maNhom: "GP09",
+      ngayKhoiChieu: "2020-06-13T00:00:00",
+      danhGia: 7,
+    },
+    {
+      maPhim: 3048,
+      tenPhim: "Loạn Nhịp",
+      biDanh: "loan-nhip",
+      trailer: "https://www.youtube.com/embed/b5u8UTV0OWs",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/loan-nhip_gp09.jpg",
+      moTa:
+        "Điển trai, độc thân và kỹ lưỡng trong lối sống, Chai là hình tượng “sugar daddy” điển hình bên ngoài ấm áp bên trong trưởng thành. Cuộc gặp gỡ vô cùng bất ngờ và định mệnh với cô gái 9x - Whan đã khiến ông chú thập niên 90s thoát ra khỏi cuộc sống đơn sắc trước đây khi cả hai chợt nhận ra rằng, trái tim họ đang ngày càng loạn nhịp vì nhau.",
+      maNhom: "GP09",
+      ngayKhoiChieu: "2020-05-13T00:00:00",
+      danhGia: 7,
+    },
+    {
+      maPhim: 3049,
+      tenPhim: "Sát Thủ Vô Cùng Cực",
+      biDanh: "sat-thu-vo-cung-cuc",
+      trailer: "https://www.youtube.com/embed/9fawuOPEUMc",
+      hinhAnh:
+        "http://movie0706.cybersoft.edu.vn/hinhanh/sat-thu-vo-cung-cuc_gp09.jpg",
+      moTa:
+        'Xoay quanh Joon, chàng cựu điệp viên của NIS, "dứt áo ra đi" khỏi tổ chức, ngày đêm cống hiến với sở thích truyện tranh. Vòng xoáy "cơm áo gạo tiền" nào phải dễ, truyện anh sáng tác, chẳng mấy ai quan tâm, cho đến khi, anh tự kể lại trải nghiệm điệp viên của mình, kể chậm rãi, từng từ một, lượt view tăng lên, nhưng kéo theo đó, là bao rắc rối ập đến khi thông tin mật đều được phơi bày.',
+      maNhom: "GP09",
+      ngayKhoiChieu: "2020-05-17T00:00:00",
+      danhGia: 7,
+    },
+    {
+      maPhim: 3051,
+      tenPhim: "Dreamy Eyes",
+      biDanh: "dreamy-eyes",
+      trailer: "https://www.youtube.com/embed/KSFS0OfIK2c",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/dreamy-eyes_gp09.jpg",
+      moTa:
+        "Mắt biếc xoay quanh mối tình đơn phương của Ngạn với Hà Lan, cô bạn gái có cặp mắt hút hồn nhưng cá tính bướng bỉnh. Một chuyện tình nhiều cung bậc, từ ngộ nghĩnh trẻ con, rồi tình yêu thuở học trò trong sáng, trải qua bao biến cố, trở thành một cuộc “đuổi hình bắt bóng” buồn da diết nhưng không nguôi hi vọng. Câu chuyện càng trở nên éo le hơn khi Trà Long - con gái của Hà Lan, lớn lên lại nhen nhóm một tình yêu như thế với Ngạn…",
+      maNhom: "GP09",
+      ngayKhoiChieu: "2020-05-19T00:00:00",
+      danhGia: 8,
+    },
+    {
+      maPhim: 3054,
+      tenPhim: "Greyhound",
+      biDanh: "greyhound",
+      trailer: "https://www.youtube.com/embed/llr6SQpBzWs",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/greyhound_gp09.jpg",
+      moTa:
+        "Phim lấy cảm hứng từ sự kiện lịch sử có thật - trận chiến Đại Tây Dương. Với sự góp mặt của Tom Hanks vào vai một thuyền trưởng lần đầu tiên dẫn một đoàn tàu Đồng Minh chở hàng ngàn binh lính và tiếp tế băng qua vùng biển nguy hiểm ở Trung Đại Tây Dương đến tiền tuyến của thế chiến II. Nhưng trước khi đến được đó, những kẻ thù dần xuất hiện.",
+      maNhom: "GP09",
+      ngayKhoiChieu: "2020-06-12T00:00:00",
+      danhGia: 8,
+    },
+    {
+      maPhim: 3056,
+      tenPhim: "The King's Man",
+      biDanh: "the-king-s-man",
+      trailer: "https://www.youtube.com/embed/0pbLPOrTSsI",
+      hinhAnh:
+        "http://movie0706.cybersoft.edu.vn/hinhanh/the-king-s-man_gp09.jpg",
+      moTa:
+        "Khởi Nguồn là phần tiền truyện của loạt phim Mật vụ Kingsman, xoay quanh quá trình hình thành và phát triển của tổ chức mật vụ nổi tiếng bậc nhất màn ảnh rộng này. Đứng trước một kế hoạch tiêu diệt hàng triệu người do một nhóm những bậc thầy ác nhân và bạo chúa khởi xướng; một điệp viên đầy kinh nghiệm, cùng với sự giúp đỡ của con trai và các cộng sự đáng tin cậy của mình, buộc phải chạy đua với thời gian ngăn chặn âm mưu đó.",
+      maNhom: "GP09",
+      ngayKhoiChieu: "2020-06-23T00:00:00",
+      danhGia: 10,
+    },
+    {
+      maPhim: 3057,
+      tenPhim: "Candyman",
+      biDanh: "candyman",
+      trailer: "https://www.youtube.com/embed/tlwzuZ9kOQU",
+      hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/candyman_gp09.jpg",
+      moTa:
+        "Phim xoay quanh nữ sinh Helen khi cô bắt đầu khám phá những truyền thuyết về một linh hồn ở địa phương để phục vụ bài nghiên cứu của mình. Linh hồn này vốn là con trai của một người nô lệ da màu. Khi còn sống, gã đã bị dân làng trét mật lên người và cho ong đốt đến chết vì dám đem lòng yêu một cô gái da trắng. Tên “Candyman” bắt nguồn từ truyền thuyết này.",
+      maNhom: "GP09",
+      ngayKhoiChieu: "2020-09-25T00:00:00",
+      danhGia: 7,
+    },
+    {
+      maPhim: 3148,
+      tenPhim: "Kẻ Săn Mồi Đáy Biển",
+      biDanh: "ke-san-moi-day-bien",
+      trailer: "https://www.youtube.com/embed/IRnE7YLrXJI",
+      hinhAnh:
+        "http://movie0706.cybersoft.edu.vn/hinhanh/ke-san-moi-day-bien_gp09.jpg",
+      moTa:
+        "Phim xoay quanh một nhóm kĩ sư dầu khí làm việc tại dàn khoan, trong một nhiêm vụ khắc phục sự cố tại chân của dàn khoan ở đáy biển, nhóm kĩ sư phát hiện tính mạng của bản thân bị đe doạ bởi một sinh vật bí ẩn. Sinh vật này là gì?",
+      maNhom: "GP09",
+      ngayKhoiChieu: "1998-09-10T00:00:00",
+      danhGia: 5,
+    },
+    {
+      maPhim: 3268,
+      tenPhim: "Trận chiến Midway",
+      biDanh: "tran-chien-midway",
+      trailer: "https://www.youtube.com/embed/l9laReRAYFk",
+      hinhAnh:
+        "http://movie0706.cybersoft.edu.vn/hinhanh/tran-chien-midway_gp09.jpg",
+      moTa:
+        "Vào ngày 7 tháng 12 năm 1941, quân đội Nhật Bản đã tiến hành một cuộc tấn công tàn khốc vào Trân Châu Cảng, căn cứ hải quân của Hoa Kỳ ở Hawaii. Sáu tháng sau, Trận Midway bắt đầu vào ngày 4 tháng 6 năm 1942, khi hải quân Nhật Bản một lần nữa lên kế hoạch tấn công các tàu Mỹ ở Thái Bình Dương. Trong ba ngày tiếp theo, Hải quân Hoa Kỳ và một đội phi công dũng cảm đã quyết chiến với kẻ thù trong một trong những trận chiến quan trọng và mang tính quyết định của Thế chiến II.",
+      maNhom: "GP09",
+      ngayKhoiChieu: "2020-05-29T00:00:00",
+      danhGia: 4,
+    },
+  ];
 
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
     <span {...props} className="slick-prev slick-arrow showtime-arrow">
@@ -297,7 +450,7 @@ const ShowTime = () => {
                         </div>
 
                         <div className="card-body showtime__card__body">
-                          <div className="showtime__content">
+                          <div className="showtime__content showtime__content__overlay">
                             <h4 className="card-title showtime__title text-capitalize">
                               <span className="btn-age">C16</span>
                               {movie.tenPhim}
@@ -308,6 +461,59 @@ const ShowTime = () => {
                             <a href="#" className="btn-default">
                               Mua vé
                             </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </React.Fragment>
+                );
+              })}
+            </Slider>
+          </div>
+
+          <div
+            className="tab-pane fade"
+            id="comingsoon"
+            role="tabpanel"
+            aria-labelledby="comingsoon-tab"
+          >
+            <Slider
+              className="showtime-slider"
+              {...settings}
+              nextArrow={<SlickArrowRight />}
+              prevArrow={<SlickArrowLeft />}
+            >
+              {comingSoonMovieList.map((movie) => {
+                return (
+                  <React.Fragment key={movie.maPhim}>
+                    <div className="col" key={movie.maPhim}>
+                      <div className="card showtime__card">
+                        <div
+                          className="showtime__image"
+                          style={{
+                            backgroundImage: `url('${movie.hinhAnh}')`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundSize: "cover",
+                          }}
+                        >
+                          <div className="showtime__overlay">
+                            <div className="btn-play">
+                              <a href="#">
+                                <i className="fa fa-play" />
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="card-body showtime__card__body">
+                          <div className="showtime__content">
+                            <h4 className="card-title showtime__title text-capitalize">
+                              <span className="btn-age btn-age--general">
+                                P
+                              </span>
+                              {movie.tenPhim}
+                            </h4>
+                            <p className="card-text mt-2">100 phút</p>
                           </div>
                         </div>
                       </div>
