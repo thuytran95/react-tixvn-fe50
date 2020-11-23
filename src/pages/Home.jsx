@@ -3,6 +3,7 @@ import CarouselSlider from "../components/Carousel";
 import Footer from "../components/Footer";
 
 import Header from "../components/Header";
+import News from "../components/News";
 import ShowTime from "../components/ShowTime";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
       <Header />
       <CarouselSlider />
       <ShowTime />
+      <News />
       <Footer />
     </>
   );

@@ -441,10 +441,11 @@ const ShowTime = () => {
                             </div>
                           </div>
                           <div className="showtime__rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                            <i className="fas fa-star" />
+                            <i className="fas fa-star" />
+                            <i className="fas fa-star" />
+                            <i className="fas fa-star-half-alt" />
+
                             <span>({movie.danhGia})</span>
                           </div>
                         </div>
