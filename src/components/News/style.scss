@@ -1,5 +1,26 @@
 @import "../../styles/index.scss";
 #news {
+  .news__tab {
+    justify-content: center;
+    margin-top: spacing(5);
+    margin-bottom: spacing(2);
+    border-bottom: none;
+    .nav-link {
+      border: none;
+      @include text(color("black"), fontSize(2.5), $fwMedium);
+      line-height: 30px;
+      @include transition-all($time: 0.2s);
+      &:hover {
+        font-size: fontSize(3);
+      }
+      &.active {
+        background-color: transparent;
+        color: color("secondary");
+        font-size: fontSize(3);
+        border: none;
+      }
+    }
+  }
   .tab-pane {
     .news {
       padding: spacing(0, 0.75);
@@ -21,7 +42,7 @@
           height: 42px;
           font-size: $h1;
           font-weight: $fwMedium;
-          margin: spacing(0.5, 0);
+          margin: spacing(1) 0 spacing(0.5) 0;
         }
       }
       &__description {

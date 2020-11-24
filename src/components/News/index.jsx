@@ -6,11 +6,11 @@ const News = () => {
   const newsTabList = data;
   console.log(newsTabList);
   return (
-    <section className="news-section" id="news">
-      <ul className="nav nav-tabs hotnews__tab" id="hotnews-tab" role="tablist">
-        <li className="nav-item hotnews__tab__item">
+    <section id="news">
+      <ul className="nav nav-tabs news__tab" role="tablist">
+        <li className="nav-item news__tab__item">
           <a
-            className="hotnews__tab__link nav-link active"
+            className="news__tab__link nav-link active"
             id="dien-anh-tab"
             data-toggle="tab"
             href="#dien-anh"
@@ -21,9 +21,9 @@ const News = () => {
             Điện Ảnh 24h
           </a>
         </li>
-        <li className="nav-item hotnews__tab__item">
+        <li className="nav-item news__tab__item">
           <a
-            className="hotnews__tab__link nav-link"
+            className="news__tab__link nav-link"
             id="review-tab"
             data-toggle="tab"
             href="#review"
@@ -34,9 +34,9 @@ const News = () => {
             Review
           </a>
         </li>
-        <li className="nav-item hotnews__tab__item">
+        <li className="nav-item news__tab__item">
           <a
-            className="hotnews__tab__link nav-link"
+            className="news__tab__link nav-link"
             id="khuyen-mai-tab"
             data-toggle="tab"
             href="#khuyen-mai"
@@ -86,6 +86,16 @@ const News = () => {
                           <p className="news__description">
                             {newsItem.description}
                           </p>
+                          <div className="social">
+                            <div className="social-icon icon-like">
+                              <img src="./images/news/icons/like.png" />
+                              <span>{newsItem.like}</span>
+                            </div>
+                            <div className="social-icon icon-comment ">
+                              <img src="./images/news/icons/comment.png" />
+                              <span>{newsItem.comment}</span>
+                            </div>
+                          </div>
                         </div>
                       );
                     }

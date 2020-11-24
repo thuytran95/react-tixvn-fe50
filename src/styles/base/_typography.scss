@@ -70,3 +70,20 @@
     }
   }
 }
+
+.social {
+  display: flex;
+  &-icon {
+    color: color("lightgrey");
+    font-size: $title1;
+    margin-right: spacing(2.5);
+    cursor: pointer;
+    img {
+      vertical-align: middle;
+      margin-right: spacing(0.5);
+      height: auto;
+      width: 18px;
+      @include transition-all($time: 0.2s);
+    }
+  }
+}

@@ -16,11 +16,11 @@
       border: none;
       background-color: transparent;
       color: color("black");
-      line-height: 24px;
-      font-size: fontSize(2.4);
+      line-height: 30px;
+      font-size: fontSize(3);
       @include transition-all($time: 0.2s);
       &:hover {
-        font-size: $h2 * 0.8;
+        font-size: fontSize(2.5);
       }
     }
   }
@@ -28,7 +28,7 @@
   .nav-tabs .nav-item.show .nav-link {
     border: none;
     color: color("secondary");
-    font-size: fontSize(2.4);
+    font-size: fontSize(3);
   }
   .showtime {
     &-slider {
