@@ -4,6 +4,7 @@ import CarouselSlider from "../../components/Carousel";
 import News from "../../components/News";
 import ShowTime from "../../components/ShowTime";
 import Footer from "../../components/Footer";
+import "./style.scss";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <CarouselSlider />
       <ShowTime />
       <News />
+
       <Footer />
     </>
   );

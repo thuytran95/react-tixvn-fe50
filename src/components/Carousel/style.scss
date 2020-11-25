@@ -47,16 +47,19 @@
     }
   }
   .modal {
+    &-open {
+      padding-right: 0;
+    }
+    padding-right: 0;
+
     &-dialog {
-      // position: absolute;
-      // left: 50%;
-      // top: 50%;
-      // @include transform(translate(-50%, -50%));
-      // margin: 0;
+      @include transform(translateY(45%));
     }
     &-body {
       padding: 0;
       padding-bottom: 56.25%;
+      padding-top: 25px;
+      height: 0;
 
       .close {
         position: absolute;
@@ -66,9 +69,11 @@
         z-index: 2;
       }
       iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: max-content;
-        // @include transform(translate(-50%, 0));
+        height: 100%;
       }
     }
   }
