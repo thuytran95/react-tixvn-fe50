@@ -13,7 +13,6 @@ const Home = () => {
       <CarouselSlider />
       <ShowTime />
       <News />
-
       <Footer />
     </>
   );
