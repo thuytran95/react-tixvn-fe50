@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 
-const MovieShedule = () => {
+const MovieSchedule = () => {
   return (
     <div id="movie-schedule" className="movie-schedule">
       <div className="container backgroundTop">
@@ -138,4 +138,4 @@ const MovieShedule = () => {
   );
 };
 
-export default MovieShedule;
+export default MovieSchedule;
