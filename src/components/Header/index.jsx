@@ -1,5 +1,4 @@
 import React from "react";
-import locationList from "../../assets/data/locationList.json";
 import logo from "../../assets/images/logos/web-logo.png";
 import avatar from "../../assets/images/logos/avatar.png";
 import "./style.scss";

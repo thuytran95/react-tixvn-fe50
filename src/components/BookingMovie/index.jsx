@@ -9,7 +9,50 @@ const BookingMovie = () => {
           <div className="row">
             <div className="col-12 col-sm-4">
               <div className="booking__movie__item booking__movie__name dropdown">
-                <div className="dropdown__selected">Phim</div>
+                <div className="options-container active customscroll ">
+                  <div className="option">
+                    <input type="radio" className="radio" id="1" name="movie" />
+                    <label htmlFor="1">
+                      Cá sấu tử thần - black water: Abyss - (C18)
+                    </label>
+                  </div>
+
+                  <div className="option">
+                    <input type="radio" className="radio" id="2" name="movie" />
+                    <label htmlFor="2">Điệp viên siêu lầy - My spy (13)</label>
+                  </div>
+
+                  <div className="option">
+                    <input type="radio" className="radio" id="3" name="movie" />
+                    <label htmlFor="3">
+                      Nội chiến siêu anh hùng - Captain America: Civil war
+                      (NC16)
+                    </label>
+                  </div>
+
+                  <div className="option">
+                    <input type="radio" className="radio" id="4" name="movie" />
+                    <label htmlFor="4">Mãi bên em - Endless - (C13)</label>
+                  </div>
+                  <div className="option">
+                    <input type="radio" className="radio" id="5" name="movie" />
+                    <label htmlFor="5">Big hero 6</label>
+                  </div>
+                  <div className="option">
+                    <input type="radio" className="radio" id="6" name="movie" />
+                    <label htmlFor="6">
+                      Dinh thự oan khuất - Ghost of war - (C18)
+                    </label>
+                  </div>
+                  <div className="option">
+                    <input type="radio" className="radio" id="7" name="movie" />
+                    <label htmlFor="7">
+                      Hồn ma văn sĩ - Ghost writer - (C18)
+                    </label>
+                  </div>
+                </div>
+                <div class="selected">Phim</div>
+                {/* <div className="dropdown__selected">Phim</div>
                 <ul className="dropdown__menu customscroll">
                   <li id={1}>Cá sấu tử thần - black water: Abyss - (C18)</li>
                   <li id={2}>Điệp viên siêu lầy - My spy (13)</li>
@@ -28,7 +71,7 @@ const BookingMovie = () => {
                   <li id={13}>Yêu nhau mùa ế - low season - (C16)</li>
                   <li id={14}>Cuộc phiêu lưu của scooby-doo! - scoob! - (P)</li>
                   <li id={15}>Ngôi đền kì quái - pee nak 2 - (C6)</li>
-                </ul>
+                </ul> */}
               </div>
             </div>
             <div className="col-12 col-sm-2">
