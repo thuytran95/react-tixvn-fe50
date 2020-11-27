@@ -14,9 +14,23 @@ import "../node_modules/bootstrap/dist/js/bootstrap.min.js";
 import "../node_modules/slick-carousel/slick/slick.css";
 import "../node_modules/slick-carousel/slick/slick-theme.css";
 
+// SET UP STORE
+import { applyMiddleware, createStore, compose } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import RootReducer from "./Redux/Reducers/Root.reducer";
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  RootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );
