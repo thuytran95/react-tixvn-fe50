@@ -15,7 +15,7 @@ const CarouselSlider = () => {
       maPhim: 1329,
       tenPhim: "Dao Kinh Hoang",
       biDanh: "dao-kinh-hoang",
-      trailer: "https://www.youtube.com/embed/IHNzOHi8sJs",
+      trailer: "https://www.youtube.com/embed/IHNzOHi8sJs?autoplay=1",
       hinhAnh:
         "http://movie0706.cybersoft.edu.vn/hinhanh/dao-kinh-hoang_gp01.jpg",
       moTa: "Người càng xinh đẹp, càng dễ lừa dối người khác",
@@ -28,7 +28,7 @@ const CarouselSlider = () => {
       maPhim: 1359,
       tenPhim: "Vợ ba",
       biDanh: "vo-ba",
-      trailer: "https://www.youtube.com/embed/MyqZf8LiWvM",
+      trailer: "https://www.youtube.com/embed/MyqZf8LiWvM?autoplay=1",
       hinhAnh: "http://movie0706.cybersoft.edu.vn/hinhanh/vo-ba_gp01.png",
       moTa: "Mắt lác qua",
       maNhom: "GP01",

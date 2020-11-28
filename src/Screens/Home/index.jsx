@@ -7,21 +7,16 @@ import ShowTime from "../../components/ShowTime";
 import Footer from "../../components/Footer";
 import MovieSchedule from "../../components/MovieSchedule";
 import "./style.scss";
-import {
-  fetchMovieComing,
-  fetchMovieList,
-} from "../../Redux/Actions/movie.action";
+import { fetchMovieList } from "../../Redux/Actions/movie.action";
 
 class Home extends Component {
   render() {
+    console.log(this.props);
     return (
       <>
         <Header />
-        <CarouselSlider />
-        <ShowTime
-          movieList={this.props.movieList}
-          movieListUpComing={this.props.movieListUpComing}
-        />
+        <CarouselSlider movieList={this.props.movieList} />
+        <ShowTime movieList={this.props.movieList} />
         <MovieSchedule />
         <News />
         <Footer />
@@ -31,14 +26,12 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.dispatch(fetchMovieList());
-    this.props.dispatch(fetchMovieComing());
   }
 }
 
 const mapStateToProps = (state) => {
   return {
     movieList: state.movie.movieList,
-    movieListUpComing: state.movie.movieListUpComing,
   };
 };
 

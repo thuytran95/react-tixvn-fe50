@@ -21,12 +21,7 @@ const MovieSchedule = () => {
                 aria-controls="cgv"
                 aria-selected="true"
               >
-                <img
-                  className="cinema-logo"
-                  //   style={{ width: 50 }}
-                  src="./images/logos/cgv.png"
-                  alt="CGV"
-                />
+                <img src="./images/logos/cgv.png" alt="CGV" />
               </a>
             </li>
             <li id={23} className="nav-item movie-schedule__tab__item">

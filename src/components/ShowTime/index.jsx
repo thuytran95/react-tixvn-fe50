@@ -1,4 +1,5 @@
 import React from "react";
+import dataMovie from "../../assets/data/movieListUpComing.json";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,7 +7,8 @@ import "./style.scss";
 
 const ShowTime = (props) => {
   const movieList = props.movieList;
-  const movieListUpComing = props?.movieListUpComing;
+
+  const movieListUpComing = dataMovie;
 
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
     <span {...props} className="slick-prev slick-arrow showtime-arrow">
@@ -29,7 +31,7 @@ const ShowTime = (props) => {
   };
 
   const renderTrailer = (list) => {
-    return list.map((movie, index) => {
+    return list?.map((movie, index) => {
       const { trailer, maPhim } = movie;
       return (
         <div
