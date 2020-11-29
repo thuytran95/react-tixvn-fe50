@@ -1,23 +1,21 @@
 import React from "react";
-import mobileImage from "../../assets/images/appstore/mobile.png";
-import dataImage from "../../assets/data/appstore.json";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import dataListImage from "../../assets/data/appstore.json";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 import "./style.appstore.scss";
 
 function AppStore() {
-  const imageList = dataImage;
+  const imageList = dataListImage;
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    variableWidth: true,
-    adaptiveHeight: true,
+  const renderImageList = () => {
+    return imageList.map((item, index) => {
+      return (
+        <img
+          src={`../images/appstore/${item.name}`}
+          style={{ display: "block", width: "100%" }}
+        />
+      );
+    });
   };
 
   return (
@@ -50,33 +48,20 @@ function AppStore() {
                 </p>
               </div>
             </div>
-            <div className="col-12 col-md-6 right">
-              <img
-                className="img-responsive phone-img"
-                src={mobileImage}
-                alt="Loading..."
-              />
-              <Slider
-                id="appstore-slider"
-                className="appstore-slider"
-                {...settings}
+            <div className="col-12 col-md-6">
+              <Carousel
+                showThumbs={false}
+                showIndicators={false}
+                autoPlay={true}
+                swipeable={true}
+                emulateTouch={true}
+                showArrows={false}
+                showStatus={false}
+                infiniteLoop={true}
+                className="appstore__slider"
               >
-                {imageList.map((item, index) => {
-                  return (
-                    <React.Fragment key={index} style={{ width: 195 }} s>
-                      <div
-                        className="col-12 slider"
-                        style={{
-                          backgroundImage: `url('./images/appstore/${item.name}')`,
-                          backgroundSize: "cover",
-                          backgroundRepeat: "no-repeat",
-                          height: "100vh",
-                        }}
-                      ></div>
-                    </React.Fragment>
-                  );
-                })}
-              </Slider>
+                {renderImageList()}
+              </Carousel>
             </div>
           </div>
         </div>

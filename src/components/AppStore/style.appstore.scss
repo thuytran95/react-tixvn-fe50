@@ -36,17 +36,15 @@
       padding: 0 28%;
       height: auto;
     }
-    .right {
-      position: relative;
-      padding: 0;
-    }
+
     &__slider {
       background-image: url(../../assets/images/appstore/mobile.png);
-      position: absolute;
-      padding: 1.5% 29.3% 0 29.3%;
-      top: 0;
-      left: 0;
-      width: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      margin: 0 auto;
+      max-width: 210px;
+      @include bd-radius(20px);
+      overflow: hidden;
     }
   }
 }
