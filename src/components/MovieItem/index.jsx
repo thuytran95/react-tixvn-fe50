@@ -3,6 +3,7 @@ import "./style.scss";
 
 export default function MovieItem(props) {
   const movie = props.movie;
+
   return (
     <div className="col mvshowtime" key={movie.maPhim}>
       <div className="card mvshowtime__card">

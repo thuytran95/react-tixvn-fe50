@@ -58,13 +58,13 @@
     border: none;
     margin-bottom: spacing(1);
     &:hover {
-      .showtime__overlay {
+      .mvshowtime__overlay {
         opacity: 1;
       }
-      .showtime__content__overlay {
+      .mvshowtime__content__overlay {
         opacity: 0;
       }
-      .showtime__addToCart {
+      .mvshowtime__addToCart {
         opacity: 1;
       }
     }
