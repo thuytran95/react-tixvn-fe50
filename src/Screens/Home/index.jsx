@@ -8,6 +8,7 @@ import Footer from "../../components/Footer";
 import MovieSchedule from "../../components/MovieSchedule";
 import "./style.scss";
 import { fetchMovieList } from "../../Redux/Actions/movie.action";
+import AppStore from "../../components/AppStore";
 
 class Home extends Component {
   render() {
@@ -19,6 +20,7 @@ class Home extends Component {
         <ShowTime movieList={this.props.movieList} />
         <MovieSchedule />
         <News />
+        <AppStore />
         <Footer />
       </>
     );

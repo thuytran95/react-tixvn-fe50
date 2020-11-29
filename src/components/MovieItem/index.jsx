@@ -4,6 +4,12 @@ import "./style.scss";
 export default function MovieItem(props) {
   const movie = props.movie;
 
+  const capitalizeWords = (str) => {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  };
+
   return (
     <div className="col mvshowtime" key={movie.maPhim}>
       <div className="card mvshowtime__card">
@@ -40,7 +46,7 @@ export default function MovieItem(props) {
           <div className="mvshowtime__content mvshowtime__content__overlay">
             <h4 className="card-title mvshowtime__title text-capitalize">
               <span className="btn-age">C16</span>
-              {movie.tenPhim}
+              {capitalizeWords(movie.tenPhim)}
             </h4>
             <p className="card-text mt-2">100 phút</p>
           </div>

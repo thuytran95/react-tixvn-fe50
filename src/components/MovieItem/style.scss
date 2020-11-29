@@ -55,7 +55,10 @@
     line-height: 1.1;
   }
   &__card {
-    border: none;
+    &.card {
+      border: none;
+    }
+
     margin-bottom: spacing(1);
     &:hover {
       .mvshowtime__overlay {
@@ -90,7 +93,7 @@
   }
   &__addToCart {
     position: absolute;
-    top: 0;
+    top: 10px;
     left: 0;
     background-color: #fff;
     width: 100%;
