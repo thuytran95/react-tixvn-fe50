@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style.scss";
+import MovieItem from "../MovieItem";
 
 const ShowTime = (props) => {
   const movieList = props.movieList;
@@ -101,53 +102,7 @@ const ShowTime = (props) => {
               {movieList.map(function (movie) {
                 return (
                   <React.Fragment key={movie.maPhim}>
-                    <div className="col" key={movie.maPhim}>
-                      <div className="card showtime__card">
-                        <div
-                          className="showtime__image"
-                          style={{
-                            backgroundImage: `url('${movie.hinhAnh}')`,
-                            backgroundRepeat: "no-repeat",
-                            backgroundSize: "cover",
-                          }}
-                        >
-                          <div className="showtime__overlay">
-                            <div className="btn-play">
-                              <a
-                                href={movie.trailer}
-                                data-toggle="modal"
-                                data-target={`#modal-${movie.maPhim}`}
-                              >
-                                <i className="fa fa-play" />
-                              </a>
-                            </div>
-                          </div>
-                          <div className="showtime__rating">
-                            <i className="fas fa-star" />
-                            <i className="fas fa-star" />
-                            <i className="fas fa-star" />
-                            <i className="fas fa-star-half-alt" />
-
-                            <span>({movie.danhGia})</span>
-                          </div>
-                        </div>
-
-                        <div className="card-body showtime__card__body">
-                          <div className="showtime__content showtime__content__overlay">
-                            <h4 className="card-title showtime__title text-capitalize">
-                              <span className="btn-age">C16</span>
-                              {movie.tenPhim}
-                            </h4>
-                            <p className="card-text mt-2">100 phút</p>
-                          </div>
-                          <div className="showtime__addToCart">
-                            <a href="#" className="btn-default">
-                              Mua vé
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <MovieItem movie={movie} />
                   </React.Fragment>
                 );
               })}
@@ -169,42 +124,7 @@ const ShowTime = (props) => {
               {movieListUpComing?.map((movie) => {
                 return (
                   <React.Fragment key={movie.maPhim}>
-                    <div className="col" key={movie.maPhim}>
-                      <div className="card showtime__card">
-                        <div
-                          className="showtime__image"
-                          style={{
-                            backgroundImage: `url('${movie.hinhAnh}')`,
-                            backgroundRepeat: "no-repeat",
-                            backgroundSize: "cover",
-                          }}
-                        >
-                          <div className="showtime__overlay">
-                            <div className="btn-play">
-                              <a
-                                href={movie.trailer}
-                                data-toggle="modal"
-                                data-target={`#modal-${movie.maPhim}`}
-                              >
-                                <i className="fa fa-play" />
-                              </a>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="card-body showtime__card__body">
-                          <div className="showtime__content">
-                            <h4 className="card-title showtime__title text-capitalize">
-                              <span className="btn-age btn-age--general">
-                                P
-                              </span>
-                              {movie.tenPhim}
-                            </h4>
-                            <p className="card-text mt-2">100 phút</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <MovieItem movie={movie} />
                   </React.Fragment>
                 );
               })}
