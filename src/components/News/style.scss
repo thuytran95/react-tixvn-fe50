@@ -1,5 +1,6 @@
 @import "../../styles/index.scss";
 #news {
+  margin-bottom: spacing(5);
   .news__tab {
     justify-content: center;
     margin-top: spacing(5);
@@ -19,6 +20,18 @@
         font-size: fontSize(3);
         border: none;
       }
+    }
+  }
+  .btn-default {
+    background-color: color("lightwhite");
+    border: 1px solid color("lightgrey");
+    color: #9b9b9b;
+
+    &:hover {
+      background-color: color("primary");
+      border-color: color("primary");
+      color: color("white");
+      text-decoration: none;
     }
   }
   .tab-pane {

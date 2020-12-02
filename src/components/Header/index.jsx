@@ -1,37 +1,69 @@
 import React from "react";
 import logo from "../../assets/images/logos/web-logo.png";
 import avatar from "../../assets/images/logos/avatar.png";
+import { Link } from "react-scroll";
+import Scroll from "react-scroll";
 import "./style.scss";
 
-const Header = () => {
+const Header = (props) => {
+  let scroll = Scroll;
+
   return (
     <header id="header">
       <div className="header">
-        <div className="header__logo image">
-          <img src={logo} alt="logo" />
-        </div>
+        <Link activeClass="active" to="carousel">
+          <div className="header__logo image">
+            <img src={logo} alt="logo" />
+          </div>
+        </Link>
+
         <nav className="header__navbar">
+          <li href="#" className="toggle-button"></li>
           <ul className="header__nav">
-            <li>
+            <Link
+              activeClass="active"
+              to="showtime"
+              spy={true}
+              smooth={true}
+              duration={500}
+            >
               <a className="header__nav__link" href="#">
                 Lịch chiếu
               </a>
-            </li>
-            <li>
+            </Link>
+            <Link
+              activeClass="active"
+              to="movie-schedule"
+              spy={true}
+              smooth={true}
+              duration={500}
+            >
               <a className="header__nav__link" href="#">
                 Cụm rạp
               </a>
-            </li>
-            <li>
+            </Link>
+            <Link
+              activeClass="active"
+              to="news"
+              spy={true}
+              smooth={true}
+              duration={500}
+            >
               <a className="header__nav__link" href="#">
                 Tin tức
               </a>
-            </li>
-            <li>
+            </Link>
+            <Link
+              activeClass="active"
+              to="appstore"
+              spy={true}
+              smooth={true}
+              duration={500}
+            >
               <a className="header__nav__link" href="#">
                 Ứng dụng
               </a>
-            </li>
+            </Link>
           </ul>
         </nav>
         <div className="header__login">
@@ -40,6 +72,36 @@ const Header = () => {
             Đăng nhập
           </a>
         </div>
+      </div>
+      <div className="header__mobile">
+        <div className="header__mobile__login">
+          <a href="#">
+            <img src={avatar} alt="" />
+            Đăng nhập
+          </a>
+        </div>
+        <ul>
+          <li>
+            <a className="header_mobile_navlink" href="#">
+              Lịch chiếu
+            </a>
+          </li>
+          <li>
+            <a className="header_mobile_navlink" href="#">
+              Cụm rạp
+            </a>
+          </li>
+          <li>
+            <a className="header_mobile_navlink" href="#">
+              Tin tức
+            </a>
+          </li>
+          <li>
+            <a className="header_mobile_navlink" href="#">
+              Ứng dụng
+            </a>
+          </li>
+        </ul>
       </div>
     </header>
   );

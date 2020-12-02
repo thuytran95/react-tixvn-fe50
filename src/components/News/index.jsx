@@ -108,7 +108,7 @@ const News = () => {
                           {newsItem.smallNewList.map((smallNew, index2) => {
                             return (
                               <div
-                                className="col-xs-12 col-sm-12"
+                                className="col-12 col-sm-12"
                                 key={`${tab.id}-${index1}-${index2}`}
                               >
                                 <div className="news__image">
@@ -136,6 +136,10 @@ const News = () => {
             </div>
           );
         })}
+
+        <div className="text-center mt-5 seemore">
+          <a className="btn-default">XEM THÊM</a>
+        </div>
       </div>
     </section>
   );
