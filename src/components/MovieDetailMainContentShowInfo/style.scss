@@ -1,0 +1,112 @@
+@import "../../styles/index.scss";
+.show__info {
+  padding: spacing(5) spacing(0);
+  padding-bottom: spacing(7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__movies {
+    max-width: 870px;
+    max-height: 750px;
+
+    background-color: color("white");
+    border-radius: 5px;
+
+    &__pcinema__name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: spacing(1.5) spacing(0);
+      border-bottom: 1px solid rgba(color("darkergrey"), $alpha: 0.2);
+      opacity: 0.5;
+      transition: 0.3s;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+      &__active {
+        opacity: 1;
+      }
+      & > [class*="col-"] {
+        padding-right: 0;
+        padding-left: 0;
+      }
+      &__logo {
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      h4 {
+        @include text(color("black"), $body, $fwMedium);
+      }
+    }
+    &__time {
+      display: flex;
+      overflow: hidden;
+      overflow-x: scroll;
+      scrollbar-width: thin;
+      border-left: 1px solid rgba(color("darkergrey"), $alpha: 0.2);
+
+      &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-width: 100px;
+        padding: spacing(1.4) spacing(0);
+        cursor: pointer;
+
+        p,
+        h6 {
+          margin-bottom: 0;
+        }
+        p {
+          @include text(color("black"), $body, $fwMedium);
+        }
+        h6 {
+          @include text(color("black"), 20px, $fwMedium);
+        }
+
+        &__active {
+          p,
+          h6 {
+            color: color("primary");
+          }
+        }
+      }
+    }
+    &__list {
+      max-height: 650px;
+      overflow: hidden;
+      overflow-y: scroll;
+
+  
+      border-left: 1px solid rgba(color("darkergrey"), $alpha: 0.2);
+    }
+  }
+}
+.strollbar__bottom {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 10%;
+    height: 5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(color("darkergrey"), $alpha: 0.2);
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(color("darkergrey"), $alpha: 0.4);
+  }
+}

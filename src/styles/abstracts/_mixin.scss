@@ -110,15 +110,15 @@
 				@content;
 			}
 
-	}@else @if($type == $sm){
+	}@else if($type == $sm){
 		@media screen and (max-width: $sm){
 				@content;
 			}
-	}@else @if($type == $md){
+	}@else if($type == $md){
 		@media screen and (max-width: $md){
 				@content;
 			}
-	}@else @if($type == $lag){
+	}@else if($type == $lag){
 		@media screen and (max-width: $lg){
 				@content;
 			}

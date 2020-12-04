@@ -1,0 +1,22 @@
+@import "../../styles/index.scss";
+.movie__detail__main__content{
+    background-color: rgb(10, 32, 41);
+    z-index: 1;
+    &__info{
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        h3{
+            @include text(color("white"), 20px, $fwMedium);
+            margin-right: spacing(3);
+            transition: 0.3s;
+       
+            &:hover{
+                transform: scale(1.1,1.1);
+                color: color('primary');
+                cursor: pointer;
+            }
+        }
+    }
+ 
+}

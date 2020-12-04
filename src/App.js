@@ -1,10 +1,12 @@
 import "./App.scss";
 import Home from "./Screens/Home";
+import MovieDetail from "./Screens/MovieDetail";
 
 function App() {
   return (
     <>
-      <Home />
+      {/* <Home /> */}
+      <MovieDetail></MovieDetail>
     </>
   );
 }
