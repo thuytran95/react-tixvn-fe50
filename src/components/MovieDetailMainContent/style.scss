@@ -3,6 +3,7 @@
     background-color: rgb(10, 32, 41);
     z-index: 1;
     &__info{
+      
         z-index: 2;
         display: flex;
         justify-content: center;
@@ -17,6 +18,11 @@
                 cursor: pointer;
             }
         }
+        h3.movie__detail__main__content__info__active{
+            color: color('primary');
+         
+        }
     }
+   
  
 }

@@ -1,20 +1,30 @@
 @import "../../styles/index.scss";
 .movie__detail__top {
+
+    box-sizing: border-box;
     position: relative;
-  img {
-    width:calc(100% + 5px);
-    filter: blur(5px);
+    img.movie__detail__top__bg{
+    width: calc(100% + 10px);
     margin: -5px  -5px 10px -5px ;
+    
+    filter: blur(5px);
+ 
+  
    
  
    
   }
-  &__styleGradient,&__info{
+
+  &__styleGradient,&__info,&__blurred{
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
     position: absolute;
+   
+  }
+  &__blurred{
+    
    
   }
   &__content{

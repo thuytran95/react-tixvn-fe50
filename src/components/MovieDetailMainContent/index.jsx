@@ -6,7 +6,7 @@ export default function MovieDetailMainContent() {
     <div className="movie__detail__main__content">
      
       <div className="movie__detail__main__content__info">
-        <h3>Lịch Chiếu</h3>
+        <h3 className="movie__detail__main__content__info__active">Lịch Chiếu</h3>
         <h3>Thông tin</h3>
         <h3>Đánh giá</h3>
       </div>

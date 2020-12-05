@@ -5,7 +5,15 @@ export default function MovieDetailMainInfo() {
   return (
     <div className="movie__detail__main__top d-flex flex-row">
       <div className="movie__detail__main__top__right">
-        <div className="movie__detail__main__top__right__poster"></div>
+        <div className="movie__detail__main__top__right__poster">
+      
+         <img src="https://s3img.vcdn.vn/mobile/123phim/2020/10/tiec-trang-mau-blood-moon-party-16016226514166_215x318.png" alt="ss"/>
+      
+          <div className="movie__detail__main__top__right__poster__icon">
+            
+          <i class="fa fa-play"></i>
+          </div>
+        </div>
         <div className="movie__detail__main__top__right__content ml-3">
           <p>23.10.2020</p>
           <h3>

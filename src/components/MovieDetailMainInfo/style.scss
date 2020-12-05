@@ -8,10 +8,36 @@
     align-items: center;
 
     &__poster {
-      width: 218px;
-      height: 315px;
-      border-radius: 5px;
-      background-image: url("https://s3img.vcdn.vn/mobile/123phim/2020/10/tiec-trang-mau-blood-moon-party-16016226514166_215x318.png");
+      position: relative;
+
+      img {
+        width: 218px;
+        height: 315px;
+        border-radius: 5px;
+
+        left: 0;
+      }
+      &__icon {
+        i {
+          transition: all 0.3s;
+          position: absolute;
+          font-size: 20px;
+          left: 50%;
+          top: 50%;
+          transform: translateX(-50%) translateY(-50%);
+          padding: spacing(3);
+          background-color: rgba(color("blackgrey"), $alpha: 0.2);
+          border-radius: 50%;
+          border: 2px solid color("white");
+          display: none;
+        }
+        color: color("white");
+      }
+      &:hover &__icon i {
+        display: block;
+        cursor: pointer;
+      }
+      // background-image: url("https://s3img.vcdn.vn/mobile/123phim/2020/10/tiec-trang-mau-blood-moon-party-16016226514166_215x318.png");
     }
 
     &__content {
