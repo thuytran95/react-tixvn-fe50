@@ -3,10 +3,14 @@
 #carousel {
   .carousel {
     &-indicators {
+      bottom: 50px;
       li {
         width: 10px;
         height: 10px;
         @include bd-radius(50%);
+      }
+      .active {
+        background-color: color("primary");
       }
     }
     &__overlay {

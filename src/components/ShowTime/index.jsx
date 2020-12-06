@@ -31,30 +31,6 @@ const ShowTime = (props) => {
     rows: 2,
   };
 
-  const renderTrailer = (list) => {
-    return list?.map((movie, index) => {
-      const { trailer, maPhim } = movie;
-      return (
-        <div
-          className="modal modal-customize"
-          id={`modal-${maPhim}`}
-          key={index}
-        >
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content">
-              <div className="modal-body">
-                <button type="button" className="close" data-dismiss="modal">
-                  &times;
-                </button>
-                <iframe src={trailer} frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    });
-  };
-
   return (
     <section id="showtime">
       <div className="container">

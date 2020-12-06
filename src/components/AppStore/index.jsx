@@ -11,8 +11,10 @@ function AppStore() {
     return imageList.map((item, index) => {
       return (
         <img
+          key={index}
           src={`../images/appstore/${item.name}`}
           style={{ display: "block", width: "100%" }}
+          alt={item.name}
         />
       );
     });

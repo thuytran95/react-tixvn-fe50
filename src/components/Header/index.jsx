@@ -6,8 +6,6 @@ import Scroll from "react-scroll";
 import "./style.scss";
 
 const Header = (props) => {
-  let scroll = Scroll;
-
   return (
     <header id="header">
       <div className="header">
@@ -27,9 +25,9 @@ const Header = (props) => {
               smooth={true}
               duration={500}
             >
-              <a className="header__nav__link" href="#">
+              <span className="header__nav__link" href="#">
                 Lịch chiếu
-              </a>
+              </span>
             </Link>
             <Link
               activeClass="active"
@@ -38,9 +36,9 @@ const Header = (props) => {
               smooth={true}
               duration={500}
             >
-              <a className="header__nav__link" href="#">
+              <span className="header__nav__link" href="#">
                 Cụm rạp
-              </a>
+              </span>
             </Link>
             <Link
               activeClass="active"
@@ -49,9 +47,9 @@ const Header = (props) => {
               smooth={true}
               duration={500}
             >
-              <a className="header__nav__link" href="#">
+              <span className="header__nav__link" href="#">
                 Tin tức
-              </a>
+              </span>
             </Link>
             <Link
               activeClass="active"
@@ -60,9 +58,9 @@ const Header = (props) => {
               smooth={true}
               duration={500}
             >
-              <a className="header__nav__link" href="#">
+              <span className="header__nav__link" href="#">
                 Ứng dụng
-              </a>
+              </span>
             </Link>
           </ul>
         </nav>
