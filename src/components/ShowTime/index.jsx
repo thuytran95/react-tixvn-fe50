@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import dataMovie from "../../assets/data/movieListUpComing.json";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -8,6 +8,11 @@ import MovieItem from "../MovieItem";
 
 const ShowTime = (props) => {
   const movieList = props.movieList;
+
+  const [iframe, setIframe] = useState("");
+  const handleModal = (trailer) => {
+    setIframe(trailer);
+  };
 
   const movieListUpComing = dataMovie;
 
@@ -78,7 +83,7 @@ const ShowTime = (props) => {
               {movieList.map(function (movie) {
                 return (
                   <React.Fragment key={movie.maPhim}>
-                    <MovieItem movie={movie} />
+                    <MovieItem movie={movie} handleModal={handleModal} />
                   </React.Fragment>
                 );
               })}
@@ -108,6 +113,22 @@ const ShowTime = (props) => {
           </div>
         </div>
       </div>
+      {iframe ? (
+        <div className="modal modal-customize" id="modal-showtime">
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-body">
+                <button type="button" className="close" data-dismiss="modal">
+                  &times;
+                </button>
+                <iframe src={iframe} frameBorder="0"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </section>
   );
 };

@@ -4,7 +4,6 @@ import "./style.scss";
 
 const News = () => {
   const newsTabList = data;
-  console.log(newsTabList);
   return (
     <section id="news">
       <ul className="nav nav-tabs news__tab" role="tablist">

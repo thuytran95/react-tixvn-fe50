@@ -12,7 +12,6 @@ import AppStore from "../../components/AppStore";
 
 class Home extends Component {
   render() {
-    console.log(this.props);
     return (
       <>
         <Header />

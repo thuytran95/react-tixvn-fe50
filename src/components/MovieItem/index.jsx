@@ -26,7 +26,11 @@ export default function MovieItem(props) {
               <a
                 href={movie.trailer}
                 data-toggle="modal"
-                data-target={`#modal-${movie.maPhim}`}
+                data-target="#modal-showtime"
+                onClick={() => {
+                  console.log(movie.trailer);
+                  return props.handleModal(movie.trailer);
+                }}
               >
                 <i className="fa fa-play" />
               </a>
