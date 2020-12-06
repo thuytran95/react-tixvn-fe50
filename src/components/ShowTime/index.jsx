@@ -132,11 +132,6 @@ const ShowTime = (props) => {
           </div>
         </div>
       </div>
-
-      <div id="carousel__trailer">
-        {renderTrailer(movieList)}
-        {renderTrailer(movieListUpComing)}
-      </div>
     </section>
   );
 };
