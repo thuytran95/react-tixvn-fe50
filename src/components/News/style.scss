@@ -1,10 +1,16 @@
 @import "../../styles/index.scss";
 #news {
   margin-bottom: spacing(5);
+  .backgroundTop {
+    padding-top: 120px;
+    background: url(../../assets/images/movieschedule/back-news.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
   .news__tab {
     justify-content: center;
-    margin-top: spacing(5);
     margin-bottom: spacing(2);
+    margin-top: spacing(-1.5);
     border-bottom: none;
     .nav-link {
       border: none;

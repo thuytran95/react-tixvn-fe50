@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dataMovie from "../../assets/data/movieListUpComing.json";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -8,35 +8,7 @@ import MovieItem from "../MovieItem";
 
 const ShowTime = (props) => {
   const movieList = props.movieList;
-
-  const [iframe, setIframe] = useState("");
-  const [row, setRow] = useState(3);
-
-  const handleModal = (trailer) => {
-    setIframe(trailer);
-  };
-
-  const handleRowMobile = () => {
-    if (row <= 3) {
-      return setRow(row + 5);
-    }
-    return row;
-  };
-
-  const movieListUpComing = dataMovie;
-
-  const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
-    <span {...props} className="slick-prev slick-arrow showtime-arrow">
-      <i className="fa fa-angle-left"></i>
-    </span>
-  );
-  const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
-    <span {...props} className="slick-next slick-arrow showtime-arrow">
-      <i className="fa fa-angle-right"></i>
-    </span>
-  );
-
-  const settings = {
+  const [settings, setSettings] = useState({
     dots: false,
     infinite: true,
     speed: 500,
@@ -63,13 +35,41 @@ const ShowTime = (props) => {
         breakpoint: 576,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
+          // slidesToScroll: 0,
+          touchMove: false,
           rows: 3,
           arrows: false,
         },
       },
     ],
+  });
+
+  const [iframe, setIframe] = useState("");
+  const handleModal = (trailer) => {
+    setIframe(trailer);
   };
+
+  const [row, setRow] = useState(3);
+
+  // useEffect(() => {
+  //   const newSettings = { ...settings };
+  //   newSettings.responsive[2].settings.rows = row;
+  //   console.log(newSettings);
+  //   return setSettings(newSettings);
+  // }, [row]);
+
+  const movieListUpComing = dataMovie;
+
+  const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
+    <span {...props} className="slick-prev slick-arrow showtime-arrow">
+      <i className="fa fa-angle-left"></i>
+    </span>
+  );
+  const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
+    <span {...props} className="slick-next slick-arrow showtime-arrow">
+      <i className="fa fa-angle-right"></i>
+    </span>
+  );
 
   return (
     <section id="showtime">
@@ -164,10 +164,11 @@ const ShowTime = (props) => {
       ) : (
         ""
       )}
-      <div className="text-center showtime__btn">
-        <a className="btn-default" onClick={handleRowMobile}>
-          XEM THÊM
-        </a>
+      <div
+        className="text-center showtime__btn"
+        onClick={() => (row <= 3 ? setRow(row + 5) : row)}
+      >
+        <a className="btn-default">XEM THÊM</a>
       </div>
     </section>
   );
