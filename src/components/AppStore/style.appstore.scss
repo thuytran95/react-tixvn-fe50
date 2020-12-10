@@ -48,3 +48,22 @@
     }
   }
 }
+
+@include MediaQuery($md) {
+  #appstore {
+    padding-top: spacing(7);
+    .appstore {
+      &__content {
+        margin-bottom: spacing(4);
+      }
+    }
+  }
+}
+
+@include MediaQuery($sm) {
+  .appstore {
+    &__content {
+      text-align: center;
+    }
+  }
+}

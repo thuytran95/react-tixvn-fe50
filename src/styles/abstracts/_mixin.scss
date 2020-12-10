@@ -104,23 +104,22 @@
 }
 
 // Mixin REPONSIVE
-@mixin MediaQuery($type){
-	@if($type == $xs){
-		@media screen and (max-width: $xs){
-				@content;
-			}
-
-	}@else if($type == $sm){
-		@media screen and (max-width: $sm){
-				@content;
-			}
-	}@else if($type == $md){
-		@media screen and (max-width: $md){
-				@content;
-			}
-	}@else if($type == $lag){
-		@media screen and (max-width: $lg){
-				@content;
-			}
-	}
+@mixin MediaQuery($type) {
+  @if ($type == $xs) {
+    @media screen and (max-width: $xs) {
+      @content;
+    }
+  } @else if($type == $sm) {
+    @media screen and (max-width: $sm) {
+      @content;
+    }
+  } @else if($type == $md) {
+    @media screen and (max-width: $md) {
+      @content;
+    }
+  } @else if($type == $lg) {
+    @media screen and (max-width: $lg) {
+      @content;
+    }
+  }
 }

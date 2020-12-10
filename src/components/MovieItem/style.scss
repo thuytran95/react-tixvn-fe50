@@ -117,3 +117,25 @@
     }
   }
 }
+
+@include MediaQuery($xs) {
+  .mvshowtime {
+    &__image {
+      padding-top: 50%;
+      margin-bottom: spacing(1.5);
+    }
+    &__overlay {
+      display: none;
+    }
+    &__rating {
+      width: 20%;
+      font-size: $title1;
+      padding: spacing(0.8, 0);
+    }
+    &__card {
+      &__body {
+        display: none;
+      }
+    }
+  }
+}

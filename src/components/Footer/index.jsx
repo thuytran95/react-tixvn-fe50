@@ -41,7 +41,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer">
           <div className="row">
-            <div className="col-12 col-sm-3">
+            <div className="col-12 col-md-6 col-lg-3">
               <div className="footer__item">
                 <div className="title">Tix</div>
                 <ul className="footer__menu">
@@ -60,13 +60,13 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-            <div className="col-12 col-sm-3">
+            <div className="col-12  col-lg-3">
               <div className="footer__item">
                 <div className="title">Đối tác</div>
                 <ul className="footer__partner">{renderImagePartnerList()}</ul>
               </div>
             </div>
-            <div className="col-12 col-sm-3">
+            <div className="col-12  col-lg-3">
               <div className="footer__item">
                 <div className="title">Mobile app</div>
                 <div className="content">
@@ -79,8 +79,8 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-sm-3">
-              <div className="footer__item">
+            <div className="col-12  col-md-6 col-lg-3">
+              <div className="footer__item footer__item-social">
                 <div className="title">Social</div>
                 <div className="content">
                   <a className="footer__social" href="#">
@@ -96,12 +96,16 @@ const Footer = () => {
         </div>
         <div className="ft__site">
           <div className="row">
-            <div className="col-12 col-sm-1">
+            <div className="col-12 col-md-1">
               <div className="ft__site__item image">
-                <img src="./images/logos/zion-logo.jpg" alt="logo" />
+                <img
+                  className="zionlogo"
+                  src="./images/logos/zion-logo.jpg"
+                  alt="logo"
+                />
               </div>
             </div>
-            <div className="col-12 col-sm-9">
+            <div className="col-12 col-md-9">
               <div className="ft__site__item">
                 <div className="title">
                   Tix – sản phẩm của công ty cổ phần zion
@@ -126,9 +130,13 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="col-12 col-sm-2">
+            <div className="col-12 col-md-2">
               <div className="ft__site__item image">
-                <img src="./images/logos/dathongbao.png" alt="kiemduyet" />
+                <img
+                  className="check"
+                  src="./images/logos/dathongbao.png"
+                  alt="kiemduyet"
+                />
               </div>
             </div>
           </div>
