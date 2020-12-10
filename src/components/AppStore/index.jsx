@@ -22,49 +22,45 @@ function AppStore() {
 
   return (
     <section id="appstore">
-      <div className="container-fluid">
-        <div className="appstore">
-          <div className="row">
-            <div className="col-12 col-md-6">
-              <div className="appstore__content">
-                <p className="appstore__textlarge">
-                  Ứng dụng tiện lợi dành cho
-                </p>
-                <p className="appstore__textlarge">người yêu điện ảnh</p>
-                <p className="appstore__textsmall">
-                  Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp
-                  và đổi quà hấp dẫn.
-                </p>
-                <button className="btn-default">
-                  App miễn phí - Tải về ngay!
-                </button>
-                <p>
-                  TIX có hai phiên bản
-                  <a className="link-app" href="#">
-                    iOS
-                  </a>
-                  &amp;
-                  <a className="link-app" href="#">
-                    Android
-                  </a>
-                </p>
-              </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-12 col-md-6">
+            <div className="appstore__content">
+              <p className="appstore__textlarge">Ứng dụng tiện lợi dành cho</p>
+              <p className="appstore__textlarge">người yêu điện ảnh</p>
+              <p className="appstore__textsmall">
+                Không chỉ đặt vé, bạn còn có thể bình luận phim, chấm điểm rạp
+                và đổi quà hấp dẫn.
+              </p>
+              <button className="btn-default">
+                App miễn phí - Tải về ngay!
+              </button>
+              <p>
+                TIX có hai phiên bản
+                <a className="link-app" href="#">
+                  iOS
+                </a>
+                &amp;
+                <a className="link-app" href="#">
+                  Android
+                </a>
+              </p>
             </div>
-            <div className="col-12 col-md-6">
-              <Carousel
-                showThumbs={false}
-                showIndicators={false}
-                autoPlay={true}
-                swipeable={true}
-                emulateTouch={true}
-                showArrows={false}
-                showStatus={false}
-                infiniteLoop={true}
-                className="appstore__slider"
-              >
-                {renderImageList()}
-              </Carousel>
-            </div>
+          </div>
+          <div className="col-12 col-md-6">
+            <Carousel
+              showThumbs={false}
+              showIndicators={false}
+              autoPlay={true}
+              swipeable={true}
+              emulateTouch={true}
+              showArrows={false}
+              showStatus={false}
+              infiniteLoop={true}
+              className="appstore__slider"
+            >
+              {renderImageList()}
+            </Carousel>
           </div>
         </div>
       </div>

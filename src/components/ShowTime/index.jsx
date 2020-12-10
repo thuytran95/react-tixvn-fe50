@@ -10,8 +10,17 @@ const ShowTime = (props) => {
   const movieList = props.movieList;
 
   const [iframe, setIframe] = useState("");
+  const [row, setRow] = useState(3);
+
   const handleModal = (trailer) => {
     setIframe(trailer);
+  };
+
+  const handleRowMobile = () => {
+    if (row <= 3) {
+      return setRow(row + 5);
+    }
+    return row;
   };
 
   const movieListUpComing = dataMovie;
@@ -34,6 +43,32 @@ const ShowTime = (props) => {
     slidesToShow: 4,
     slidesToScroll: 4,
     rows: 2,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          rows: 3,
+          arrows: false,
+        },
+      },
+    ],
   };
 
   return (
@@ -121,7 +156,7 @@ const ShowTime = (props) => {
                 <button type="button" className="close" data-dismiss="modal">
                   &times;
                 </button>
-                <iframe src={iframe} frameBorder="0"></iframe>
+                <iframe src={iframe} title="trailer" frameBorder="0"></iframe>
               </div>
             </div>
           </div>
@@ -129,6 +164,11 @@ const ShowTime = (props) => {
       ) : (
         ""
       )}
+      <div className="text-center showtime__btn">
+        <a className="btn-default" onClick={handleRowMobile}>
+          XEM THÊM
+        </a>
+      </div>
     </section>
   );
 };

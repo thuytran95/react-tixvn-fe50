@@ -9,9 +9,7 @@ const BookingMovie = () => {
     name: "movie",
     lableTag: "Phim",
   });
-  // const dispatch = useDispatch();
-  // console.log(dispatch);
-  // const movieList = useSelector(state => sta)
+
   return (
     <div className="container">
       <div id="booking__movie">

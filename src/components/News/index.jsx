@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import data from "../../assets/data/news.data.json";
 import "./style.scss";
 
 const News = () => {
   const newsTabList = data;
+
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <section id="news">
+    <section
+      id="news"
+      style={
+        width > 721 ? { marginBottom: "30px" } : { paddingBottom: "150px" }
+      }
+    >
       <ul className="nav nav-tabs news__tab" role="tablist">
         <li className="nav-item news__tab__item">
           <a
@@ -66,7 +81,9 @@ const News = () => {
                     if (!newsItem.smallNewList) {
                       return (
                         <div
-                          className="col-news col-xs-12 news"
+                          className={`col-news news ${
+                            width > 721 ? "" : "col-12"
+                          }`}
                           key={`${tab.id}-${index1}`}
                         >
                           <div className="news__image">
@@ -100,14 +117,16 @@ const News = () => {
                     }
                     return (
                       <div
-                        className="col-news col-xs-12 news"
+                        className={`col-news news ${
+                          width > 721 ? "" : "col-12"
+                        }`}
                         key={`${tab.id}-${index1}`}
                       >
                         <div className="row">
                           {newsItem.smallNewList.map((smallNew, index2) => {
                             return (
                               <div
-                                className="col-12 col-sm-12"
+                                className="col-12"
                                 key={`${tab.id}-${index1}-${index2}`}
                               >
                                 <div className="news__image">
@@ -136,9 +155,9 @@ const News = () => {
           );
         })}
 
-        <div className="text-center mt-5 seemore">
+        {/* <div className="text-center mt-5 seemore">
           <a className="btn-default">XEM THÊM</a>
-        </div>
+        </div> */}
       </div>
     </section>
   );
