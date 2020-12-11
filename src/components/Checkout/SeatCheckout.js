@@ -4,13 +4,11 @@ import "./SeatCheckout.scss";
 const SeatCheckout = ({ tenCumRap, ngayChieu, tenRap, danhSachGhe }) => {
   // let [min, setMin] = useState(5);
   // let [second, setSecond] = useState(0);
+  // <i class="fas fa-couch"></i>
 
   const renderSeat = () => {
-    // console.log(danhSachGhe);
-    // console.log(typeof danhSachGhe)
+    console.log("Running...");
   };
-
-  // console.log(typeof danhSachGhe)
 
   return (
     <div className="SeatCheckout">

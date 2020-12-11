@@ -55,7 +55,7 @@ const Checkout = () => {
         setTenPhim(res.data.thongTinPhim.tenPhim);
         setTenRap(res.data.thongTinPhim.tenRap);
         setDanhSachGhe(res.data.danhSachGhe);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
