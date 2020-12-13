@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import dataMovie from "../../assets/data/movieListUpComing.json";
 import Slider from "react-slick";
+import nextImage from "../../assets/images/logos/next-session.png";
+import preImage from "../../assets/images/logos/back-session.png";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style.scss";
@@ -61,14 +63,26 @@ const ShowTime = (props) => {
   const movieListUpComing = dataMovie;
 
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
-    <span {...props} className="slick-prev slick-arrow showtime-arrow">
-      <i className="fa fa-angle-left"></i>
-    </span>
+    <span
+      {...props}
+      className="slick-prev slick-arrow showtime-arrow"
+      style={{
+        backgroundImage: `url(${preImage})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    ></span>
   );
   const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
-    <span {...props} className="slick-next slick-arrow showtime-arrow">
-      <i className="fa fa-angle-right"></i>
-    </span>
+    <span
+      {...props}
+      className="slick-next slick-arrow showtime-arrow"
+      style={{
+        backgroundImage: `url(${nextImage})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+    ></span>
   );
 
   return (

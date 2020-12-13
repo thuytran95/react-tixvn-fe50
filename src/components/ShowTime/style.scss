@@ -34,17 +34,20 @@
     &-slider {
       .slick-prev,
       .slick-next {
+        top: 45%;
         width: 50px;
-        height: 50px;
-        line-height: 50px;
-        text-align: center;
-        @include bd-radius(50%);
-        background-color: rgba(color("black"), 0.3);
-        @include text(color("primary"), fontSize(5), $fwRegular);
+        height: 60px;
         z-index: 3;
         &::before {
           display: none;
         }
+      }
+      .slick-next {
+        right: -50px;
+      }
+
+      .slick-prev {
+        left: -50px;
       }
     }
   }
@@ -88,14 +91,6 @@
   }
 }
 
-@include MediaQuery($lg) {
-}
-
-@include MediaQuery($md) {
-}
-
-@include MediaQuery($sm) {
-}
 @media screen and (min-width: 576px) {
   .showtime {
     &__btn {
@@ -103,6 +98,46 @@
     }
   }
 }
+@media screen and (min-width: 993px) and(max-width: 1058px) {
+  .showtime {
+    &-slider {
+      .slick-prev,
+      .slick-next {
+        top: 45%;
+        width: 40px !important;
+        height: 45px !important;
+      }
+      .slick-next {
+        right: -20px !important;
+      }
+
+      .slick-prev {
+        left: -20px !important;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and(max-width: 800px) {
+  .showtime {
+    &-slider {
+      .slick-prev,
+      .slick-next {
+        top: 45%;
+        width: 40px !important;
+        height: 45px !important;
+      }
+      .slick-next {
+        right: -20px !important;
+      }
+
+      .slick-prev {
+        left: -20px !important;
+      }
+    }
+  }
+}
+
 @include MediaQuery($xs) {
   .showtime {
     &__btn {
