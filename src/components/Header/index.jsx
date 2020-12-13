@@ -1,44 +1,134 @@
 import React from "react";
 import logo from "../../assets/images/logos/web-logo.png";
 import avatar from "../../assets/images/logos/avatar.png";
+import { Link } from "react-scroll";
+import $ from "jquery";
 import "./style.scss";
 
-const Header = () => {
+const Header = (props) => {
+  const hideModal = () => {
+    $("#modalMobile").modal("hide");
+  };
   return (
     <header id="header">
       <div className="header">
-        <div className="header__logo image">
-          <img src={logo} alt="logo" />
-        </div>
+        <Link activeClass="active" to="carousel">
+          <div className="header__logo image">
+            <img src={logo} alt="logo" />
+          </div>
+        </Link>
+
         <nav className="header__navbar">
+          <a
+            href="#modalMobile"
+            className="toggle-button"
+            data-toggle="modal"
+          ></a>
           <ul className="header__nav">
-            <li>
-              <a className="header__nav__link" href="#">
-                Lịch chiếu
-              </a>
-            </li>
-            <li>
-              <a className="header__nav__link" href="#">
-                Cụm rạp
-              </a>
-            </li>
-            <li>
-              <a className="header__nav__link" href="#">
-                Tin tức
-              </a>
-            </li>
-            <li>
-              <a className="header__nav__link" href="#">
-                Ứng dụng
-              </a>
-            </li>
+            <Link
+              activeClass="active"
+              to="showtime"
+              spy={true}
+              smooth={true}
+              duration={500}
+            >
+              <span className="header__nav__link">Lịch chiếu</span>
+            </Link>
+            <Link
+              activeClass="active"
+              to="movie-schedule"
+              spy={true}
+              smooth={true}
+              duration={500}
+            >
+              <span className="header__nav__link">Cụm rạp</span>
+            </Link>
+            <Link
+              activeClass="active"
+              to="news"
+              spy={true}
+              smooth={true}
+              duration={500}
+            >
+              <span className="header__nav__link">Tin tức</span>
+            </Link>
+            <Link
+              activeClass="active"
+              to="appstore"
+              spy={true}
+              smooth={true}
+              duration={500}
+            >
+              <span className="header__nav__link">Ứng dụng</span>
+            </Link>
           </ul>
         </nav>
         <div className="header__login">
           <a href="#">
-            <img src={avatar} alt="" />
+            <img src={avatar} alt="dangnhap" />
             Đăng nhập
           </a>
+        </div>
+      </div>
+      <div
+        className="modal right fade in header__mobile"
+        id="modalMobile"
+        tabIndex="-1"
+        role="dialog"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content customscroll">
+            <div className="modal-body">
+              <div className="header__mobile__login" onClick={hideModal}>
+                <a href="#">
+                  <img src={avatar} alt="dangnhap" />
+                  Đăng nhập
+                </a>
+              </div>
+              <ul className="header__mobile__list">
+                <Link
+                  activeClass="active"
+                  to="showtime"
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  onClick={hideModal}
+                >
+                  <span className="header__mobile__link">Lịch chiếu</span>
+                </Link>
+                <Link
+                  activeClass="active"
+                  to="movie-schedule"
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  onClick={hideModal}
+                >
+                  <span className="header__mobile__link">Cụm rạp</span>
+                </Link>
+                <Link
+                  activeClass="active"
+                  to="news"
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  onClick={hideModal}
+                >
+                  <span className="header__mobile__link">Tin tức</span>
+                </Link>
+                <Link
+                  activeClass="active"
+                  to="appstore"
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                  onClick={hideModal}
+                >
+                  <span className="header__mobile__link">Ứng dụng</span>
+                </Link>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </header>

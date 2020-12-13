@@ -6,7 +6,7 @@
   .footer {
     a {
       display: inline-block;
-      @include text(lightgrey, $title1, $fwRegular);
+      @include text(lightgrey, $title3, $fwRegular);
       text-decoration: none;
       &:hover {
         color: color("white");
@@ -66,16 +66,110 @@
         color: color("white");
       }
     }
-    .col-sm-1 {
+    .col-md-1 {
       padding-right: spacing(0);
     }
-    .col-sm-2 {
+    .col-md-2 {
       padding-left: spacing(0);
     }
     .title {
       color: color("white");
       text-transform: uppercase;
-      font-size: $title1;
+      font-size: $title3;
+    }
+    .content {
+      font-size: $title2;
+      line-height: 24px;
+    }
+  }
+}
+
+@include MediaQuery($md) {
+  #footer {
+    .footer {
+      .col-lg-3:nth-child(2),
+      .col-lg-3:nth-child(3) {
+        display: none;
+      }
+
+      &__menu {
+        display: flex;
+      }
+
+      .title {
+        display: none;
+      }
+
+      &__item {
+        &-social {
+          text-align: center;
+
+          .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateY(-50%);
+          }
+        }
+      }
+    }
+  }
+}
+
+@include MediaQuery($sm) {
+  #footer {
+    .footer {
+      padding: spacing(2, 0);
+
+      &__menu {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        li {
+          width: fit-content;
+
+          a {
+            font-size: $title3;
+          }
+        }
+      }
+
+      &__item {
+        &-social {
+          text-align: center;
+          padding-top: spacing(3);
+
+          .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 50px;
+            margin-top: spacing(3);
+          }
+        }
+      }
+    }
+    .ft__site {
+      text-align: center;
+      &__item {
+        &.image {
+          width: 80px;
+          text-align: center;
+          margin: auto;
+          padding-bottom: spacing(2);
+          .check {
+            width: 130px;
+            margin-top: spacing(1);
+          }
+        }
+        .content {
+          p {
+            margin-bottom: 0;
+          }
+        }
+      }
     }
   }
 }

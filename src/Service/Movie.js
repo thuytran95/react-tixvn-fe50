@@ -5,7 +5,7 @@ class MovieService {
     return Axios({
       method: "GET",
       url:
-        " https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP02",
+        " https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP10",
     });
   }
 

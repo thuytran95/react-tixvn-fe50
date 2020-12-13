@@ -16,6 +16,17 @@
     }
     &__navbar {
       flex-grow: 1;
+      .toggle-button {
+        background-image: url(../../assets/images/logos/menu-options.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: none;
+        position: absolute;
+        top: 20px;
+        right: 16px;
+        height: 20px;
+        width: 30px;
+      }
     }
     &__nav {
       @include list-default;
@@ -25,6 +36,15 @@
       top: 50%;
       left: 50%;
       @include transform(translate(-50%, -50%));
+      .active {
+        color: color("primary");
+        > span {
+          color: color("primary");
+        }
+        &:hover {
+          text-decoration: none;
+        }
+      }
       &__link {
         color: color("black");
         padding: spacing(0, 1);
@@ -36,7 +56,8 @@
         }
       }
     }
-    &__login {
+    &__login,
+    &__mobile__login {
       padding-right: spacing(1);
       margin-right: spacing(1);
       img {
@@ -46,79 +67,93 @@
       }
       a {
         color: color("lightgrey");
+        text-decoration: none;
+        &:hover {
+          text-decoration: none;
+        }
       }
     }
-    // &__location {
-    //   display: flex;
-    //   flex-direction: column;
-    //   &__container {
-    //     max-height: 0;
-    //     opacity: 0;
-    //     @include transition-all;
-    //     @include bd-radius(8px);
-    //     overflow: hidden;
-    //     order: 1;
-    //     &::-webkit-scrollbar {
-    //       width: 4px;
-    //       background-color: color("white");
-    //       border-radius: 0 10px 10px 0;
-    //     }
-    //     &::-webkit-scrollbar-thumb {
-    //       background-color: color("lightgrey");
-    //       border-radius: 0 10px 10px 0;
-    //     }
-    //     &.active {
-    //       max-height: 400px;
-    //       opacity: 1;
-    //       overflow-y: scroll;
-    //       & + .header__location__selected::after {
-    //         @include transform(rotateX(180px));
-    //         top: -6px;
-    //       }
-    //     }
-    //   }
-    //   &__option {
-    //     padding: spacing(0.5) spacing(0.5) spacing(0.5) spacing(2);
-    //     cursor: pointer;
-    //     label {
-    //       &:hover {
-    //         background-color: color("lighterwhite");
-    //       }
-    //     }
-    //     .radio {
-    //       display: none;
-    //     }
-    //   }
-    //   &__selected {
-    //     position: relative;
-    //     padding: spacing(0.5) spacing(0.5) spacing(0.5) spacing(2);
-    //     cursor: pointer;
-    //     @include bd-radius(8px);
-    //     margin-bottom: spacing(0.8);
-    //     order: 0;
-    //     &::before,
-    //     &::after {
-    //       width: 20px;
-    //       height: 20px;
-    //     }
-    //     &::before {
-    //       content: "";
-    //       background: url("../../assets/images/logos/location-header.png")
-    //         no-repeat;
-    //       position: absolute;
-    //       top: 10px;
-    //       left: 0;
-    //       @include transition-all;
-    //     }
-    //     &::after {
-    //       content: "";
-    //       background: url("../../assets/images/logos/dropdown-icon.png") no-repeat;
-    //       position: absolute;
-    //       top: 10px;
-    //       right: 0;
-    //       @include transition-all;
-    //     }
-    //   }
-    // }
+    &__mobile {
+      opacity: 0;
+    }
+  }
+}
+
+@include MediaQuery($sm) {
+  #header {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+      .toggle-button {
+        display: block;
+      }
+
+      &__nav {
+        display: none;
+      }
+      &__login {
+        display: none;
+      }
+
+      &__mobile {
+        opacity: 1;
+        &.modal.right {
+          .modal-dialog {
+            position: fixed;
+            margin: auto;
+            width: 70%;
+            height: 100%;
+            @include transform(translate3d(0%, 0, 0));
+          }
+          .modal-content {
+            height: 100%;
+            overflow: hidden;
+            overflow-y: auto;
+          }
+          &.fade {
+            .modal-dialog {
+              right: -70%;
+              @include transition-all;
+            }
+            &.in {
+              .modal-dialog {
+                right: 0;
+              }
+            }
+          }
+        }
+
+        &__login {
+          padding-top: spacing(3);
+          font-size: fontSize(2);
+          position: relative;
+          &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 15px;
+            height: 15px;
+            background-image: url(../../assets/images/logos/next-session.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+        }
+        &__list {
+          display: flex;
+          flex-direction: column;
+          padding: 0;
+          .active {
+            color: color("black");
+          }
+        }
+        &__link {
+          display: block;
+          padding: spacing(2, 0);
+          font-size: fontSize(2);
+          font-weight: $fwRegular;
+        }
+      }
+    }
   }
 }

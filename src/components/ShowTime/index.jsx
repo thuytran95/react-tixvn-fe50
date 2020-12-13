@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import dataMovie from "../../assets/data/movieListUpComing.json";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -8,6 +8,55 @@ import MovieItem from "../MovieItem";
 
 const ShowTime = (props) => {
   const movieList = props.movieList;
+  const [settings, setSettings] = useState({
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    rows: 2,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 1,
+          // slidesToScroll: 0,
+          touchMove: false,
+          rows: 3,
+          arrows: false,
+        },
+      },
+    ],
+  });
+
+  const [iframe, setIframe] = useState("");
+  const handleModal = (trailer) => {
+    setIframe(trailer);
+  };
+
+  const [row, setRow] = useState(3);
+
+  // useEffect(() => {
+  //   const newSettings = { ...settings };
+  //   newSettings.responsive[2].settings.rows = row;
+  //   console.log(newSettings);
+  //   return setSettings(newSettings);
+  // }, [row]);
 
   const movieListUpComing = dataMovie;
 
@@ -21,39 +70,6 @@ const ShowTime = (props) => {
       <i className="fa fa-angle-right"></i>
     </span>
   );
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    rows: 2,
-  };
-
-  const renderTrailer = (list) => {
-    return list?.map((movie, index) => {
-      const { trailer, maPhim } = movie;
-      return (
-        <div
-          className="modal modal-customize"
-          id={`modal-${maPhim}`}
-          key={index}
-        >
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content">
-              <div className="modal-body">
-                <button type="button" className="close" data-dismiss="modal">
-                  &times;
-                </button>
-                <iframe src={trailer} frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    });
-  };
 
   return (
     <section id="showtime">
@@ -102,7 +118,7 @@ const ShowTime = (props) => {
               {movieList.map(function (movie) {
                 return (
                   <React.Fragment key={movie.maPhim}>
-                    <MovieItem movie={movie} />
+                    <MovieItem movie={movie} handleModal={handleModal} />
                   </React.Fragment>
                 );
               })}
@@ -132,10 +148,27 @@ const ShowTime = (props) => {
           </div>
         </div>
       </div>
-
-      <div id="carousel__trailer">
-        {renderTrailer(movieList)}
-        {renderTrailer(movieListUpComing)}
+      {iframe ? (
+        <div className="modal modal-customize" id="modal-showtime">
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-body">
+                <button type="button" className="close" data-dismiss="modal">
+                  &times;
+                </button>
+                <iframe src={iframe} title="trailer" frameBorder="0"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+      <div
+        className="text-center showtime__btn"
+        onClick={() => (row <= 3 ? setRow(row + 5) : row)}
+      >
+        <a className="btn-default">XEM THÊM</a>
       </div>
     </section>
   );

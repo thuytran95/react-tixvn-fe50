@@ -5,8 +5,8 @@ let initialState = {
   movieDetail: null,
 };
 
-const MovieReducer = (state = initialState, actions) => {
-  const { type, payload } = actions;
+const MovieReducer = (state = initialState, action) => {
+  const { type, payload } = action;
 
   switch (type) {
     case FETCH_MOVIE_SHOWING: {

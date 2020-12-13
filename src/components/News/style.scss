@@ -1,9 +1,16 @@
 @import "../../styles/index.scss";
 #news {
+  margin-bottom: spacing(5);
+  .backgroundTop {
+    padding-top: 120px;
+    background: url(../../assets/images/movieschedule/back-news.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
   .news__tab {
     justify-content: center;
-    margin-top: spacing(5);
     margin-bottom: spacing(2);
+    margin-top: spacing(-1.5);
     border-bottom: none;
     .nav-link {
       border: none;
@@ -21,9 +28,21 @@
       }
     }
   }
+  .btn-default {
+    background-color: color("lightwhite");
+    border: 1px solid color("lightgrey");
+    color: #9b9b9b;
+
+    &:hover {
+      background-color: color("primary");
+      border-color: color("primary");
+      color: color("white");
+      text-decoration: none;
+    }
+  }
   .tab-pane {
     .news {
-      padding: spacing(0, 0.75);
+      padding: spacing(0, 1.5);
       &__link {
         color: color("black");
         text-decoration: none;
@@ -51,6 +70,12 @@
         line-height: 19px;
         padding: 0 5px 0 0;
         margin-bottom: spacing(1.5);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 55px;
+        margin-bottom: 15px;
       }
     }
     .news:nth-child(8n + 1),
@@ -129,6 +154,20 @@
       }
       &.col-news {
         width: 33.33333333%;
+      }
+    }
+  }
+}
+
+@include MediaQuery($sm) {
+  #news {
+    .tab-pane {
+      .news {
+        &__link {
+          &__title {
+            font-size: $body;
+          }
+        }
       }
     }
   }

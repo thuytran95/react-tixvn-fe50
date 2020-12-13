@@ -3,17 +3,20 @@
 #carousel {
   .carousel {
     &-indicators {
+      bottom: 50px;
       li {
         width: 10px;
         height: 10px;
         @include bd-radius(50%);
+      }
+      .active {
+        background-color: color("primary");
       }
     }
     &__overlay {
       &__play {
         position: relative;
         z-index: 99;
-        top: 20px;
       }
       &::after {
         background: linear-gradient(
@@ -39,7 +42,6 @@
         line-height: 72px;
         @include bd-radius(50%);
         top: 45%;
-        @include transform(translate(45%));
         background-color: rgba(color("black"), 0.3);
         color: color("primary");
         font-size: fontSize(4);
@@ -47,6 +49,9 @@
     }
   }
   .modal {
+    &-content {
+      background-color: color("transparent");
+    }
     &-open {
       padding-right: 0;
     }
@@ -79,8 +84,31 @@
   }
 }
 
-@media (min-width: 900px) {
+@include MediaQuery($lg) {
   .modal-lg {
     width: 900px;
   }
+
+  #carousel {
+    .carousel {
+      .carousel-control-btn {
+      }
+    }
+  }
 }
+
+@include MediaQuery($md) {
+  .carousel-control-btn {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@include MediaQuery($sm) {
+  #carousel {
+    display: none;
+  }
+}
+
+// @media (min-width: 900px) {
+// }
