@@ -73,7 +73,7 @@ const BookingMovie = () => {
 
   const [time, setTime] = useState({
     id: null,
-    lableTag: "Xuất chiếu",
+    lableTag: "Suất chiếu",
   });
 
   const movieList = [
