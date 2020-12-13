@@ -1,16 +1,95 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import format from "date-format";
+import moment from "moment";
+import localization from "moment/locale/vi"; // set up vietnamese for day name
+import Axios from "axios";
+import { cutDateName, hiddenName } from "../../Helpers";
 import "./style.scss";
 
 const BookingMovie = () => {
-  const [isActive, setIsActive] = useState(false);
-  const [checked, setChecked] = useState({
+  const [chooseMovie, setChooseMovie] = useState({
     id: null,
     name: "movie",
     lableTag: "Phim",
   });
 
+  const [chooseTheater, setChooseTheater] = useState({
+    id: null,
+    name: "rap",
+    lableTag: "Rạp",
+    lichChieuPhim: [],
+  });
+  // console.log(chooseTheater.lichChieuPhim);
+
+  const [theaterList, setTheaterList] = useState([]);
+
+  // lay cum rap tu lich chieu
+  useEffect(() => {
+    Axios.get(
+      "https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=1314"
+    )
+      .then((res) => {
+        // console.log(res.data.heThongRapChieu);
+        const systemTheater = res.data.heThongRapChieu;
+        const arr = [];
+        for (let i of systemTheater) {
+          arr.push(...i.cumRapChieu);
+        }
+        // console.log(arr);
+        setTheaterList(arr);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+  const [chooseDate, setChooseDate] = useState({
+    id: null,
+    date: "Ngày Chiếu",
+    lableTag: null,
+  });
+
+  const [dateList, setDateList] = useState([]);
+
+  useEffect(() => {
+    if (chooseTheater.id) {
+      // console.log(moment.locale("vn"));
+      let newDateList = [];
+      let today = moment().subtract(15, "days");
+      for (let i = 0; i < 7; i++) {
+        let dateuse = moment(today).add(i, "days");
+        newDateList.push({
+          dateName: cutDateName(dateuse.calendar()),
+          date: format("yyyy-MM-dd", new Date(dateuse)),
+        });
+      }
+      // console.log(newDateList);
+      setDateList(newDateList);
+    }
+  }, [chooseTheater]);
+  // console.log(chooseTheater.lichChieuPhim);
+
+  const [movieScheduleList, setMovieScheduleList] = useState(null);
+
+  const [time, setTime] = useState({
+    id: null,
+    lableTag: "Xuất chiếu",
+  });
+
   const movieList = [
+    {
+      maPhim: 1314,
+      tenPhim: "13 Reasons Why",
+      biDanh: "13-reasons-why",
+      trailer: "https://www.youtube.com/embed/1HpZevFifuo",
+      hinhAnh:
+        "http://movie0706.cybersoft.edu.vn/hinhanh/13-reasons-why_gp01.PNG",
+      moTa:
+        "Armed with a super-suit with the astonishing ability to shrink in scale but increase in strength, cat burglar Scott Lang must embrace his inner hero and help his mentor, Dr. Hank Pym, plan and pull off a heist that will save the world.",
+      maNhom: "GP01",
+      ngayKhoiChieu: "2020-11-30T00:00:00",
+      danhGia: 10,
+    },
     {
       maPhim: 1323,
       tenPhim: "What's wrong with secretary kim",
@@ -83,17 +162,21 @@ const BookingMovie = () => {
             <div className="col-12 col-sm-4">
               <div className="booking__movie__item booking__movie__name dropdown">
                 <div
-                  className={`options-container customscroll ${
-                    isActive ? "active" : ""
-                  }`}
-                  onClick={() => setIsActive(false)}
+                  className="selected dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
+                  {hiddenName(chooseMovie.lableTag, 50)}
+                </div>
+                <div className="dropdown-menu options-container customscroll">
                   {movieList.map((item) => {
                     return (
                       <div
-                        className="option"
+                        className="option dropdown-item"
+                        key={item.maPhim}
                         onClick={() =>
-                          setChecked({
+                          setChooseMovie({
                             id: item.maPhim,
                             lableTag: item.tenPhim,
                           })
@@ -110,43 +193,136 @@ const BookingMovie = () => {
                     );
                   })}
                 </div>
-                <div
-                  className="selected"
-                  onClick={() => setIsActive(!isActive)}
-                >
-                  {checked.lableTag.length < 45
-                    ? checked.lableTag
-                    : checked.lableTag.substring(0, 45)}
-                </div>
               </div>
             </div>
             <div className="col-12 col-sm-2">
-              <div className="booking__movie__item booking__movie__cimena dropdown">
+              <div className="booking__movie__item booking__movie__theater dropdown">
                 <div
-                  className="dropdown__selected"
-                  onClick={() => {
-                    if (checked.id) {
-                      console.log("active run");
-                    } else {
-                      console.log("not active");
-                    }
-                  }}
+                  className="selected dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
-                  Rạp
+                  {hiddenName(chooseTheater.lableTag, 16)}
                 </div>
-                <ul className="dropdown__menu customscroll"></ul>
+                {!chooseMovie.id ? (
+                  <div className="dropdown-menu options-container small-container">
+                    <div className="dropdown-item option">
+                      <label>Vui lòng chọn phim</label>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="dropdown-menu options-container customscroll">
+                    {theaterList?.map((item) => {
+                      return (
+                        <div
+                          className="option dropdown-item"
+                          key={item.maCumRap}
+                          onClick={() =>
+                            setChooseTheater({
+                              id: item.maCumRap,
+                              lableTag: item.tenCumRap,
+                              lichChieuPhim: item.lichChieuPhim,
+                            })
+                          }
+                        >
+                          <input
+                            type="radio"
+                            className="radio"
+                            id={item.maCumRap}
+                            name="cumrap"
+                          />
+                          <label htmlFor={item.maCumRap}>
+                            {item.tenCumRap}
+                          </label>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
             <div className="col-12 col-sm-2">
               <div className="booking__movie__item booking__movie__datepick dropdown">
-                <div className="dropdown__selected">Ngày xem</div>
-                <ul className="dropdown__menu customscroll"></ul>
+                <div
+                  className="selected dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  {chooseDate.date}
+                </div>
+                {!chooseTheater.id ? (
+                  <div className="dropdown-menu options-container small-container">
+                    <div className="dropdown-item option">
+                      <label>Vui lòng chọn phim và rạp</label>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="dropdown-menu options-container customscroll">
+                    {dateList.map((date, index) => {
+                      return (
+                        <div
+                          className="option dropdown-item"
+                          key={index}
+                          onClick={() => {
+                            setChooseDate({
+                              id: index + 1,
+                              date: date.date,
+                              lableTag: date.dateName,
+                            });
+                          }}
+                        >
+                          <input
+                            type="radio"
+                            className="radio"
+                            id={index + 1}
+                            name="date"
+                          />
+                          <label htmlFor={index + 1}>
+                            <span className="dayName">{date.dateName}</span>
+                            <br />
+                            {date.date}
+                          </label>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             </div>
             <div className="col-12 col-sm-2">
               <div className="booking__movie__item booking__movie__showtimes dropdown">
-                <div className="dropdown__selected">Suất chiếu</div>
-                <ul className="dropdown__menu customscroll"></ul>
+                <div
+                  className="selected dropdown-toggle"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  {time.lableTag}
+                </div>
+                {!chooseDate.lableTag ? (
+                  <div className="dropdown-menu options-container small-container">
+                    <div className="dropdown-item option">
+                      <label>Vui lòng chọn phim, rạp và ngày xem </label>
+                    </div>
+                  </div>
+                ) : !movieScheduleList ? (
+                  <div className="dropdown-menu options-container small-container">
+                    <div className="dropdown-item option">
+                      <label>Không có suất chiếu</label>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="dropdown-menu options-container customscroll">
+                    <div className="dropdown-item option">
+                      <label>co lich</label>
+                    </div>
+                    <div className="dropdown-item option">
+                      <label>co lich chieu</label>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
             <div className="col-12 col-sm-2">

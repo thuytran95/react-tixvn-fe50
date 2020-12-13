@@ -18,6 +18,20 @@
     @include bd-radius(5px);
     box-shadow: 0 0 10px rgba(color("black"), 0.3);
     z-index: 2;
+    .dropdown-menu {
+      will-change: unset;
+    }
+    &__name {
+      .options-container {
+        min-width: 450px;
+      }
+    }
+
+    &__theater {
+      .options-container {
+        min-width: 250px;
+      }
+    }
 
     &__item {
       display: flex;
@@ -26,40 +40,27 @@
       align-items: center;
       border-right: 1px solid color("lightwhite");
       position: relative;
+      margin: 0 -15px;
 
       .options-container {
-        position: absolute;
         top: 100%;
-        left: -15px;
         background: color("white");
         color: color("black");
-        max-height: 0;
-        min-width: 450px;
-        opacity: 0;
         z-index: 1000;
         @include transition-all($time: 0.2s);
         @include bd-radius(8px);
         border-top: 1px solid rgba(color("black"), 0.3);
         overflow: hidden;
-        // dưa phim lên đầu
+        overflow-y: scroll;
         order: 1;
 
-        &.active {
-          max-height: 300px;
-          opacity: 1;
-          overflow-y: scroll;
-
-          & + .selected::after {
-            @include transform(rotateX(180deg));
-            top: 15%;
-          }
+        &.small-container {
+          overflow-y: hidden;
         }
       }
-
       .option {
         cursor: pointer;
         padding: spacing(0.5, 2);
-        text-transform: capitalize;
         font-size: $title3;
         font-weight: $fwRegular;
 
@@ -67,7 +68,6 @@
           background-color: #60c5ef;
           color: color("white");
         }
-
         .radio {
           display: none;
         }
@@ -80,19 +80,23 @@
         position: relative;
         width: 100%;
         cursor: pointer;
-        padding: spacing(1.5, 0.5);
-        order: 0;
+        padding: spacing(1.5) 0 spacing(1.5) spacing(1.5);
 
-        &::after {
-          content: "";
-          position: absolute;
-          top: 50%;
-          right: 0;
-          width: 20px;
-          height: 20px;
-          background-image: url(../../assets/images/logos/dropdown-icon.png);
-          background-repeat: no-repeat;
-          transition: all 0.4s;
+        order: 0;
+        &.dropdown-toggle {
+          text-align: left;
+          &::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            background-image: url(../../assets/images/logos/dropdown-icon.png);
+            background-repeat: no-repeat;
+            transition: all 0.4s;
+            border: none;
+          }
         }
       }
 

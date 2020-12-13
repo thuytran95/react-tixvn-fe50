@@ -1,14 +1,9 @@
 import React from "react";
+import { capitalizeWords } from "../../Helpers";
 import "./style.scss";
 
 export default function MovieItem(props) {
   const movie = props.movie;
-
-  const capitalizeWords = (str) => {
-    return str.replace(/\w\S*/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-  };
 
   return (
     <div className="col mvshowtime" key={movie.maPhim}>
