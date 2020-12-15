@@ -6,10 +6,10 @@ import MovieDetailMainContentShowInfoItem from "../MovieDetailMainContentShowInf
 export default function MovieDetailMainContentShowInfo() {
   return (
     <div className="show__info strollbar__bottom">
-      <div className="show__info__movies pl-3">
+      <div className="show__info__movies pl-0 pl-md-3">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-3 ">
+            <div className="col-sm-12 	col-md-3  ">
               {/* item1 */}
               <div className="row show__info__movies__pcinema__name show__info__movies__pcinema__name__active">
                 <div className="col-4 show__info__movies__pcinema__name__logo">
@@ -17,7 +17,7 @@ export default function MovieDetailMainContentShowInfo() {
                 </div>
 
                 <div className="col-8">
-                  <h4>BHD Star Cineplex</h4>
+                  <h4 className="">BHD Star Cineplex</h4>
                 </div>
               </div>
               {/* item1 */}
@@ -61,7 +61,7 @@ export default function MovieDetailMainContentShowInfo() {
                 </div>
               </div>
             </div>
-            <div className="col-9 pr-0  ">
+            <div className="col-sm-12 	col-md-9 pr-0  ">
               <div className="show__info__movies__time ">
                 <div className="show__info__movies__time__item show__info__movies__time__item__active">
                   <p>Thứ 2</p>

@@ -8,7 +8,7 @@
 
   &__movies {
     max-width: 870px;
-    max-height: 750px;
+    height: 750px;
 
     background-color: color("white");
     border-radius: 5px;
@@ -110,3 +110,48 @@
     background: rgba(color("darkergrey"), $alpha: 0.4);
   }
 }
+@include MediaQuery($lg){
+  .show__info{
+    &__movies {
+      max-width: 700px;
+      height: 1200px;
+    }
+  }
+}
+@include MediaQuery($sm){
+  .show__info{
+    &__movies {
+      max-width: 100%;
+      img{
+        margin-left: spacing(1.5);
+      }
+    }
+    &__movies__time__item{
+      padding-left: 0;
+      max-width: 80px;
+    }
+    &__list {
+      // max-height: 1200px;
+    }
+  }
+  .col-sm-12.col-md-9.pr-0{
+    padding-left: 0;
+  }
+}
+
+// @include MediaQuery($xs){
+//   .show__info{
+//     &__movies {
+     
+//     }
+//     &__movies__time__item{
+     
+//     }
+//     &__list {
+  
+//     }
+//   }
+//   .col-sm-12.col-md-9.pr-0{
+  
+//   }
+// }

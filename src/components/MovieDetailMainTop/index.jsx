@@ -18,7 +18,7 @@ export default function MovieDetailMainTop() {
     <MovieDetailMainInfo/>
  
     </div>
- 
+  
    
     </div>
 

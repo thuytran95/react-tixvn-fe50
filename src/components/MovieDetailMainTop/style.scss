@@ -9,7 +9,7 @@
     
     filter: blur(5px);
  
-  
+   
    
  
    
@@ -40,3 +40,16 @@
  
 }
 
+@include MediaQuery($sm){
+  .movie__detail__top{
+    &__bg{
+      filter: none !important;
+    }
+    &__blurred{
+      display: none;
+    }
+   
+  }
+  position: relative;
+
+}

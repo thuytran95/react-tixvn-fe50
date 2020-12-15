@@ -3,6 +3,7 @@ body {
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 a {
@@ -142,6 +143,10 @@ a:hover {
   -moz-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
+}
+
+.modal-open {
+  padding-right: 0 !important;
 }
 
 .btn-default {

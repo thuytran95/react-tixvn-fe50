@@ -5,6 +5,7 @@
  
   border-bottom: 1px solid rgba(color("darkergrey"), $alpha: 0.2);
   &__media {
+    cursor: pointer;
     display: flex;
     align-items: center;
 

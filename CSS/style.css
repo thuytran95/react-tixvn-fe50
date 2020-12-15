@@ -3,6 +3,7 @@ body {
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 a {
@@ -142,6 +143,10 @@ a:hover {
   -moz-transition: all 0.2s ease-in-out;
   -ms-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
+}
+
+.modal-open {
+  padding-right: 0 !important;
 }
 
 .btn-default {
@@ -313,70 +318,171 @@ a:hover {
   text-align: center;
 }
 
-.movie__detail__main__top__right {
+.show__info {
+  padding: 50px 0px;
+  padding-bottom: 70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.movie__detail__main__top__right__poster {
-  width: 218px;
-  height: 315px;
+.show__info__movies {
+  max-width: 870px;
+  height: 750px;
+  background-color: #fff;
   border-radius: 5px;
-  background-image: url("https://s3img.vcdn.vn/mobile/123phim/2020/10/tiec-trang-mau-blood-moon-party-16016226514166_215x318.png");
 }
 
-.movie__detail__main__top__right__content {
-  width: 350px;
+.show__info__movies__pcinema__name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px 0px;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+  opacity: 0.5;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  cursor: pointer;
 }
 
-.movie__detail__main__top__right__content p {
-  color: #f6f6f6;
-  font-size: 14px;
-  font-weight: 400;
-  margin: 0;
+.show__info__movies__pcinema__name:hover {
+  opacity: 1;
 }
 
-.movie__detail__main__top__right__content h3 {
-  color: #f6f6f6;
-  font-size: 24px;
-  font-weight: 600;
+.show__info__movies__pcinema__name__active {
+  opacity: 1;
 }
 
-.movie__detail__main__top__right__content button {
-  background-color: #fb4226;
-  color: #fff;
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-  padding: 10px 15px;
-  outline: #fff;
-  border: #fff;
-  text-transform: uppercase;
-  transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  -moz-transition: all 0.4s ease-in-out;
-  -ms-transition: all 0.4s ease-in-out;
-  -o-transition: all 0.4s ease-in-out;
-  text-transform: unset;
-  color: #f6f6f6;
+.show__info__movies__pcinema__name > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.show__info__movies__pcinema__name__logo img {
+  width: 50px;
+  height: 50px;
+}
+
+.show__info__movies__pcinema__name h4 {
+  color: #000;
   font-size: 16px;
   font-weight: 600;
 }
 
-.movie__detail__main__top__right__content button:hover {
-  background-color: #fa5238;
+.show__info__movies__time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  overflow-x: scroll;
+  scrollbar-width: thin;
+  border-left: 1px solid rgba(51, 51, 51, 0.2);
 }
 
-button .movie__detail__main__top__right__content__button__size {
-  color: #f6f6f6;
-  font-size: 14px;
+.show__info__movies__time__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-width: 100px;
+  padding: 14px 0px;
+  cursor: pointer;
+}
+
+.show__info__movies__time__item p,
+.show__info__movies__time__item h6 {
+  margin-bottom: 0;
+}
+
+.show__info__movies__time__item p {
+  color: #000;
+  font-size: 16px;
   font-weight: 600;
-  padding: 0px;
+}
+
+.show__info__movies__time__item h6 {
+  color: #000;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.show__info__movies__time__item__active p,
+.show__info__movies__time__item__active h6 {
+  color: #fb4226;
+}
+
+.show__info__movies__list {
+  max-height: 650px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border-left: 1px solid rgba(51, 51, 51, 0.2);
+}
+
+.strollbar__bottom {
+  /* width */
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+
+.strollbar__bottom ::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.strollbar__bottom ::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.strollbar__bottom ::-webkit-scrollbar-thumb {
+  background: rgba(51, 51, 51, 0.2);
+}
+
+.strollbar__bottom ::-webkit-scrollbar-thumb:hover {
+  background: rgba(51, 51, 51, 0.4);
+}
+
+@media screen and (max-width: 1200px) {
+  .show__info__movies {
+    max-width: 700px;
+    max-height: 1200px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .show__info__movies {
+    max-width: 100%;
+  }
+  .show__info__movies img {
+    margin-left: 15px;
+  }
+  .show__info__movies__time__item {
+    padding-left: 0;
+    max-width: 80px;
+  }
+  .col-sm-12.col-md-9.pr-0 {
+    padding-left: 0;
+  }
 }
 /*# sourceMappingURL=style.css.map */

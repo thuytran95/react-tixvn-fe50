@@ -130,3 +130,29 @@
     }
   }
 }
+@include MediaQuery($sm){
+  .movie__detail__main__top{
+    display: block;
+    position: absolute;
+    bottom:20px;
+  
+  
+    img{
+      display: none;
+    }
+    &__right__content{
+      width: 100%;
+      span{
+        display: none;
+      }
+      button{
+        display: none;
+      }
+    }
+    &__right__box{
+      display: none;
+    }
+ 
+  }
+
+}
