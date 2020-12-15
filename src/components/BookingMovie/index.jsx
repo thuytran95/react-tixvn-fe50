@@ -383,7 +383,7 @@ const BookingMovie = () => {
             <div className="col-12 col-sm-2">
               <div className="booking__movie__item booking__movie__book dropdown">
                 <input
-                  className={`btn-default ${time.lableTag ? "active" : ""}`}
+                  className={`btn-default ${time.id ? "active" : ""}`}
                   type="button"
                   defaultValue="Mua vé ngay"
                 />
