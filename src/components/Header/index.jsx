@@ -24,7 +24,7 @@ const Header = (props) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [width]);
-  console.log(width);
+  // console.log(width);
 
   return (
     <header id="header">

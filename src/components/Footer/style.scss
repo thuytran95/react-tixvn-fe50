@@ -59,6 +59,7 @@
     font-size: $title1;
     img {
       @include bd-radius(8px);
+      cursor: pointer;
     }
     a {
       color: color("primary");

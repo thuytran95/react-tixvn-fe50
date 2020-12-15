@@ -3,7 +3,7 @@ import format from "date-format";
 import moment from "moment";
 import localization from "moment/locale/vi"; // set up vietnamese for day name
 import Axios from "axios";
-import { cutDateName, hiddenName } from "../../Helpers";
+import { capitalizeWords, cutDateName, hiddenName } from "../../Helpers";
 import "./style.scss";
 
 const BookingMovie = () => {
@@ -54,8 +54,9 @@ const BookingMovie = () => {
   useEffect(() => {
     if (chooseTheater.id) {
       // console.log(moment.locale("vn"));
+      // test ve Aeon taan phu ngafy 13/11
       let newDateList = [];
-      let today = moment().subtract(15, "days");
+      let today = moment().subtract(32, "days");
       for (let i = 0; i < 7; i++) {
         let dateuse = moment(today).add(i, "days");
         newDateList.push({
@@ -67,9 +68,39 @@ const BookingMovie = () => {
       setDateList(newDateList);
     }
   }, [chooseTheater]);
-  // console.log(chooseTheater.lichChieuPhim);
 
   const [movieScheduleList, setMovieScheduleList] = useState(null);
+  useEffect(() => {
+    const showtimelist = chooseTheater.lichChieuPhim;
+    // console.log(chooseTheater.lichChieuPhim);
+    // console.log(chooseDate.date);
+
+    if (chooseDate.id) {
+      const index = showtimelist.findIndex(
+        (schedule) =>
+          format("yyyy-MM-dd", new Date(schedule.ngayChieuGioChieu)) ===
+          chooseDate.date
+      );
+      // console.log(index);
+      if (index !== -1) {
+        // loc lay gio chieu
+        const showtime = showtimelist.filter(
+          (showtime) =>
+            format("yyyy-MM-dd", new Date(showtime.ngayChieuGioChieu)) ===
+            chooseDate.date
+        );
+        console.log(showtime);
+        const timeList = [];
+        showtime.forEach((show) => {
+          timeList.push(format("hh:mm", new Date(show.ngayChieuGioChieu)));
+        });
+        console.log(timeList);
+        setMovieScheduleList(timeList);
+      }
+    }
+  }, [dateList]);
+  // console.log(dateList);
+  // console.log(chooseTheater.lichChieuPhim);
 
   const [time, setTime] = useState({
     id: null,
@@ -162,12 +193,13 @@ const BookingMovie = () => {
             <div className="col-12 col-sm-4">
               <div className="booking__movie__item booking__movie__name dropdown">
                 <div
-                  className="selected dropdown-toggle"
+                  className=" selected dropdown-toggle"
                   data-toggle="dropdown"
+                  data-flip="false"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  {hiddenName(chooseMovie.lableTag, 50)}
+                  {capitalizeWords(hiddenName(chooseMovie.lableTag, 50))}
                 </div>
                 <div className="dropdown-menu options-container customscroll">
                   {movieList.map((item) => {
@@ -188,7 +220,9 @@ const BookingMovie = () => {
                           id={item.maPhim}
                           name="movie"
                         />
-                        <label htmlFor={item.maPhim}>{item.tenPhim}</label>
+                        <label htmlFor={item.maPhim}>
+                          {capitalizeWords(item.tenPhim)}
+                        </label>
                       </div>
                     );
                   })}
@@ -200,6 +234,7 @@ const BookingMovie = () => {
                 <div
                   className="selected dropdown-toggle"
                   data-toggle="dropdown"
+                  data-flip="false"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
@@ -247,6 +282,7 @@ const BookingMovie = () => {
                 <div
                   className="selected dropdown-toggle"
                   data-toggle="dropdown"
+                  data-flip="false"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
@@ -296,12 +332,14 @@ const BookingMovie = () => {
                 <div
                   className="selected dropdown-toggle"
                   data-toggle="dropdown"
+                  data-flip="false"
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
                   {time.lableTag}
                 </div>
-                {!chooseDate.lableTag ? (
+
+                {!chooseDate.id ? (
                   <div className="dropdown-menu options-container small-container">
                     <div className="dropdown-item option">
                       <label>Vui lòng chọn phim, rạp và ngày xem </label>
@@ -315,12 +353,29 @@ const BookingMovie = () => {
                   </div>
                 ) : (
                   <div className="dropdown-menu options-container customscroll">
-                    <div className="dropdown-item option">
-                      <label>co lich</label>
-                    </div>
-                    <div className="dropdown-item option">
-                      <label>co lich chieu</label>
-                    </div>
+                    {movieScheduleList.map((showtime, index) => {
+                      console.log(showtime);
+                      return (
+                        <div
+                          className="option dropdown-item"
+                          key={index}
+                          onClick={() => {
+                            setTime({
+                              id: index + 1,
+                              lableTag: showtime,
+                            });
+                          }}
+                        >
+                          <input
+                            type="radio"
+                            className="radio"
+                            id={index + 1}
+                            name="time"
+                          />
+                          <label htmlFor={index + 1}>10:30</label>
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -328,7 +383,7 @@ const BookingMovie = () => {
             <div className="col-12 col-sm-2">
               <div className="booking__movie__item booking__movie__book dropdown">
                 <input
-                  className="btn-default"
+                  className={`btn-default ${time.lableTag ? "active" : ""}`}
                   type="button"
                   defaultValue="Mua vé ngay"
                 />

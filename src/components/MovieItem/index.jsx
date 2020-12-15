@@ -14,6 +14,7 @@ export default function MovieItem(props) {
             backgroundImage: `url('${movie.hinhAnh}')`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
+            cursor: "pointer",
           }}
         >
           <div className="mvshowtime__overlay">

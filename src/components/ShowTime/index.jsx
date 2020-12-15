@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import dataMovie from "../../assets/data/movieListUpComing.json";
 import Slider from "react-slick";
 import nextImage from "../../assets/images/logos/next-session.png";
@@ -52,13 +52,6 @@ const ShowTime = (props) => {
   };
 
   const [row, setRow] = useState(3);
-
-  // useEffect(() => {
-  //   const newSettings = { ...settings };
-  //   newSettings.responsive[2].settings.rows = row;
-  //   console.log(newSettings);
-  //   return setSettings(newSettings);
-  // }, [row]);
 
   const movieListUpComing = dataMovie;
 
