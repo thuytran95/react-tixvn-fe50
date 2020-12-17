@@ -41,10 +41,6 @@
         cursor: pointer;
       }
       .active {
-        color: color("primary");
-        > span {
-          color: color("primary");
-        }
         &:hover {
           text-decoration: none;
         }

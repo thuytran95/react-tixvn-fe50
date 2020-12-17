@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/logos/web-logo.png";
 import avatar from "../../assets/images/logos/avatar.png";
-import { Link } from "react-scroll";
+import { NavLink, useLocation } from "react-router-dom";
 import $ from "jquery";
 import "./style.scss";
 
@@ -9,6 +9,20 @@ const Header = (props) => {
   const hideModal = () => {
     $("#modalMobile").modal("hide");
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      console.log(location.hash);
+      let elem = document.getElementById(location.hash.slice(1));
+      if (elem) {
+        elem.scrollIntoView({ block: "start", behavior: "smooth" });
+      }
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }
+  }, [location]);
 
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
@@ -29,11 +43,11 @@ const Header = (props) => {
   return (
     <header id="header">
       <div className="header">
-        <Link activeClass="active" to="carousel">
+        <NavLink exact to="/">
           <div className="header__logo image">
             <img src={logo} alt="logo" />
           </div>
-        </Link>
+        </NavLink>
 
         <nav className="header__navbar">
           {width <= 768 ? (
@@ -46,49 +60,28 @@ const Header = (props) => {
             ""
           )}
           <ul className="header__nav">
-            <Link
-              activeClass="active"
-              to="showtime"
-              spy={true}
-              smooth={true}
-              duration={500}
-            >
+            <NavLink to="/#showtime">
               <span className="header__nav__link">Lịch chiếu</span>
-            </Link>
-            <Link
-              activeClass="active"
-              to="movie-schedule"
-              spy={true}
-              smooth={true}
-              duration={500}
-            >
+            </NavLink>
+
+            <NavLink to="/#movie-schedule">
               <span className="header__nav__link">Cụm rạp</span>
-            </Link>
-            <Link
-              activeClass="active"
-              to="news"
-              spy={true}
-              smooth={true}
-              duration={500}
-            >
+            </NavLink>
+
+            <NavLink to="/#news">
               <span className="header__nav__link">Tin tức</span>
-            </Link>
-            <Link
-              activeClass="active"
-              to="appstore"
-              spy={true}
-              smooth={true}
-              duration={500}
-            >
+            </NavLink>
+
+            <NavLink to="/#appstore">
               <span className="header__nav__link">Ứng dụng</span>
-            </Link>
+            </NavLink>
           </ul>
         </nav>
         <div className="header__login">
-          <a href="#">
+          <NavLink to="/login">
             <img src={avatar} alt="dangnhap" />
             Đăng nhập
-          </a>
+          </NavLink>
         </div>
       </div>
       {width <= 768 ? (
@@ -102,52 +95,24 @@ const Header = (props) => {
             <div className="modal-content customscroll">
               <div className="modal-body">
                 <div className="header__mobile__login" onClick={hideModal}>
-                  <a href="#">
+                  <NavLink to="/login">
                     <img src={avatar} alt="dangnhap" />
                     Đăng nhập
-                  </a>
+                  </NavLink>
                 </div>
                 <ul className="header__mobile__list">
-                  <Link
-                    activeClass="active"
-                    to="showtime"
-                    spy={true}
-                    smooth={true}
-                    duration={500}
-                    onClick={hideModal}
-                  >
+                  <NavLink to="/#showtime" onClick={hideModal}>
                     <span className="header__mobile__link">Lịch chiếu</span>
-                  </Link>
-                  <Link
-                    activeClass="active"
-                    to="movie-schedule"
-                    spy={true}
-                    smooth={true}
-                    duration={500}
-                    onClick={hideModal}
-                  >
+                  </NavLink>
+                  <NavLink to="/#movie-schedule" onClick={hideModal}>
                     <span className="header__mobile__link">Cụm rạp</span>
-                  </Link>
-                  <Link
-                    activeClass="active"
-                    to="news"
-                    spy={true}
-                    smooth={true}
-                    duration={500}
-                    onClick={hideModal}
-                  >
+                  </NavLink>
+                  <NavLink to="/#news" onClick={hideModal}>
                     <span className="header__mobile__link">Tin tức</span>
-                  </Link>
-                  <Link
-                    activeClass="active"
-                    to="appstore"
-                    spy={true}
-                    smooth={true}
-                    duration={500}
-                    onClick={hideModal}
-                  >
+                  </NavLink>
+                  <NavLink to="/#appstore" onClick={hideModal}>
                     <span className="header__mobile__link">Ứng dụng</span>
-                  </Link>
+                  </NavLink>
                 </ul>
               </div>
             </div>

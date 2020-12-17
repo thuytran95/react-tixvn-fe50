@@ -66,6 +66,7 @@ const ShowTime = (props) => {
       }}
     ></span>
   );
+
   const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
     <span
       {...props}

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { capitalizeWords } from "../../Helpers";
 import "./style.scss";
 
@@ -51,9 +52,12 @@ export default function MovieItem(props) {
             <p className="card-text mt-2">100 phút</p>
           </div>
           <div className="mvshowtime__addToCart">
-            <a href="#" className="btn-default">
+            <NavLink
+              to={`/movie-detail/${movie.maPhim}`}
+              className="btn-default"
+            >
               Mua vé
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
