@@ -9,57 +9,59 @@ export default function MovieDetailMainContentShowInfo() {
       <div className="show__info__movies pl-0 pl-md-3">
         <div className="container-fluid">
           <div className="row">
-            <div className="col-sm-12 	col-md-3  ">
+            <div className=" reponsive-2  col-sm-12 	col-md-3  ">
               {/* item1 */}
               <div className="row show__info__movies__pcinema__name show__info__movies__pcinema__name__active">
-                <div className="col-4 show__info__movies__pcinema__name__logo">
+                <div className="col-xs-2 col-sm-2 col-lg-4  show__info__movies__pcinema__name__logo">
                   <img src={BdhStar} alt="" />
                 </div>
 
-                <div className="col-8">
+                <div className="col-xs-10 col-sm-10 col-lg-8">
                   <h4 className="">BHD Star Cineplex</h4>
                 </div>
               </div>
-              {/* item1 */}
+                    {/* item1 */}
               <div className="row show__info__movies__pcinema__name ">
-                <div className="col-4 show__info__movies__pcinema__name__logo">
+                <div className="col-xs-2 col-sm-2 col-lg-4  show__info__movies__pcinema__name__logo">
                   <img src={BdhStar} alt="" />
                 </div>
 
-                <div className="col-8">
-                  <h4>BHD Star Cineplex</h4>
+                <div className="col-xs-10 col-sm-10 col-lg-8">
+                  <h4 className="">BHD Star Cineplex</h4>
                 </div>
               </div>
-              {/* item1 */}
-              <div className="row show__info__movies__pcinema__name ">
-                <div className="col-4 show__info__movies__pcinema__name__logo">
+
+          {/* item1 */}
+          <div className="row show__info__movies__pcinema__name ">
+                <div className="col-xs-2 col-sm-2 col-lg-4  show__info__movies__pcinema__name__logo">
                   <img src={BdhStar} alt="" />
                 </div>
 
-                <div className="col-8">
-                  <h4>BHD Star Cineplex</h4>
+                <div className="col-xs-10 col-sm-10 col-lg-8">
+                  <h4 className="">BHD Star Cineplex</h4>
                 </div>
               </div>
-              {/* item1 */}
-              <div className="row show__info__movies__pcinema__name ">
-                <div className="col-4 show__info__movies__pcinema__name__logo">
+                        {/* item1 */}
+                        <div className="row show__info__movies__pcinema__name ">
+                <div className="col-xs-2 col-sm-2 col-lg-4  show__info__movies__pcinema__name__logo">
                   <img src={BdhStar} alt="" />
                 </div>
 
-                <div className="col-8">
-                  <h4>BHD Star Cineplex</h4>
+                <div className="col-xs-10 col-sm-10 col-lg-8">
+                  <h4 className="">BHD Star Cineplex</h4>
                 </div>
               </div>
-              {/* item1 */}
-              <div className="row show__info__movies__pcinema__name ">
-                <div className="col-4 show__info__movies__pcinema__name__logo">
+                        {/* item1 */}
+                        <div className="row show__info__movies__pcinema__name ">
+                <div className="col-xs-2 col-sm-2 col-lg-4  show__info__movies__pcinema__name__logo">
                   <img src={BdhStar} alt="" />
                 </div>
 
-                <div className="col-8">
-                  <h4>BHD Star Cineplex</h4>
+                <div className="col-xs-10 col-sm-10 col-lg-8">
+                  <h4 className="">BHD Star Cineplex</h4>
                 </div>
               </div>
+        
             </div>
             <div className="col-sm-12 	col-md-9 pr-0  ">
               <div className="show__info__movies__time ">

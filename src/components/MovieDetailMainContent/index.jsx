@@ -23,7 +23,7 @@ export default function MovieDetailMainContent() {
   return (
     <div className="movie__detail__main__content">
      
-      <div className="movie__detail__main__content__info pt-5">
+      <div className="movie__detail__main__content__info ">
         <h3 onClick={()=> showSection1()} className={show ? "movie__detail__main__content__info__active" : ""}>Lịch Chiếu</h3>
         <h3 onClick={()=> showSection2()} className={!show ? "movie__detail__main__content__info__active" : ""}>Thông tin</h3>
         {/* <h3>Đánh giá</h3> */}

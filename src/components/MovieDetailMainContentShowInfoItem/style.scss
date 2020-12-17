@@ -59,3 +59,13 @@
     }
   }
 }
+// reponsive
+@include MediaQuery($sm){
+  .show__item__item{
+    &__media{
+      img{
+        margin-left: 0;
+      }
+    }
+  }
+}

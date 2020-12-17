@@ -30,6 +30,9 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
+      {/* <Home /> */}
+      <MovieDetail></MovieDetail>
+      {/* <Checkout /> */}
     </>
   );
 }
