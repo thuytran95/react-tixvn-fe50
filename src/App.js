@@ -7,8 +7,8 @@ import Checkout from "./Screens/Checkout";
 function App() {
   return (
     <>
-      <Home />
-      {/* <MovieDetail></MovieDetail> */}
+      {/* <Home /> */}
+      <MovieDetail></MovieDetail>
       {/* <Checkout /> */}
     </>
   );

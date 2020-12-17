@@ -8,6 +8,7 @@
         display: flex;
         justify-content: center;
         h3{
+            z-index: 999;
             @include text(color("white"), 20px, $fwMedium);
             margin-right: spacing(3);
             transition: 0.3s;
@@ -26,3 +27,9 @@
    
  
 }
+// reponsive
+@include MediaQuery($sm){
+    .movie__detail__main__content{
+     padding-top: spacing(15);
+    }
+ }
