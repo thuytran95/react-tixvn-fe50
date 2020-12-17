@@ -31,7 +31,7 @@ function App() {
         </Switch>
       </BrowserRouter>
       {/* <Home /> */}
-      <MovieDetail></MovieDetail>
+      {/* <MovieDetail></MovieDetail> */}
       {/* <Checkout /> */}
     </>
   );
