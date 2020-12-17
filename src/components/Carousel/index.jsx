@@ -13,6 +13,8 @@ const CarouselSlider = (props) => {
     setIndex(selectedIndex);
   };
 
+  const [iframe, setIframe] = useState(0);
+
   const movieList = [
     {
       maPhim: 1323,
@@ -85,33 +87,14 @@ const CarouselSlider = (props) => {
                 className="carousel_popup"
                 href={trailer}
                 data-toggle="modal"
-                data-target={`#modal-${idx}`}
+                data-target="#modal-carousel"
+                onClick={() => setIframe(trailer)}
               >
                 <i className="fa fa-play"></i>
               </a>
             </div>
           </div>
         </Carousel.Item>
-      );
-    });
-  };
-
-  const renderTrailer = () => {
-    return movieList.map((movie, idx) => {
-      const { trailer } = movie;
-      return (
-        <div className="modal modal-customize" id={`modal-${idx}`} key={idx}>
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content">
-              <div className="modal-body">
-                <button type="button" className="close" data-dismiss="modal">
-                  &times;
-                </button>
-                <iframe src={trailer} frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
       );
     });
   };
@@ -135,7 +118,22 @@ const CarouselSlider = (props) => {
       >
         {renderMovieList()}
       </Carousel>
-      <div id="carousel__trailer">{renderTrailer()}</div>
+      {iframe ? (
+        <div className="modal modal-customize" id="modal-carousel">
+          <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-body">
+                <button type="button" className="close" data-dismiss="modal">
+                  &times;
+                </button>
+                <iframe src={iframe} title="trailer" frameBorder="0"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
       <BookingMovie />
     </section>
   );

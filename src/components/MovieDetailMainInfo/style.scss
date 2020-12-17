@@ -1,5 +1,5 @@
 @import "../../styles/index.scss";
-@import 'node_modules/react-modal-video/scss/modal-video.scss';
+@import "node_modules/react-modal-video/scss/modal-video.scss";
 .movie__detail__main__top {
   width: 870px;
 
@@ -34,12 +34,31 @@
         }
         color: color("white");
       }
-  
+
       &:hover &__icon i {
         display: block;
         cursor: pointer;
       }
       // background-image: url("https://s3img.vcdn.vn/mobile/123phim/2020/10/tiec-trang-mau-blood-moon-party-16016226514166_215x318.png");
+    }
+    .modal-video-close-btn {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      opacity: 1;
+      width: 30px;
+      height: 30px;
+      outline: none;
+      @include bd-radius(50%);
+      border: 1px solid color("white");
+      text-align: center;
+      z-index: 2;
+      &::before,
+      &::after {
+        width: 50%;
+        left: 20%;
+        margin-top: 0;
+      }
     }
 
     &__content {
@@ -58,16 +77,6 @@
         @include text(color("lighterwhite"), $h2, $fwMedium);
       }
       button {
-        // background:  color('secondary');
-        // outline: none;
-        // border: none;
-        // border-radius: 3px;
-        // padding: 5px 15px;
-        // color: color('lighterwhite');
-        // &:hover{
-        //     background: color('primary');
-        // }
-        // @include text(color('lighterwhite'), $body, $fwMedium);
         @include buttonCustom;
         text-transform: unset;
         @include text(color("lighterwhite"), $body, $fwMedium);
@@ -135,7 +144,7 @@
 
 // reponsive
 @include MediaQuery($lg) {
-  .movie__detail__main__top{
+  .movie__detail__main__top {
     height: 120%;
   }
 }
@@ -143,7 +152,6 @@
   .movie__detail__main__top {
     display: block;
     position: relative;
-    
 
     &__right {
       &__poster {
@@ -152,29 +160,25 @@
         height: 100%;
         top: 0;
         left: 0;
-          &__image{
-            display: none;
-          }
-          &__icon{
-      
-            position: relative;
-            
-            left: 50%;
-            top: 50%;
-            transform: translateX(-50%) translateY(-50%);
-      
-          }
+        &__image {
+          display: none;
+        }
+        &__icon {
+          position: relative;
+
+          left: 50%;
+          top: 50%;
+          transform: translateX(-50%) translateY(-50%);
+        }
       }
-    
+
       &__content {
         width: 100%;
         height: 100%;
         position: relative;
-        left:0;
+        left: 0;
         top: 95%;
-  
-      
-       
+
         span {
           display: none;
         }

@@ -76,9 +76,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        outline: none;
         @include bd-radius(50%);
         border: 1px solid color("white");
-        font-size: fontSize(2);
+        @include text(color("white"), fontSize(2), $fwRegular);
         line-height: 20px;
         padding: spacing(0.5, 0);
         text-align: center;

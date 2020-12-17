@@ -4,24 +4,28 @@ import MovieDetail from "./Screens/MovieDetail";
 import Checkout from "./Screens/Checkout";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Login from "./Screens/Login";
+import Layout from "./components/Layout";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact={true}>
-            <Home />
-          </Route>
-          <Route path="/home">
-            <Home />
-          </Route>
+          <Layout>
+            <Route path="/" exact={true}>
+              <Home />
+            </Route>
+            <Route path="/home">
+              <Home />
+            </Route>
+            <Route path="/movie-detail/:id">
+              <MovieDetail />
+            </Route>
+          </Layout>
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/movie-detail/:id">
-            <MovieDetail />
-          </Route>
+
           <Route path="/checkout:maLichChieu">
             <Checkout />
           </Route>
@@ -30,9 +34,6 @@ function App() {
           </Route>
         </Switch>
       </BrowserRouter>
-      {/* <Home /> */}
-      <MovieDetail></MovieDetail>
-      {/* <Checkout /> */}
     </>
   );
 }

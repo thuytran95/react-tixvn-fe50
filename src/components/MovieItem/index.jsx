@@ -25,7 +25,7 @@ export default function MovieItem(props) {
                 data-toggle="modal"
                 data-target="#modal-showtime"
                 onClick={() => {
-                  console.log(movie.trailer);
+                  // console.log(movie.trailer);
                   return props.handleModal(movie.trailer);
                 }}
               >
