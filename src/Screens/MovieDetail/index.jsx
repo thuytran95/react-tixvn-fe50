@@ -14,9 +14,9 @@ export default function MovieDetail(props) {
   }, []);
 
   return (
-    <>
+    <div>
       <MovieDetailMainTop />
       <MovieDetailMainContent />
-    </>
+    </div>
   );
 }

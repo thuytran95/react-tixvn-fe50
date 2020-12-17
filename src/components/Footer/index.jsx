@@ -30,7 +30,7 @@ const Footer = () => {
       return (
         <li key={index}>
           <a href="#">
-            <img src={`./images/logos/${image}`} alt="partner" />
+            <img src={`../images/logos/${image}`} alt="partner" />
           </a>
         </li>
       );
@@ -71,10 +71,10 @@ const Footer = () => {
                 <div className="title">Mobile app</div>
                 <div className="content">
                   <a className="footer__social" href="#">
-                    <img src="./images/logos/apple-logo.png" alt="logo" />
+                    <img src="../images/logos/apple-logo.png" alt="logo" />
                   </a>
                   <a className="footer__social" href="#">
-                    <img src="./images/logos/android-logo.png" alt="logo" />
+                    <img src="../images/logos/android-logo.png" alt="logo" />
                   </a>
                 </div>
               </div>
@@ -84,10 +84,10 @@ const Footer = () => {
                 <div className="title">Social</div>
                 <div className="content">
                   <a className="footer__social" href="#">
-                    <img src="./images/logos/facebook-logo.png" alt="logo" />
+                    <img src="../images/logos/facebook-logo.png" alt="logo" />
                   </a>
                   <a className="footer__social" href="#">
-                    <img src="./images/logos/zalo-logo.png" alt="logo" />
+                    <img src="../images/logos/zalo-logo.png" alt="logo" />
                   </a>
                 </div>
               </div>
@@ -100,7 +100,7 @@ const Footer = () => {
               <div className="ft__site__item image">
                 <img
                   className="zionlogo"
-                  src="./images/logos/zion-logo.jpg"
+                  src="../images/logos/zion-logo.jpg"
                   alt="logo"
                 />
               </div>
@@ -134,7 +134,7 @@ const Footer = () => {
               <div className="ft__site__item image">
                 <img
                   className="check"
-                  src="./images/logos/dathongbao.png"
+                  src="../images/logos/dathongbao.png"
                   alt="kiemduyet"
                 />
               </div>
