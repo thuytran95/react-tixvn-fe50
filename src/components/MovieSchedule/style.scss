@@ -1,12 +1,15 @@
 @import "../../styles/index.scss";
+
 #movie-schedule {
   padding-bottom: spacing(4);
+
   .backgroundTop {
     padding-top: 120px;
     background: url(../../assets/images/movieschedule/back-news.png);
     background-size: 100%;
     background-repeat: no-repeat;
   }
+
   .movie-schedule {
     &__tab {
       list-style: none;
@@ -15,6 +18,7 @@
       padding-top: 0;
       padding-bottom: 0;
       border: 1px solid color("lightwhite");
+
       &.nav-tabs {
         width: 92px;
       }
@@ -104,6 +108,7 @@
       align-items: center;
       padding-top: spacing(2);
       padding-bottom: spacing(2);
+
       &::before {
         background-color: color("lightwhite");
         position: absolute;
@@ -116,6 +121,7 @@
         height: 1px;
         margin: 0 auto;
       }
+
       .image {
         width: 50px;
         margin-right: spacing(1);
@@ -137,27 +143,29 @@
           white-space: nowrap;
         }
       }
+
       .digital {
-        font-size: $body;
-        font-family: "SF Medium";
-        width: 100%;
-        margin-top: spacing(1.5);
-        margin-bottom: spacing(0.5);
+        @include text(color("black"), $body, $fwMedium);
+        margin-bottom: spacing(2);
       }
     }
+
     &__showtimes {
       width: 100%;
+
       .btn-default {
         background-color: color("lightwhite");
         border: 1px solid color("lightwhite");
         color: color("lightgrey");
         display: inline-block;
-        margin-right: spacing(1);
         text-decoration: none;
+        margin-right: spacing(1);
+        margin-bottom: spacing(1);
+
         span {
-          color: color("darkgreen");
-          font-size: $body;
+          @include text(color('darkgreen'), $body, $fwMedium)
         }
+
         &:hover {
           span {
             color: color("primary");
@@ -169,6 +177,7 @@
 
   @media (min-width: 576px) {
     .movie-schedule {
+
       &__tab,
       &__child,
       &__content {
