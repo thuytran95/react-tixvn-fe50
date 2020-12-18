@@ -50,6 +50,11 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
+            .btn-close {
+                color: rgba(15, 50, 120, 0.9);
+                background-color: none;
+            }
         }
     }
 }

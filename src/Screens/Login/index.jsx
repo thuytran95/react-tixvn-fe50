@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./style.scss";
 
 function LoginPage() {
@@ -22,7 +23,9 @@ function LoginPage() {
             <button className="btn btn-success mt-3">Đăng ký</button>
           </form>
           <div className="login__close">
-            <i className="fa fa-times"></i>
+            <NavLink className="btn-close" to="/home">
+              <i className="fa fa-times"></i>
+            </NavLink>
           </div>
         </div>
       </div>
