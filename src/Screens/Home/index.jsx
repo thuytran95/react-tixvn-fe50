@@ -7,11 +7,13 @@ import ShowTime from "../../components/ShowTime";
 import MovieSchedule from "../../components/MovieSchedule";
 import AppStore from "../../components/AppStore";
 import "./style.scss";
+import Loader from "../../components/Loader";
 
 class Home extends Component {
   render() {
     return (
       <>
+        <Loader />
         <CarouselSlider movieList={this.props.movieList} />
         <ShowTime movieList={this.props.movieList} />
         <MovieSchedule />

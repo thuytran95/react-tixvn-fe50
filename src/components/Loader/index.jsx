@@ -4,9 +4,13 @@ import logo from "../../assets/images/logos/web-logo.png";
 import "./style.scss";
 
 function Loader() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {}, [isLoading]);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(true);
+    }, 1000);
+  }, []);
 
   return (
     <div className={`logo__loading ${isLoading ? "active" : ""}`}>
