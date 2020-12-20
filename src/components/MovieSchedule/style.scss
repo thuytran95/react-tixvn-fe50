@@ -163,7 +163,7 @@
         margin-bottom: spacing(1);
 
         span {
-          @include text(color('darkgreen'), $body, $fwMedium)
+          @include text(color("darkgreen"), $body, $fwMedium);
         }
 
         &:hover {
@@ -177,7 +177,6 @@
 
   @media (min-width: 576px) {
     .movie-schedule {
-
       &__tab,
       &__child,
       &__content {
@@ -213,5 +212,11 @@
         max-width: calc(100% - 30%);
       }
     }
+  }
+}
+
+@include MediaQuery($sm) {
+  #movie-schedule {
+    display: none;
   }
 }

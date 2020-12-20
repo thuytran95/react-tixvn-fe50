@@ -10,17 +10,23 @@ import "./style.scss";
 import Loader from "../../components/Loader";
 
 class Home extends Component {
+  renderHTML = () => {
+    const { movieList, isLoading } = this.props;
+    if (isLoading) return <Loader />;
+    if (movieList && movieList.length > 0) {
+      return (
+        <>
+          <CarouselSlider />
+          <ShowTime movieList={movieList} />
+          <MovieSchedule />
+          <News />
+          <AppStore />
+        </>
+      );
+    }
+  };
   render() {
-    return (
-      <>
-        <Loader />
-        <CarouselSlider movieList={this.props.movieList} />
-        <ShowTime movieList={this.props.movieList} />
-        <MovieSchedule />
-        <News />
-        <AppStore />
-      </>
-    );
+    return <> {this.renderHTML()}</>;
   }
 
   componentDidMount() {
@@ -31,6 +37,7 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   return {
     movieList: state.movie.movieList,
+    isLoading: state.movie.isLoading,
   };
 };
 

@@ -1,19 +1,10 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import logo from "../../assets/images/logos/web-logo.png";
 import "./style.scss";
 
-function Loader() {
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(true);
-    }, 1000);
-  }, []);
-
+function Loader(props) {
   return (
-    <div className={`logo__loading ${isLoading ? "active" : ""}`}>
+    <div className="logo__loading active">
       <div className="logo__loading__img">
         <img src={logo} alt="logo" />
       </div>

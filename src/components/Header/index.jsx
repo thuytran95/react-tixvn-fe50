@@ -18,6 +18,15 @@ const Header = (props) => {
       let elem = document.getElementById(location.hash.slice(1));
       if (elem) {
         elem.scrollIntoView({ block: "start", behavior: "smooth" });
+        if (width < 768) {
+          let elementPosition =
+            elem.getBoundingClientRect().top + window.scrollY;
+
+          window.scrollTo({
+            top: elementPosition,
+            behavior: "smooth",
+          });
+        }
       }
     } else {
       window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
