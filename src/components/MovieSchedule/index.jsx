@@ -16,7 +16,7 @@ const MovieSchedule = (props) => {
     { maHeThongRap: "MegaGS", color: "#9c9c9c" },
   ];
 
-  const theaterList = theaterSchedule.map((item) => {
+  const theaterList = theaterSchedule?.map((item) => {
     const maHeThongRap = item.maHeThongRap;
     const tenHeThongRap = item.tenHeThongRap;
     const logo = item.logo;
@@ -30,9 +30,7 @@ const MovieSchedule = (props) => {
 
   const [theaterID, setTheaterID] = useState({ maHeThongRap: "BHDStar" });
   const [color, setColor] = useState("#8bc541");
-  const [theaterSystemList, setTheaterSystemList] = useState(
-    theaterSchedule[0].lstCumRap
-  );
+  const [theaterSystemList, setTheaterSystemList] = useState(null);
 
   useEffect(() => {
     const index = listColor.findIndex(
@@ -41,11 +39,13 @@ const MovieSchedule = (props) => {
 
     setColor(listColor[index].color);
 
-    const theater_demo = theaterSchedule.filter(
+    const theater_demo = theaterSchedule?.filter(
       (item) => item.maHeThongRap === theaterID.maHeThongRap
     );
 
-    setTheaterSystemList(theater_demo[0].lstCumRap);
+    if (theater_demo && theater_demo.length > 0) {
+      setTheaterSystemList(theater_demo[0].lstCumRap);
+    }
   }, [theaterID]);
 
   const [theaterChild, setTheaterChild] = useState({ maCumRap: null });
