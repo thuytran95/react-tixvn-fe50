@@ -14,11 +14,11 @@ const Header = (props) => {
 
   useEffect(() => {
     if (location.hash) {
-      console.log(location.hash);
+      // console.log(location.hash);
       let elem = document.getElementById(location.hash.slice(1));
       if (elem) {
         elem.scrollIntoView({ block: "start", behavior: "smooth" });
-        if (width < 768) {
+        if (width <= 768) {
           let elementPosition =
             elem.getBoundingClientRect().top + window.scrollY;
 

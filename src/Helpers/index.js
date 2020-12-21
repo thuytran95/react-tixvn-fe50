@@ -15,3 +15,8 @@ export const cutDateName = (string) => {
 
   return capitalizeWords(newString);
 };
+
+export const splitStringByHyphen = (string) => {
+  const arr = string.replace(/'/gi, "").split("-");
+  return arr;
+};
