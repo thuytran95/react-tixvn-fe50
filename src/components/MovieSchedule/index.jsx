@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { splitStringByHyphen } from "../../Helpers";
-import { getScheduleTheaterSystemRequest } from "../../Redux/Actions/theater";
-
+import { calculatingEndtime, splitStringByHyphen } from "../../Helpers";
+import {
+  getScheduleTheaterSystemRequest,
+  getTheaterSystemListRequest,
+} from "../../Redux/Actions/theater";
+import format from "date-format";
+import moment from "moment";
 import "./style.scss";
+import { NavLink } from "react-router-dom";
 
 const MovieSchedule = (props) => {
-  const { theaterSchedule } = props;
   const listColor = [
     { maHeThongRap: "BHDStar", color: "#8bc541" },
     { maHeThongRap: "CGV", color: "red" },
@@ -16,37 +20,30 @@ const MovieSchedule = (props) => {
     { maHeThongRap: "MegaGS", color: "#9c9c9c" },
   ];
 
+  const { theaterSchedule, theaterSystemList } = props;
+
+  const [theaterID, setTheaterID] = useState({ maHeThongRap: "BHDStar" });
+  const [color, setColor] = useState("#8bc541");
+
+  useEffect(() => {
+    props.dispatch(getScheduleTheaterSystemRequest());
+  }, []);
+
+  useEffect(() => {
+    props.dispatch(getTheaterSystemListRequest(theaterID.maHeThongRap));
+    const index = listColor.findIndex(
+      (item) => item.maHeThongRap === theaterID.maHeThongRap
+    );
+
+    setColor(listColor[index].color);
+  }, [theaterID]);
+
   const theaterList = theaterSchedule?.map((item) => {
     const maHeThongRap = item.maHeThongRap;
     const tenHeThongRap = item.tenHeThongRap;
     const logo = item.logo;
     return { maHeThongRap, tenHeThongRap, logo };
   });
-
-  // goi thong tin ban dau
-  useEffect(() => {
-    props.dispatch(getScheduleTheaterSystemRequest());
-  }, []);
-
-  const [theaterID, setTheaterID] = useState({ maHeThongRap: "BHDStar" });
-  const [color, setColor] = useState("#8bc541");
-  const [theaterSystemList, setTheaterSystemList] = useState(null);
-
-  useEffect(() => {
-    const index = listColor.findIndex(
-      (item) => item.maHeThongRap === theaterID.maHeThongRap
-    );
-
-    setColor(listColor[index].color);
-
-    const theater_demo = theaterSchedule?.filter(
-      (item) => item.maHeThongRap === theaterID.maHeThongRap
-    );
-
-    if (theater_demo && theater_demo.length > 0) {
-      setTheaterSystemList(theater_demo[0].lstCumRap);
-    }
-  }, [theaterID]);
 
   const [theaterChild, setTheaterChild] = useState({ maCumRap: null });
 
@@ -55,6 +52,33 @@ const MovieSchedule = (props) => {
       setTheaterChild({ maCumRap: theaterSystemList[0].maCumRap });
     }
   }, [theaterSystemList]);
+
+  // lay danh sach phim
+  const [showtime, setShowtime] = useState(null);
+
+  useEffect(() => {
+    // console.log(theaterSchedule);
+    // tim vi tri cua he thong rap
+    if (theaterSchedule) {
+      const chooseTheaterSystem = theaterSchedule.filter(
+        (item) => item.maHeThongRap === theaterID.maHeThongRap
+      );
+
+      const listCumRap = chooseTheaterSystem[0].lstCumRap;
+
+      // tim vi tri cum rap duoc chon trong mang
+      const index = listCumRap.findIndex(
+        (item) => item.maCumRap === theaterChild.maCumRap
+      );
+      // console.log(index);
+      // console.log(theaterChild.maCumRap);
+      if (index !== -1) {
+        setShowtime(listCumRap[index].danhSachPhim);
+      } else {
+        setShowtime(null);
+      }
+    }
+  }, [theaterChild]);
 
   const renderNameTheater = (name) => {
     const arr = splitStringByHyphen(name);
@@ -73,6 +97,79 @@ const MovieSchedule = (props) => {
     });
   };
 
+  const renderMovieSchedule = () => {
+    if (!showtime) {
+      return (
+        <div className="text-center pt-5" style={{ fontSize: "20px" }}>
+          Không có suất chiếu nào
+        </div>
+      );
+    } else {
+      let renderContent = showtime.map((item, index) => {
+        // lay ngay dau tien trong danh sach phim
+        let date = item.lstLichChieuTheoPhim[0].ngayChieuGioChieu;
+        let dateFormat = format("yyyy-MM-dd", new Date(date));
+        // console.log(date);
+        console.log(dateFormat);
+        //loc toan bo ngay dau tien
+        let timeList = [];
+        item.lstLichChieuTheoPhim.forEach((lichChieu, index) => {
+          const formatNgayChieu = format(
+            "yyyy-MM-dd",
+            new Date(lichChieu.ngayChieuGioChieu)
+          );
+          // neu ngay chieu trung v ngay dau tien thi push vao mang moi
+          if (formatNgayChieu === dateFormat) {
+            const infoSchedule = {
+              maLichChieu: lichChieu.maLichChieu,
+              ngayChieuGioChieu: format(
+                "hh:mm",
+                new Date(lichChieu.ngayChieuGioChieu)
+              ),
+            };
+            timeList.push(infoSchedule);
+          }
+        });
+
+        // console.log(timeList);
+
+        return (
+          <div key={index} className="movie-schedule__movie">
+            <div className="image">
+              <img src={item.hinhAnh} alt="Đánh Cắp Giấc Mơ - Inception" />
+            </div>
+            <div className="content">
+              <div className="title">
+                <span className="btn-age">C16</span>
+                {item.tenPhim}
+              </div>
+              <div className="desc">90 phút - TIX 0 - IMDb 8.8</div>
+            </div>
+            <div className="digital">2D Digital</div>
+            <div className="movie-schedule__showtimes">
+              {timeList.map((time, i) => {
+                return (
+                  <NavLink
+                    to={`/checkout/${time.maLichChieu}`}
+                    key={i}
+                    className="btn-default"
+                    href="#"
+                  >
+                    <span> {time.ngayChieuGioChieu}</span> ~{" "}
+                    {calculatingEndtime(date)}
+                  </NavLink>
+                );
+              })}
+            </div>
+          </div>
+        );
+      });
+
+      return renderContent;
+    }
+  };
+
+  // console.log(theaterSchedule);
   return (
     <div id="movie-schedule">
       <div className="container backgroundTop">
@@ -181,125 +278,7 @@ const MovieSchedule = (props) => {
                   role="tabpanel"
                   aria-labelledby="cgv-crescent-mall-tab"
                 >
-                  <div className="movie-schedule__movie">
-                    <div className="image">
-                      <img
-                        src="./images/movie-schedule/danh-cap-giac-mo-inception-14794516242347_60x60.jpg"
-                        alt="Đánh Cắp Giấc Mơ - Inception"
-                      />
-                    </div>
-                    <div className="content">
-                      <div className="title">
-                        <span className="btn-age">C16</span>Đánh Cắp Giấc Mơ -
-                        Inception
-                      </div>
-                      <div className="desc">148 phút - TIX 0 - IMDb 8.8</div>
-                    </div>
-                    <div className="digital">2D Digital</div>
-                    <div className="movie-schedule__showtimes">
-                      <a className="btn-default" href="#">
-                        <span>14:00</span> ~ 16:28
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>15:10</span> ~ 17:38
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>17:10</span> ~ 19:38
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>18:20</span> ~ 20:48
-                      </a>
-                    </div>
-                  </div>
-                  <div className="movie-schedule__movie">
-                    <div className="image">
-                      <img
-                        src="./images/movie-schedule/diep-vien-sieu-lay-my-spy-p-15959969936666_60x60.jpg"
-                        alt="Điệp Viên Siêu Lầy - My Spy"
-                      />
-                    </div>
-                    <div className="content">
-                      <div className="title">
-                        <span className="btn-age">C16</span>Điệp Viên Siêu Lầy -
-                        My Spy
-                      </div>
-                      <div className="desc">148 phút - TIX 0 - IMDb 8.8</div>
-                    </div>
-                    <div className="digital">2D Digital</div>
-                    <div className="movie-schedule__showtimes">
-                      <a className="btn-default" href="#">
-                        <span>14:00</span> ~ 16:28
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>15:10</span> ~ 17:38
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>17:10</span> ~ 19:38
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>18:20</span> ~ 20:48
-                      </a>
-                    </div>
-                  </div>
-                  <div className="movie-schedule__movie">
-                    <div className="image">
-                      <img
-                        src="./images/movie-schedule/ca-sau-tu-than-black-water-abyss-c18-15964423012362_60x60.jpg"
-                        alt="Cá Sấu Tử Thần - Black Water: Abyss"
-                      />
-                    </div>
-                    <div className="content">
-                      <div className="title">
-                        <span className="btn-age">C16</span>Cá Sấu Tử Thần -
-                        Black Water: Abyss
-                      </div>
-                      <div className="desc">148 phút - TIX 0 - IMDb 8.8</div>
-                    </div>
-                    <div className="digital">2D Digital</div>
-                    <div className="movie-schedule__showtimes">
-                      <a className="btn-default" href="#">
-                        <span>14:00</span> ~ 16:28
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>15:10</span> ~ 17:38
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>17:10</span> ~ 19:38
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>18:20</span> ~ 20:48
-                      </a>
-                    </div>
-                  </div>
-                  <div className="movie-schedule__movie">
-                    <div className="image">
-                      <img
-                        src="./images/movie-schedule/ham-quy-behind-you-c18-15976394035712_60x60.jpg"
-                        alt="Hầm Quỷ - Behind You"
-                      />
-                    </div>
-                    <div className="content">
-                      <div className="title">
-                        <span className="btn-age">C16</span>Hầm Quỷ - Behind You
-                      </div>
-                      <div className="desc">148 phút - TIX 0 - IMDb 8.8</div>
-                    </div>
-                    <div className="digital">2D Digital</div>
-                    <div className="movie-schedule__showtimes">
-                      <a className="btn-default" href="#">
-                        <span>14:00</span> ~ 16:28
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>15:10</span> ~ 17:38
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>17:10</span> ~ 19:38
-                      </a>
-                      <a className="btn-default" href="#">
-                        <span>18:20</span> ~ 20:48
-                      </a>
-                    </div>
-                  </div>
+                  {renderMovieSchedule()}
                 </div>
               </div>
             </div>
@@ -313,6 +292,7 @@ const MovieSchedule = (props) => {
 const mapStateToProps = (state) => {
   return {
     theaterSchedule: state.theater.theaterSchedule,
+    theaterSystemList: state.theater.theaterSystemList,
   };
 };
 

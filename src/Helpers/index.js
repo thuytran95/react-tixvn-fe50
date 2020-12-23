@@ -1,3 +1,4 @@
+import moment from "moment";
 export const hiddenName = (name, length) => {
   if (name.length > length) return name.substr(0, length) + "...";
   return name;
@@ -19,4 +20,11 @@ export const cutDateName = (string) => {
 export const splitStringByHyphen = (string) => {
   const arr = string.replace(/'/gi, "").split("-");
   return arr;
+};
+
+export const calculatingEndtime = (string) => {
+  // console.log(string);
+  const time = moment(string).add(1.5, "hours").format("LT");
+  // console.log(time);
+  return time;
 };

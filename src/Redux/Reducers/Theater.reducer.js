@@ -1,6 +1,10 @@
-import { GET_SCHEDULE_THEATER_SYSTEM_SUCCESS } from "../Actions/type";
+import {
+  GET_SCHEDULE_THEATER_SYSTEM_SUCCESS,
+  GET_THEATER_SYSTEM_LIST_SUCCESS,
+} from "../Actions/type";
 let initialState = {
   theaterSchedule: null,
+  theaterSystemList: null,
 };
 
 const TheaterReducer = (state = initialState, action) => {
@@ -9,6 +13,9 @@ const TheaterReducer = (state = initialState, action) => {
   switch (type) {
     case GET_SCHEDULE_THEATER_SYSTEM_SUCCESS: {
       return { ...state, theaterSchedule: payload };
+    }
+    case GET_THEATER_SYSTEM_LIST_SUCCESS: {
+      return { ...state, theaterSystemList: payload };
     }
 
     default:

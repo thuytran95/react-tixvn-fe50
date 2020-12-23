@@ -87,9 +87,12 @@ const Header = (props) => {
           </ul>
         </nav>
         <div className="header__login">
-          <NavLink to="/login">
+          <NavLink className="header__login__link" to="/login">
             <img src={avatar} alt="dangnhap" />
             Đăng nhập
+          </NavLink>
+          <NavLink to="/signup" style={{ marginLeft: 5 }}>
+            Đăng ký
           </NavLink>
         </div>
       </div>
@@ -104,9 +107,12 @@ const Header = (props) => {
             <div className="modal-content customscroll">
               <div className="modal-body">
                 <div className="header__mobile__login" onClick={hideModal}>
-                  <NavLink to="/login">
+                  <NavLink className="header__login__link" to="/login">
                     <img src={avatar} alt="dangnhap" />
                     Đăng nhập
+                  </NavLink>
+                  <NavLink to="/signup" style={{ marginLeft: 5 }}>
+                    Đăng ký
                   </NavLink>
                 </div>
                 <ul className="header__mobile__list">

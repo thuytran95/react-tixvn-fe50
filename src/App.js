@@ -4,6 +4,8 @@ import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import Login from "./Screens/Login";
 import LayoutTheme from "./components/Layout";
 import { routesHome } from "./routes";
+import SignUpScreen from "./Screens/SignUpScreen";
+import PageNotFound from "./Screens/PageNotFound";
 
 function App(props) {
   const showLayoutHome = (routes) => {
@@ -27,8 +29,14 @@ function App(props) {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/checkout:maLichChieu">
+        <Route path="/checkout/:maLichChieu">
           <Checkout />
+        </Route>
+        <Route path="/signup">
+          <SignUpScreen />
+        </Route>
+        <Route path="">
+          <PageNotFound />
         </Route>
       </Switch>
     </>

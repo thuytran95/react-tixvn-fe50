@@ -1,4 +1,18 @@
 import Axios from "axios";
+import * as yup from "yup";
+
+// schema do minh tao ra de validation du lieu thu duoc tu form
+export const signUpUserSchema = yup.object().shape({
+  taiKhoan: yup.string().required("*Field is required"),
+  matKhau: yup.string().required("*Field is required"),
+  hoTen: yup.string().required("*Field is required"),
+  email: yup.string().required("*Field is required").email("*Email is invalid"),
+  soDT: yup
+    .string()
+    .required("*Field is required")
+    .matches(/^[0-9]+$/), //viet bieu thuc chinh quy phai viet lien, khong co dau cach giua cac ky tu
+  maNhom: yup.string().required("*Field is required"),
+});
 
 class UserService {
   signUp(data) {
