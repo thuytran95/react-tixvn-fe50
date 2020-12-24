@@ -109,15 +109,17 @@ const MovieSchedule = (props) => {
         // lay ngay dau tien trong danh sach phim
         let date = item.lstLichChieuTheoPhim[0].ngayChieuGioChieu;
         let dateFormat = format("yyyy-MM-dd", new Date(date));
-        // console.log(date);
+        console.log(date);
         console.log(dateFormat);
         //loc toan bo ngay dau tien
         let timeList = [];
+
         item.lstLichChieuTheoPhim.forEach((lichChieu, index) => {
           const formatNgayChieu = format(
             "yyyy-MM-dd",
             new Date(lichChieu.ngayChieuGioChieu)
           );
+          const giochieu = calculatingEndtime(lichChieu.ngayChieuGioChieu);
           // neu ngay chieu trung v ngay dau tien thi push vao mang moi
           if (formatNgayChieu === dateFormat) {
             const infoSchedule = {
@@ -126,6 +128,7 @@ const MovieSchedule = (props) => {
                 "hh:mm",
                 new Date(lichChieu.ngayChieuGioChieu)
               ),
+              gioChieu: giochieu,
             };
             timeList.push(infoSchedule);
           }
@@ -155,8 +158,7 @@ const MovieSchedule = (props) => {
                     className="btn-default"
                     href="#"
                   >
-                    <span> {time.ngayChieuGioChieu}</span> ~{" "}
-                    {calculatingEndtime(date)}
+                    <span> {time.ngayChieuGioChieu}</span> ~{time.gioChieu}
                   </NavLink>
                 );
               })}
