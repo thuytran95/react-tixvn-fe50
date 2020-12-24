@@ -1,0 +1,128 @@
+@import "../../styles/index.scss";
+// .list__seat {
+//     display: inline-block;
+//     margin-right: 5px;
+//   &__item {
+//       display: inline-block;
+//       border-bottom: 4px solid yellowgreen;
+//       padding: 0 5px 2px 5px;
+//       border-bottom-left-radius: 5px;
+//       border-bottom-right-radius: 5px;
+//       position: relative;
+//       &::before{
+
+//           content: "";
+
+//         border: 2px solid yellowgreen;
+//         position: absolute;
+//         left: -1px;
+//         top: 3px;
+//         width: 2px;
+//         height: 25px;
+//         border-radius: 3px ;
+//         border-bottom-left-radius: 50px
+
+//       }
+//       &::after{
+//         content: "";
+
+//         border: 2px solid yellowgreen;
+//         position: absolute;
+//         right: -1px;
+//         top: 3px;
+//         width: 2px;
+//         height: 25px;
+//         border-radius: 3px ;
+//         border-bottom-right-radius: 50px
+//       }
+//   &__btn{
+//     border-radius: 4px;
+//     background-color: yellowgreen;
+//     outline: none;
+//     border: none;
+//     padding: 0px 8px;
+//     cursor: pointer;
+
+//   }
+
+//   }
+// }
+
+.list__seat {
+  display: inline-block;
+  margin: spacing(0.5) spacing(0.2);
+  &__item {
+    border: 3px solid #3e515d;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-top: none;
+    padding: 0 1px 0 1px;
+    display: inline-block;
+    cursor: pointer;
+    &__active {
+      border: 3px solid yellowgreen;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      border-top: none;
+      button {
+        background-color: yellowgreen;
+      }
+    }
+    &__selected {
+      border: 3px solid pink;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      border-top: none;
+
+      button:disabled {
+        background-color: pink;
+      }
+      button {
+        background-color: pink;
+      }
+    }
+    &__vip {
+      border: 3px solid #f7b500;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      border-top: none;
+      button {
+        background-color: #f7b500;
+      }
+    }
+
+    &__btn {
+      position: relative;
+      bottom: 2px;
+      border-radius: 4px;
+      background-color: #3e515d;
+      outline: none;
+      border: none;
+      width: 26px;
+
+      text-align: center;
+    
+      &__tittle {
+        display: flex;
+        justify-content: center;
+        @include text(color("darkergrey"), $title3, $fwRegular);
+        padding: 1px 0;
+        visibility: hidden;
+      }
+    }
+    &__cursor {
+      cursor: unset;
+      button {
+        cursor: unset !important;
+      }
+    }
+  }
+}

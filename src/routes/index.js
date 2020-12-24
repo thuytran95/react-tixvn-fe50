@@ -1,6 +1,7 @@
 import Home from "../Screens/Home";
 import MovieDetail from "../Screens/MovieDetail";
 
+
 const routesHome = [
   {
     exact: true,
@@ -17,6 +18,7 @@ const routesHome = [
     path: "/movie-detail/:id",
     component: MovieDetail,
   },
+ 
 ];
 
 export { routesHome };

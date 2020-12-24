@@ -1,7 +1,6 @@
 import { createAction } from ".";
 import { movieService } from "../../Service";
 import {
-  MOVIE_LIST_REQUEST,
   GET_MOVIE_DETAIL_FAILED,
   GET_MOVIE_DETAIL_SUCCESS,
   GET_MOVIE_LIST_FAILED,
@@ -10,7 +9,6 @@ import {
 
 export const getMovieListRequest = () => {
   return (dispatch) => {
-    dispatch(createAction(MOVIE_LIST_REQUEST));
     movieService
       .getMovieList()
       .then((res) => {
@@ -28,7 +26,7 @@ export const getMovieDetailRequest = (id) => {
     movieService
       .getMovieDetail(id)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         dispatch(createAction(GET_MOVIE_DETAIL_SUCCESS, res.data));
       })
       .catch((err) => {

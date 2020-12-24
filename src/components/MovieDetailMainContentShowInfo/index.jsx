@@ -2,10 +2,13 @@ import "./style.scss";
 import React from "react";
 import BdhStar from "../../assets/images/logos/f32670fd0eb083c9c4c804f0f3a252ed.png";
 import MovieDetailMainContentShowInfoItem from "../MovieDetailMainContentShowInfoItem";
+import { useSelector } from "react-redux";
 
-export default function MovieDetailMainContentShowInfo() {
+export default function MovieDetailMainContentShowInfo(props) {
+  const showTimeMovie = useSelector((state) => state.movie?.movieDetail?.lichChieu);
+  console.log(showTimeMovie,'sss');
   return (
-    <div className="show__info strollbar__bottom">
+    <div className="show__info strollbar__bottom" id="showTimeDetail">
       <div className="show__info__movies pl-0 pl-md-3">
         <div className="container-fluid">
           <div className="row">

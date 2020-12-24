@@ -1,6 +1,7 @@
+@import "../../styles/index.scss";
 .SeatCheckout {
   grid-area: SeatCheckout;
-  width: 900px;
+  max-width: 900px;
   margin: 0 auto;
   // margin-left: 4.3%;
   margin-top: 10px;
@@ -56,3 +57,34 @@
     }
   }
 }
+.namescreen{
+  img{
+    max-width: 800px;
+  }
+}
+.listSeat{
+  max-width: 550px;
+ 
+  &__title{
+    padding-top: 5px;
+    width: 15%;
+   margin-top: spacing(0.2);
+    h4{
+      height: 30px;
+      margin-bottom: 8px;
+      @include text(color("darkergrey"), $h1, $fwMedium);
+    }
+  }
+  &__content{
+    width: 85%;
+  }
+  &__description{
+   width: 550px;
+    cursor: unset;
+    p{
+      @include text(color("lightgrey"), $title3, $fwMedium);
+  
+    }
+  }
+}
+

@@ -2,9 +2,13 @@ import React,{useState,useEffect} from "react";
 import MovieDetailInformation from "../MovieDetailInformation";
 import MovieDetailMainContentShowInfo from "../MovieDetailMainContentShowInfo";
 import "./style.scss";
-export default function MovieDetailMainContent() {
+export default function MovieDetailMainContent(props) {
   const [show,setShow] = useState(true);
+  const movieDetail = props.movieDetail
+ 
 
+
+ 
   //useEffect là hàm chay sau khi giao diện render
   useEffect(()=>{
    
@@ -29,7 +33,7 @@ export default function MovieDetailMainContent() {
         {/* <h3>Đánh giá</h3> */}
       </div>
       <div className="movie__detail__main__content__showinfo">
-         {show ?  <MovieDetailMainContentShowInfo/> : <MovieDetailInformation/>}
+         {show ?  <MovieDetailMainContentShowInfo/> : <MovieDetailInformation movieDetail={movieDetail}/>}
       </div>
     </div>
   );
