@@ -1,36 +1,59 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./style.scss";
 import { signUpUserSchema } from "../../Service/User";
 import { userService } from "../../Service";
+import { connect, useDispatch } from "react-redux";
+import { actSignUpApi } from "../../Redux/Actions/user.action";
+import Loader from "../../components/Loader";
 
 const SignUpScreen = (props) => {
+  // console.log(props);
+  const history = useHistory();
+  const dispatch = useDispatch();
   const handleSubmit = (values) => {
-    userService
-      .signUp(values)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // console.log(values);
+    // return userService
+    //   .signUp(values)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
+    dispatch(actSignUpApi(values, history));
   };
+
+  const renderNotice = () => {
+    const { errSignUp, dataSignUp } = props;
+    console.log(errSignUp);
+    if (errSignUp) {
+      return (
+        <div className="alert alert-danger">{errSignUp.response.data}</div>
+      );
+    }
+    if (dataSignUp) {
+      return window.alert("Đăng ký thành công");
+    }
+  };
+
   return (
     <div id="signup">
       <div className="signup signup--customize">
         <div className="signup__wrapper">
           <img className="signup__logo" src="../images/logos/group@2x.png" />
-          {/* <h1 className="signup__title">Đăng ký</h1> */}
-
+          {renderNotice()}
           <Formik
             initialValues={{
               taiKhoan: "",
               matKhau: "",
-              hoTen: "",
-              soDT: "",
-              maNhom: "GP01",
               email: "",
+              soDt: "",
+              maNhom: "GP01",
+              maLoaiNguoiDung: "KhachHang",
+              hoTen: "",
             }}
             validationSchema={signUpUserSchema}
             // ham thu 2 can phai co: truoc khi chay hafm handelsubmit thi formik se xet xem schema validate da dung chua
@@ -106,11 +129,11 @@ const SignUpScreen = (props) => {
                   <label>Số điện thoại: </label>
                   <Field
                     type="text"
-                    name="soDT"
+                    name="soDt"
                     className="form-control"
                     onChange={formikProps.handleChange}
                   ></Field>
-                  <ErrorMessage name="soDT">
+                  <ErrorMessage name="soDt">
                     {(message) => (
                       <div className="alert text-danger alert-validation ">
                         {message}
@@ -120,7 +143,12 @@ const SignUpScreen = (props) => {
                 </div>
                 <div className="form-group text-left">
                   <label>Mã nhóm:</label>
-                  <Field as="select" className="form-control" name="maNhom">
+                  <Field
+                    as="select"
+                    className="form-control"
+                    name="maNhom"
+                    onChange={formikProps.handleChange}
+                  >
                     <option>GP01</option>
                     <option>GP02</option>
                     <option>GP03</option>
@@ -154,4 +182,11 @@ const SignUpScreen = (props) => {
   );
 };
 
-export default SignUpScreen;
+const mapStateToProps = (state) => {
+  return {
+    errSignUp: state.user.errSignUp,
+    dataSignUp: state.user.dataSignUp,
+  };
+};
+
+export default connect(mapStateToProps)(SignUpScreen);

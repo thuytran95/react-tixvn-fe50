@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { calculatingEndtime, splitStringByHyphen } from "../../Helpers";
+import { calculatingEndtime, renderNameTheater } from "../../Helpers";
 import {
   getScheduleTheaterSystemRequest,
   getTheaterSystemListRequest,
-} from "../../Redux/Actions/theater";
+} from "../../Redux/Actions/theater.action";
 import format from "date-format";
 import moment from "moment";
 import "./style.scss";
@@ -79,23 +79,6 @@ const MovieSchedule = (props) => {
       }
     }
   }, [theaterChild]);
-
-  const renderNameTheater = (name) => {
-    const arr = splitStringByHyphen(name);
-    return arr.map((item, index) => {
-      return index === 0 ? (
-        <span
-          key={index}
-          className="title__theater "
-          style={{ color: color, fontWeight: 500 }}
-        >
-          {item}
-        </span>
-      ) : (
-        <span key={index}>-{item}</span>
-      );
-    });
-  };
 
   const renderMovieSchedule = () => {
     if (!showtime) {
@@ -254,7 +237,7 @@ const MovieSchedule = (props) => {
                             <div
                               className={`title title__${theaterID.maHeThongRap}`}
                             >
-                              {renderNameTheater(item.tenCumRap)}
+                              {renderNameTheater(item.tenCumRap, color)}
                             </div>
                             <div className="desc">{item.diaChi}</div>
                             <input

@@ -219,7 +219,7 @@
   }
 }
 
-@include MediaQuery($sm) {
+@include MediaQuery($md) {
   #movie-schedule {
     display: none;
   }

@@ -22,6 +22,24 @@ export const splitStringByHyphen = (string) => {
   return arr;
 };
 
+// To mau cho rap
+export const renderNameTheater = (name, color) => {
+  const arr = splitStringByHyphen(name);
+  return arr.map((item, index) => {
+    return index === 0 ? (
+      <span
+        key={index}
+        className="title__theater "
+        style={{ color: color, fontWeight: 500 }}
+      >
+        {item}
+      </span>
+    ) : (
+      <span key={index}>-{item}</span>
+    );
+  });
+};
+
 export const calculatingEndtime = (string) => {
   // console.log(string);
   const time = moment(string).add(1.5, "hours").format("LT");

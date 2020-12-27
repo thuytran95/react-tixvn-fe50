@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/logos/web-logo.png";
 import avatar from "../../assets/images/logos/avatar.png";
-import { NavLink, useLocation } from "react-router-dom";
+import changeAvatar from "../../assets/images/logos/changeAvatar.jpg";
+import { NavLink, useLocation, withRouter } from "react-router-dom";
 import $ from "jquery";
+import { actLogout } from "../../Redux/Actions/user.action";
+import { connect, useSelector } from "react-redux";
 import "./style.scss";
 
 const Header = (props) => {
+  const user = useSelector((state) => state.user.data);
+  // console.log(user);
+
   const hideModal = () => {
     $("#modalMobile").modal("hide");
   };
@@ -18,7 +24,7 @@ const Header = (props) => {
       let elem = document.getElementById(location.hash.slice(1));
       if (elem) {
         elem.scrollIntoView({ block: "start", behavior: "smooth" });
-        if (width <= 768) {
+        if (width <= 992) {
           let elementPosition =
             elem.getBoundingClientRect().top + window.scrollY;
 
@@ -37,7 +43,7 @@ const Header = (props) => {
   useEffect(() => {
     function handleResize() {
       setWidth(window.innerWidth);
-      if (width >= 768) {
+      if (width >= 992) {
         $("body").removeClass("modal-open");
         $(".modal-backdrop").remove();
         $("body").css({ padding: "0" });
@@ -47,7 +53,7 @@ const Header = (props) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [width]);
-  // console.log(width);
+  console.log(width);
 
   return (
     <header id="header">
@@ -59,7 +65,7 @@ const Header = (props) => {
         </NavLink>
 
         <nav className="header__navbar">
-          {width <= 768 ? (
+          {width <= 992 ? (
             <a
               href="#modalMobile"
               className="toggle-button"
@@ -88,15 +94,26 @@ const Header = (props) => {
         </nav>
         <div className="header__login">
           <NavLink className="header__login__link" to="/login">
-            <img src={avatar} alt="dangnhap" />
-            Đăng nhập
+            <img src={user ? changeAvatar : avatar} alt="dangnhap" />
+            {user ? user.taiKhoan : "Đăng nhập"}
           </NavLink>
-          <NavLink to="/signup" style={{ marginLeft: 5 }}>
-            Đăng ký
-          </NavLink>
+          {user ? (
+            <li
+              className="header__logout"
+              onClick={() => {
+                props.fetchLogout(props.history);
+              }}
+            >
+              Đăng xuất
+            </li>
+          ) : (
+            <NavLink to="/signup" style={{ marginLeft: 5 }}>
+              Đăng ký
+            </NavLink>
+          )}
         </div>
       </div>
-      {width <= 768 ? (
+      {width <= 992 ? (
         <div
           className="modal right fade in header__mobile"
           id="modalMobile"
@@ -108,18 +125,29 @@ const Header = (props) => {
               <div className="modal-body">
                 <div className="header__mobile__login" onClick={hideModal}>
                   <NavLink className="header__login__link" to="/login">
-                    <img src={avatar} alt="dangnhap" />
-                    Đăng nhập
+                    <img src={user ? changeAvatar : avatar} alt="dangnhap" />
+                    {user ? user.taiKhoan : "Đăng nhập"}
                   </NavLink>
-                  <NavLink to="/signup" style={{ marginLeft: 5 }}>
-                    Đăng ký
-                  </NavLink>
+                  {user ? (
+                    <li
+                      className="header__logout"
+                      onClick={() => {
+                        props.fetchLogout(props.history);
+                      }}
+                    >
+                      Đăng xuất
+                    </li>
+                  ) : (
+                    <NavLink to="/signup" style={{ marginLeft: 5 }}>
+                      Đăng ký
+                    </NavLink>
+                  )}
                 </div>
                 <ul className="header__mobile__list">
                   <NavLink to="/#showtime" onClick={hideModal}>
                     <span className="header__mobile__link">Lịch chiếu</span>
                   </NavLink>
-                  <NavLink to="/#movie-schedule" onClick={hideModal}>
+                  <NavLink to="/movie-schedule-mobile" onClick={hideModal}>
                     <span className="header__mobile__link">Cụm rạp</span>
                   </NavLink>
                   <NavLink to="/#news" onClick={hideModal}>
@@ -140,4 +168,14 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchLogout: (history) => {
+      dispatch(actLogout(history));
+    },
+  };
+};
+
+const ConnectedComponent = connect(null, mapDispatchToProps)(Header);
+
+export default withRouter(ConnectedComponent);

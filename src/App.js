@@ -6,6 +6,10 @@ import LayoutTheme from "./components/Layout";
 import { routesHome } from "./routes";
 import SignUpScreen from "./Screens/SignUpScreen";
 import PageNotFound from "./Screens/PageNotFound";
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { actTryLogin } from "./Redux/Actions/user.action";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App(props) {
   const showLayoutHome = (routes) => {
@@ -22,6 +26,12 @@ function App(props) {
       });
     }
   };
+
+  useEffect(() => {
+    // console.log(props);
+    props.fetchTryLogin(props.history);
+  }, []);
+
   return (
     <>
       <Switch>
@@ -29,9 +39,11 @@ function App(props) {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/checkout/:maLichChieu">
+        <ProtectedRoute path="/checkout/:maLichChieu" Component={Checkout} />
+
+        {/* <Route path="/checkout/:maLichChieu">
           <Checkout />
-        </Route>
+        </Route> */}
         <Route path="/signup">
           <SignUpScreen />
         </Route>
@@ -43,4 +55,14 @@ function App(props) {
   );
 }
 
-export default withRouter(App);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchTryLogin: (history) => {
+      dispatch(actTryLogin(history));
+    },
+  };
+};
+
+const connectedComponent = connect(null, mapDispatchToProps)(App);
+
+export default withRouter(connectedComponent);
