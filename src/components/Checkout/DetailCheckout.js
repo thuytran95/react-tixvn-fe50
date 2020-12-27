@@ -80,7 +80,7 @@ const DetailCheckout = () => {
               type="text"
               id="emailCheckout"
               name="emailCheckout"
-              value={user.email}
+              value={user?.email}
               required
             />
             <label className="labelEmail" htmlFor="emailCheckout">
@@ -97,7 +97,7 @@ const DetailCheckout = () => {
               type="text"
               id="phoneCheckout"
               name="phoneCheckout"
-              value={user.hoTen}
+              value={user?.hoTen}
               required
        
             />
