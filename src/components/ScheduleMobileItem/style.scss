@@ -15,22 +15,22 @@
       color: color("black");
     }
 
-    &::after {
-      content: "";
-      display: inline-block;
-      position: absolute;
-      top: 50%;
-      right: 0;
-      background-image: url(../../assets/images/logos/next-session.png);
-      background-size: cover;
-      width: 10px;
-      height: 10px;
-    }
-
     img {
       width: 50px;
       height: 50px;
       margin-right: spacing(1.5);
+    }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      right: 14px;
+      width: 15px;
+      height: 15px;
+      transform: translateY(-50%) rotate(0deg);
+      @include transition-all;
+      &.expand {
+        transform: rotate(90deg);
+      }
     }
   }
 
@@ -78,6 +78,11 @@
   }
   &__child {
     padding: spacing(1) 0;
+    &:hover {
+      span {
+        color: color("primary");
+      }
+    }
   }
 
   &__link {

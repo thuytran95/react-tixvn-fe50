@@ -1,5 +1,7 @@
 import React from "react";
+import { useState } from "react";
 import { renderNameTheater } from "../../Helpers";
+import arrow from "../../assets/images/logos/next-session.png";
 import "./style.scss";
 
 function ScheduleMobileItem(props) {
@@ -13,6 +15,8 @@ function ScheduleMobileItem(props) {
     { maHeThongRap: "MegaGS", color: "#9c9c9c" },
   ];
 
+  const [toggle, setToggle] = useState(false);
+
   const setColor = listColor.filter(
     (color) => color.maHeThongRap === maHeThongRap
   )[0].color;
@@ -24,6 +28,7 @@ function ScheduleMobileItem(props) {
         data-toggle="collapse"
         role="button"
         href={`#${maHeThongRap}`}
+        onClick={() => setToggle(!toggle)}
       >
         <img src={logo} alt="logo" />
         <p className="schedule__mobile__title">
@@ -34,6 +39,11 @@ function ScheduleMobileItem(props) {
             ""
           )}
         </p>
+        <img
+          className={`arrow ${toggle ? "expand" : ""}`}
+          src={arrow}
+          alt="arrow"
+        />
       </a>
       <div className="line"></div>
       <div id={maHeThongRap} className="collapse hide">

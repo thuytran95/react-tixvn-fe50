@@ -70,17 +70,17 @@ export const actTryLogin = (history) => {
       return;
     }
 
-    const exp = localStorage.getItem("exp");
-    const date = new Date().getTime();
+    // const exp = localStorage.getItem("exp");
+    // const date = new Date().getTime();
 
-    if (date > exp) {
-      dispatch(actLogout(history));
-      return;
-    }
+    // if (date > exp) {
+    //   dispatch(actLogout(history));
+    //   return;
+    // }
 
     const user = JSON.parse(localStorage.getItem("User"));
     setHeaders(user.accessToken);
-    dispatch(createAction(user));
+    dispatch(createAction(USER_LOGIN_SUCCESS, user));
   };
 };
 

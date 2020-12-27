@@ -16,7 +16,7 @@ const MovieScheduleMobile = (props) => {
 
   return (
     <>
-      <section className="schedule__mobile my-3">
+      <section className="schedule__mobile mt-3 mb-5">
         <div className="container-fluid">
           <div className="row">
             {theaterList?.map((theaterSystem, index) => {
