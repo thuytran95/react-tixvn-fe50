@@ -256,7 +256,7 @@
     }
   }
 
-  &__buyTicket {
+  &__buyTicket ,&__buyTicketactive{
     background-color: #afafaf;
     background-image: none;
     cursor: initial;
@@ -265,10 +265,21 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding-top: 15px;
+
     height: 60px;
     font-size: 24px;
     text-align: center;
-    color: #e9e9e9 !important;
+  
+    button{
+      width: 100%;
+      padding:10px 0;
+      background: transparent;
+      outline: none !important;
+      border: none;
+      color: #e9e9e9 ;
+    }
+  }
+  &__buyTicketactive{
+    background-color: yellowgreen;
   }
 }

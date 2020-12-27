@@ -1,24 +1,57 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import ListSeatCheckOut from "../ListSeatCheckout";
+import {createAction} from '../../Redux/Actions/index';
+import {CHOOSE_SEAT} from '../../Redux/Actions/type';
+import {useDispatch, useSelector} from 'react-redux'
 import "./SeatCheckout.scss";
 
-const SeatCheckout = ({ tenCumRap, ngayChieu, tenRap, danhSachGhe }) => {
-  // let [min, setMin] = useState(5);
-  // let [second, setSecond] = useState(0);
-  // const [active,setActive] = useState([style ="list__seat__item list__seat__item__active",disable =  true]);
-  // const [vip,setVip] = useState(["list__seat__item list__seat__item__vip",false]);
-  // const [selected,setSelected] = useState(["list__seat__item list__seat__item__selected",false]);
-  const active = "list__seat__item list__seat__item__active list__seat__item__cursor"
-  const notVip = "list__seat__item  list__seat__item__cursor"
-  const selected = "list__seat__item list__seat__item__selected list__seat__item__cursor"
-  const vip = "list__seat__item list__seat__item__vip list__seat__item__cursor"
-  const vipSeat = "list__seat__item list__seat__item__vip"
-  const renderSeat = () => {
-    // console.log(danhSachGhe);
-    // console.log(typeof danhSachGhe)
+const SeatCheckout = () => {
+
+  const dispatch = useDispatch();
+  const {ngayChieu,tenCumRap,tenRap} = useSelector((state) => state.booking.thongTinPhim);
+  const listSeat = useSelector((state) => state.booking.danhSachGhe);
+
+  const active =
+    "list__seat__item list__seat__item__active list__seat__item__cursor";
+  const notVip = "list__seat__item  list__seat__item__cursor";
+  const selected =
+    "list__seat__item list__seat__item__selected list__seat__item__cursor";
+  const vip = "list__seat__item list__seat__item__vip list__seat__item__cursor";
+  const vipSeat = "list__seat__item list__seat__item__vip";
+
+  const statusSeat = (booked, select, ticketType) => {
+    if (booked) {
+      // đã đặt
+      return selected;
+    }
+    if (select) {
+      // đã chon
+      return active;
+    } else {
+      if (ticketType === "Thuong") {
+        // vé thường 
+        return null;
+      } else {
+        // vé vip
+        return vip;
+      }
+    }
   };
 
-  // console.log(typeof danhSachGhe)
+  const renderSeat = () => {
+
+    return listSeat.map((ghe, index) => {
+      
+      return (
+        <ListSeatCheckOut
+          key={index}
+          props={statusSeat(ghe.daDat, ghe.dangChon,ghe.loaiGhe)}
+          tenGhe = {ghe.tenGhe}
+          onClick={()=>{dispatch(createAction(CHOOSE_SEAT,ghe))}}
+        />
+      );
+    });
+  };
 
   return (
     <div className="SeatCheckout">
@@ -71,123 +104,27 @@ const SeatCheckout = ({ tenCumRap, ngayChieu, tenRap, danhSachGhe }) => {
                 <h4>G</h4>
                 <h4>H</h4>
                 <h4>I</h4>
+                <h4>J</h4>
+                <h4>K</h4>
+                <h4>L</h4>
+                <h4>M</h4>
+                <h4>N</h4>
               </div>
-              <div className="listSeat__content">
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut props={vipSeat}/>
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-                <ListSeatCheckOut />
-              </div>
+              <div className="listSeat__content">{renderSeat()}</div>
             </div>
           </div>
           <div className="mt-5 d-flex justify-content-center">
-            <div  className="listSeat__description d-flex justify-content-around">
-              <div >
-                <ListSeatCheckOut props={notVip}/>
+            <div className="listSeat__description d-flex justify-content-around">
+              <div>
+                <ListSeatCheckOut props={notVip} />
                 <p>Ghế thường</p>
               </div>
               <div>
-                <ListSeatCheckOut props={vip}/>
+                <ListSeatCheckOut props={vip} />
                 <p>Ghế vip</p>
               </div>
               <div>
-                <ListSeatCheckOut props={active}/>
+                <ListSeatCheckOut props={active} />
                 <p>Đang chọn</p>
               </div>
               <div>

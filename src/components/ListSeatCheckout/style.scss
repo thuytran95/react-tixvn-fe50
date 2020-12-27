@@ -51,6 +51,7 @@
 .list__seat {
   display: inline-block;
   margin: spacing(0.5) spacing(0.2);
+
   &__item {
     border: 3px solid #3e515d;
     border-bottom-left-radius: 8px;
@@ -68,8 +69,15 @@
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
       border-top: none;
+      &:hover{
+        cursor: pointer;
+      }
       button {
         background-color: yellowgreen;
+        cursor: pointer;
+        span{
+          visibility: unset;
+        }
       }
     }
     &__selected {
@@ -79,12 +87,15 @@
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
       border-top: none;
-
+    
       button:disabled {
         background-color: pink;
       }
       button {
         background-color: pink;
+        // span{
+        //   visibility: unset;
+        // }
       }
     }
     &__vip {
@@ -94,8 +105,14 @@
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
       border-top: none;
+      cursor: pointer;
+      &:hover{
+        cursor: pointer;
+      }
       button {
         background-color: #f7b500;
+        cursor: pointer;
+       
       }
     }
 
@@ -104,13 +121,14 @@
       bottom: 2px;
       border-radius: 4px;
       background-color: #3e515d;
-      outline: none;
+      outline: none !important;
       border: none;
       width: 26px;
 
       text-align: center;
+     
     
-      &__tittle {
+      span{
         display: flex;
         justify-content: center;
         @include text(color("darkergrey"), $title3, $fwRegular);

@@ -1,20 +1,51 @@
 import Axios from "axios";
+import { Button } from "bootstrap";
 import React from "react";
+import { useSelector,useDispatch } from "react-redux";
+import {useParams} from 'react-router-dom';
+import {postBookingRequest} from '../../Redux/Actions/booking.action'
 import "./DetailCheckout.scss";
 
-const DetailCheckout = ({
-  totalCost,
-  gioChieu,
-  ngayChieu,
-  tenCumRap,
-  tenPhim,
-  tenRap,
-}) => {
+const DetailCheckout = () => {
+  const { maLichChieu } = useParams();
+  const gheDaDat = useSelector((state) => state.booking.gheDangDat);
+  const dispatch = useDispatch();
+  const {gioChieu,ngayChieu,tenCumRap,tenPhim,tenRap} = useSelector((state) => state.booking.thongTinPhim);
+  const styleButon = () =>{
+      if(gheDaDat.length < 1 || gheDaDat == undefined){
+        return "DetailCheckout__buyTicket"
+      }else{
+        return "DetailCheckout__buyTicketactive"
+      }
+    
+  }
+
+  const disableButton = styleButon() === "DetailCheckout__buyTicket" ? true : false;
+  const danhSachGheDuocChon  = gheDaDat.map(ghe => ghe.tenGhe + ",")
+  const tinhTongTien = ()=> {
+    const formatter = new Intl.NumberFormat('en');
+   const tt =   gheDaDat.reduce((tongtien,ghe,index)=>{
+      return tongtien += +ghe.giaVe
+    },0)
+ return formatter.format(tt);
+  }
+
+
+   // dặt vé 
+   function handleBooking() {
+ 
+    let  danhSachVe = gheDaDat.map((ghe) => ({
+      maGhe: ghe.maGhe,
+      giaVe: ghe.giaVe,
+    }));
+    dispatch(postBookingRequest(maLichChieu, danhSachVe));
+  }
+ 
   return (
     <div className="DetailCheckout">
       <div className="DetailCheckout__all customScroll">
         <div className="DetailCheckout__all__totalCost ">
-          <p>{totalCost} đ</p>
+          <p>{tinhTongTien()} đ</p>
         </div>
 
         <div className="DetailCheckout__all__filmName">
@@ -31,11 +62,11 @@ const DetailCheckout = ({
 
         <div className="DetailCheckout__all__chair row">
           <div className="col-sm-7 isPlaced">
-            <span className="isPlaced__title">Ghế</span>
+            <span className="isPlaced__title">Ghế : {danhSachGheDuocChon}</span>
             <span> </span>
             <span className="isPlaced__show"></span>
           </div>
-          <div className="col-sm-5 chair__total"> đ</div>
+          <div className="col-sm-5 chair__total">{tinhTongTien()} đ</div>
         </div>
 
         <div className="DetailCheckout__all__infouser">
@@ -113,7 +144,7 @@ const DetailCheckout = ({
         </div>
       </div>
 
-      <div className="DetailCheckout__buyTicket">Đặt Vé</div>
+      <div className={styleButon()}><button onClick={()=> {handleBooking()}} disabled={disableButton}>Đặt Vé</button></div>
     </div>
   );
 };
