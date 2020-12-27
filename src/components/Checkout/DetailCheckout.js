@@ -1,49 +1,55 @@
 import Axios from "axios";
 import { Button } from "bootstrap";
 import React from "react";
-import { useSelector,useDispatch } from "react-redux";
-import {useParams, useHistory} from 'react-router-dom';
-import {postBookingRequest} from '../../Redux/Actions/booking.action'
+import { useEffect } from "react";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams, useHistory } from "react-router-dom";
+import { postBookingRequest } from "../../Redux/Actions/booking.action";
 import "./DetailCheckout.scss";
 
 const DetailCheckout = () => {
+  const [quantitySeat, setQuantitySeat] = useState(null);
   const { maLichChieu } = useParams();
   const history = useHistory();
   const gheDaDat = useSelector((state) => state.booking.gheDangDat);
   const dispatch = useDispatch();
-  const {gioChieu,ngayChieu,tenCumRap,tenPhim,tenRap} = useSelector((state) => state.booking.thongTinPhim);
+  const { gioChieu, ngayChieu, tenCumRap, tenPhim, tenRap } = useSelector(
+    (state) => state.booking.thongTinPhim
+  );
   const user = useSelector((state) => state.user.data);
 
-  const styleButon = () =>{
-      if(gheDaDat.length < 1 || gheDaDat == undefined){
-        return "DetailCheckout__buyTicket"
-      }else{
-        return "DetailCheckout__buyTicketactive"
-      }
-    
-  }
+  const styleButon = () => {
+    if (gheDaDat.length < 1 || gheDaDat == undefined) {
+      return "DetailCheckout__buyTicket";
+    } else {
+      return "DetailCheckout__buyTicketactive";
+    }
+  };
 
-  const disableButton = styleButon() === "DetailCheckout__buyTicket" ? true : false;
-  const danhSachGheDuocChon  = gheDaDat.map(ghe => ghe.tenGhe + ",")
-  const tinhTongTien = ()=> {
-    const formatter = new Intl.NumberFormat('en');
-   const tt =   gheDaDat.reduce((tongtien,ghe,index)=>{
-      return tongtien += +ghe.giaVe
-    },0)
- return formatter.format(tt);
-  }
+  useEffect(() => {}, []);
 
+  const disableButton =
+    styleButon() === "DetailCheckout__buyTicket" ? true : false;
+  const danhSachGheDuocChon = gheDaDat.map((ghe) => ghe.tenGhe + ",");
+  // setQuantitySeat(gheDaDat.length);
+  const tinhTongTien = () => {
+    const formatter = new Intl.NumberFormat("en");
+    const tt = gheDaDat.reduce((tongtien, ghe, index) => {
+      return (tongtien += +ghe.giaVe);
+    }, 0);
+    return formatter.format(tt);
+  };
 
-   // dặt vé 
-   function handleBooking() {
- 
-    let  danhSachVe = gheDaDat.map((ghe) => ({
+  // dặt vé
+  function handleBooking() {
+    let danhSachVe = gheDaDat.map((ghe) => ({
       maGhe: ghe.maGhe,
       giaVe: ghe.giaVe,
     }));
-    dispatch(postBookingRequest(maLichChieu, danhSachVe,history));
+    dispatch(postBookingRequest(maLichChieu, danhSachVe, history));
   }
- 
+
   return (
     <div className="DetailCheckout">
       <div className="DetailCheckout__all customScroll">
@@ -80,7 +86,7 @@ const DetailCheckout = () => {
               type="text"
               id="emailCheckout"
               name="emailCheckout"
-              value={user.email}
+              value={user?.email}
               required
             />
             <label className="labelEmail" htmlFor="emailCheckout">
@@ -97,9 +103,8 @@ const DetailCheckout = () => {
               type="text"
               id="phoneCheckout"
               name="phoneCheckout"
-              value={user.hoTen}
+              value={user?.hoTen}
               required
-       
             />
             <label className="labelPhone" htmlFor="phoneCheckout">
               Họ Tên
@@ -150,7 +155,16 @@ const DetailCheckout = () => {
         </div>
       </div>
 
-      <div className={styleButon()}><button onClick={()=> {handleBooking()}} disabled={disableButton}>Đặt Vé</button></div>
+      <div className={styleButon()}>
+        <button
+          onClick={() => {
+            handleBooking();
+          }}
+          disabled={disableButton}
+        >
+          Đặt Vé
+        </button>
+      </div>
     </div>
   );
 };

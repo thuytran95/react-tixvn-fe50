@@ -6,7 +6,6 @@ import {
   USER_LOGIN_SUCCESS,
   USER_CLEAR_DATA,
   USER_LOGIN_FAILED,
-  ALERT_SUCCESS,
   USER_SIGNUP_SUCCESS,
   USER_SIGNUP_FAILED,
   USER_SIGNUP_REQUEST,
@@ -29,12 +28,6 @@ export const actLoginApi = (user, history) => {
           localStorage.setItem("User", JSON.stringify(res.data));
           // redirect qua home
           history.replace("/home");
-
-          // Thời gian hết phiên
-          // const date = new Date().getTime();
-          // const exp = date + TIME_EXP;
-          // localStorage.setItem("exp", exp);
-          // dispatch(setTimeoutLogout(history, TIME_EXP));
         } else {
           return Promise.reject({
             response: { data: "Bạn chưa đăng ký!" },
@@ -70,13 +63,7 @@ export const actTryLogin = (history) => {
       return;
     }
 
-    // const exp = localStorage.getItem("exp");
-    // const date = new Date().getTime();
-
-    // if (date > exp) {
-    //   dispatch(actLogout(history));
-    //   return;
-    // }
+    // dispatch(createAction(USER_LOGIN_REQUEST, null));
 
     const user = JSON.parse(localStorage.getItem("User"));
     setHeaders(user.accessToken);

@@ -24,7 +24,7 @@ const StepCheckout = () => {
       <div className="StepCheckout__account">
         <p>
           <img src={logoDangNhap} alt="" />
-          {user.hoTen}
+          {user?.hoTen}
         </p>
       </div>
     </div>
