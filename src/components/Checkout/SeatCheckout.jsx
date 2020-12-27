@@ -12,7 +12,8 @@ const SeatCheckout = () => {
   const {ngayChieu,tenCumRap,tenRap,hinhAnh} = useSelector((state) => state.booking.thongTinPhim);
   const listSeat = useSelector((state) => state.booking.danhSachGhe);
   const listTheater = useSelector((state) => state.theater.theaterSchedule);
-  
+  // console.log(listTheater);
+
 
 
   const active =
