@@ -2,12 +2,13 @@ import Axios from "axios";
 import { Button } from "bootstrap";
 import React from "react";
 import { useSelector,useDispatch } from "react-redux";
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import {postBookingRequest} from '../../Redux/Actions/booking.action'
 import "./DetailCheckout.scss";
 
 const DetailCheckout = () => {
   const { maLichChieu } = useParams();
+  const history = useHistory();
   const gheDaDat = useSelector((state) => state.booking.gheDangDat);
   const dispatch = useDispatch();
   const {gioChieu,ngayChieu,tenCumRap,tenPhim,tenRap} = useSelector((state) => state.booking.thongTinPhim);
@@ -38,7 +39,7 @@ const DetailCheckout = () => {
       maGhe: ghe.maGhe,
       giaVe: ghe.giaVe,
     }));
-    dispatch(postBookingRequest(maLichChieu, danhSachVe));
+    dispatch(postBookingRequest(maLichChieu, danhSachVe,history));
   }
  
   return (

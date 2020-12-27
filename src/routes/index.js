@@ -1,6 +1,6 @@
+import MovieScheduleMobile from "../components/MovieScheduleMobile";
 import Home from "../Screens/Home";
 import MovieDetail from "../Screens/MovieDetail";
-
 
 const routesHome = [
   {
@@ -18,7 +18,11 @@ const routesHome = [
     path: "/movie-detail/:id",
     component: MovieDetail,
   },
- 
+  {
+    exact: false,
+    path: "/movie-schedule-mobile",
+    component: MovieScheduleMobile,
+  },
 ];
 
 export { routesHome };

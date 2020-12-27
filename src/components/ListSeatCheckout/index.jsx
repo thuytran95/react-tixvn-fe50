@@ -4,8 +4,7 @@ import './style.scss'
 export default function ListSeatCheckOut(props) {
   const activeClass = props.props
   const tenGhe = props.tenGhe
-  console.log(props);
-    // console.log(activeClass,"class");
+
     const disableButton  = (key) =>{
         if(key === "list__seat__item list__seat__item__selected list__seat__item__cursor"){
             return true

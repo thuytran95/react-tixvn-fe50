@@ -2,6 +2,7 @@ import { createAction } from "./index";
 // import moduleName from '../../Service/booking'
 import Axios from "axios";
 import { GET_BOOKING_SUCCESS, GET_BOOKING_FAILED, CHOOSE_SEAT } from "./type";
+import {} from 'react-router-dom'
 export function getBookingRequest(maLichChieu) {
   //hàm chiệu trách nhiệm xữ lý bất đồng bộ
   return async (dispatch) => {
@@ -30,7 +31,7 @@ export function getBookingRequest(maLichChieu) {
 }
 
 // đăt vế
-export function postBookingRequest(maLichChieu, danhSachVe) {
+export function postBookingRequest(maLichChieu, danhSachVe,history) {
   return async function (dispatch) {
     try {
       // get local
@@ -50,6 +51,7 @@ export function postBookingRequest(maLichChieu, danhSachVe) {
       });
       if (res.status === 200 || res.status === 201) {
         alert("thành công");
+        history.push("/home");
       }
       // success
     } catch (error) {
