@@ -1,7 +1,9 @@
 import React, { memo } from "react";
 import "./StepCheckout.scss";
-
+import logoDangNhap from "../../assets/images/logos/changeAvatar.jpg";
+import { useSelector } from "react-redux";
 const StepCheckout = () => {
+  const user = useSelector((state) => state.user.data);
   let demoImageAccount =
     "https://graph.facebook.com/1887047281446229/picture?type=square";
 
@@ -21,8 +23,8 @@ const StepCheckout = () => {
       </div>
       <div className="StepCheckout__account">
         <p>
-          <img src={demoImageAccount} alt="" />
-          Long Nguyen
+          <img src={logoDangNhap} alt="" />
+          {user.hoTen}
         </p>
       </div>
     </div>

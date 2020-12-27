@@ -8,7 +8,7 @@ import SignUpScreen from "./Screens/SignUpScreen";
 import PageNotFound from "./Screens/PageNotFound";
 import { useEffect } from "react";
 import { connect } from "react-redux";
-import { actTryLogin } from "./Redux/Actions/user.action";
+import { actTryLogin,actLoginApi } from "./Redux/Actions/user.action";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App(props) {
@@ -31,6 +31,8 @@ function App(props) {
     // console.log(props);
     props.fetchTryLogin(props.history);
   }, []);
+
+
 
   return (
     <>

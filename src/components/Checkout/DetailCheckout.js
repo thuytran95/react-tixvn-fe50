@@ -12,6 +12,8 @@ const DetailCheckout = () => {
   const gheDaDat = useSelector((state) => state.booking.gheDangDat);
   const dispatch = useDispatch();
   const {gioChieu,ngayChieu,tenCumRap,tenPhim,tenRap} = useSelector((state) => state.booking.thongTinPhim);
+  const user = useSelector((state) => state.user.data);
+
   const styleButon = () =>{
       if(gheDaDat.length < 1 || gheDaDat == undefined){
         return "DetailCheckout__buyTicket"
@@ -78,6 +80,7 @@ const DetailCheckout = () => {
               type="text"
               id="emailCheckout"
               name="emailCheckout"
+              value={user.email}
               required
             />
             <label className="labelEmail" htmlFor="emailCheckout">
@@ -94,10 +97,12 @@ const DetailCheckout = () => {
               type="text"
               id="phoneCheckout"
               name="phoneCheckout"
+              value={user.hoTen}
               required
+       
             />
             <label className="labelPhone" htmlFor="phoneCheckout">
-              Phone
+              Họ Tên
             </label>
           </div>
         </div>

@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import ListSeatCheckOut from "../ListSeatCheckout";
 import {createAction} from '../../Redux/Actions/index';
 import {CHOOSE_SEAT} from '../../Redux/Actions/type';
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux';
+
 import "./SeatCheckout.scss";
 
 const SeatCheckout = () => {
 
   const dispatch = useDispatch();
-  const {ngayChieu,tenCumRap,tenRap} = useSelector((state) => state.booking.thongTinPhim);
+  const {ngayChieu,tenCumRap,tenRap,hinhAnh} = useSelector((state) => state.booking.thongTinPhim);
   const listSeat = useSelector((state) => state.booking.danhSachGhe);
+  const listTheater = useSelector((state) => state.theater.theaterSchedule);
+  
+
 
   const active =
     "list__seat__item list__seat__item__active list__seat__item__cursor";
@@ -60,7 +64,7 @@ const SeatCheckout = () => {
           <div className="logoCinema">
             <img
               className="logo"
-              src="https://s3img.vcdn.vn/123phim/2018/09/f32670fd0eb083c9c4c804f0f3a252ed.png"
+              src={""}
               alt="logo"
             />
           </div>
