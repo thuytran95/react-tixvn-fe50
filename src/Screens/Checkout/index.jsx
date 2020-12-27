@@ -1,82 +1,42 @@
-import Axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import DetailCheckout from "../../components/Checkout/DetailCheckout";
 import LeftCheckout from "../../components/Checkout/LeftCheckout";
 import SeatCheckout from "../../components/Checkout/SeatCheckout";
 import StepCheckout from "../../components/Checkout/StepCheckout";
 import "./style.scss";
+import { useParams } from "react-router-dom";
+import {getBookingRequest} from '../../Redux/Actions/booking.action'
+
 
 const Checkout = () => {
-  // "http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=15239";
 
-  let [image, setImage] = useState("");
-  let [totalCost, setTotalCost] = useState(0);
-  let [diaChi, setDiaChi] = useState("");
-  let [gioChieu, setGioChieu] = useState("");
-  let [maLichChieu, setMaLichChieu] = useState("");
-  let [ngayChieu, setNgayChieu] = useState("");
-  let [tenCumRap, setTenCumRap] = useState("");
-  let [tenPhim, setTenPhim] = useState("");
-  let [tenRap, setTenRap] = useState("");
-  let [danhSachGhe, setDanhSachGhe] = useState("");
+  const dispatch = useDispatch();
+  
+   
 
-  // Axios({
-  //   method: "GET",
-  //   url:
-  //     "http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=15239",
-  // })
-  //   .then((res) => {
-  //     setImage(res.data.thongTinPhim.hinhAnh);
-  //     setDiaChi(res.data.thongTinPhim.diaChi);
-  //     setGioChieu(res.data.thongTinPhim.gioChieu);
-  //     setMaLichChieu(res.data.thongTinPhim.maLichChieu);
-  //     setNgayChieu(res.data.thongTinPhim.ngayChieu);
-  //     setTenCumRap(res.data.thongTinPhim.tenCumRap);
-  //     setTenPhim(res.data.thongTinPhim.tenPhim);
-  //     setTenRap(res.data.thongTinPhim.tenRap);
-  //     setDanhSachGhe(res.data.danhSachGhe);
-  //     // console.log(res.data);
-  //   })
-  //   .catch((error) => console.log(error));
+  const { maLichChieu } = useParams();
 
-  useEffect(() => {
-    Axios({
-      method: "GET",
-      url:
-        "http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=15239",
-    })
-      .then((res) => {
-        setImage(res.data.thongTinPhim.hinhAnh);
-        setDiaChi(res.data.thongTinPhim.diaChi);
-        setGioChieu(res.data.thongTinPhim.gioChieu);
-        setMaLichChieu(res.data.thongTinPhim.maLichChieu);
-        setNgayChieu(res.data.thongTinPhim.ngayChieu);
-        setTenCumRap(res.data.thongTinPhim.tenCumRap);
-        setTenPhim(res.data.thongTinPhim.tenPhim);
-        setTenRap(res.data.thongTinPhim.tenRap);
-        setDanhSachGhe(res.data.danhSachGhe);
-        console.log(res.data);
-      })
-      .catch((error) => console.log(error));
+
+   // chỉ chạy 1 lần duy nhất khi commonent đc gọi
+   useEffect(function () {
+    //   dispastch action để tương tác vs api
+    dispatch(getBookingRequest(maLichChieu));
   }, []);
+
+ 
+
 
   return (
     <div className="Checkout">
       <StepCheckout />
       <DetailCheckout
-        totalCost={totalCost}
-        gioChieu={gioChieu}
-        ngayChieu={ngayChieu}
-        tenCumRap={tenCumRap}
-        tenPhim={tenPhim}
-        tenRap={tenRap}
+      
       />
-      <LeftCheckout image={image} />
+      <LeftCheckout />
       <SeatCheckout
-        tenCumRap={tenCumRap}
-        ngayChieu={ngayChieu}
-        tenRap={tenRap}
-        danhSachGhe={danhSachGhe}
+       
+       
       />
     </div>
   );
