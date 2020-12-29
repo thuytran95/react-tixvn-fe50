@@ -27,8 +27,6 @@ const DetailCheckout = () => {
     }
   };
 
-  useEffect(() => {}, []);
-
   const disableButton =
     styleButon() === "DetailCheckout__buyTicket" ? true : false;
   const danhSachGheDuocChon = gheDaDat.map((ghe) => ghe.tenGhe + ",");

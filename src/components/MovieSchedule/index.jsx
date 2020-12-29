@@ -6,9 +6,8 @@ import {
   getTheaterSystemListRequest,
 } from "../../Redux/Actions/theater.action";
 import format from "date-format";
-import moment from "moment";
-import "./style.scss";
 import { NavLink } from "react-router-dom";
+import "./style.scss";
 
 const MovieSchedule = (props) => {
   const listColor = [
