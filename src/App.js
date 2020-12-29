@@ -3,7 +3,9 @@ import Checkout from "./Screens/Checkout";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 import Login from "./Screens/Login";
 import LayoutTheme from "./components/Layout";
+import LayoutUserTheme from './components/Layout/user'
 import { routesHome } from "./routes";
+import {routerUser} from './routes/user'
 import SignUpScreen from "./Screens/SignUpScreen";
 import PageNotFound from "./Screens/PageNotFound";
 import { useEffect } from "react";
@@ -27,6 +29,21 @@ function App(props) {
     }
   };
 
+  const showLayoutUser = (routes) => {
+    if (routes && routes.length > 0) {
+      return routes.map((item, index) => {
+        return (
+          <LayoutUserTheme
+            key={index}
+            exact={item.exact}
+            path={item.path}
+            Component={item.component}
+          />
+        );
+      });
+    }
+  };
+
   useEffect(() => {
     // console.log(props);
     props.fetchTryLogin(props.history);
@@ -38,6 +55,8 @@ function App(props) {
     <>
       <Switch>
         {showLayoutHome(routesHome)}
+        
+        {showLayoutUser(routerUser)}
         <Route path="/login">
           <Login />
         </Route>

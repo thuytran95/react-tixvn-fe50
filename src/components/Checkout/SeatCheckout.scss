@@ -43,6 +43,15 @@
         color: #9b9b9b;
         text-align: center;
         margin-bottom: 10px;
+      
+      }
+      // &__setTime{
+      //   text-align: center;
+      //   @include text(red, $h1, $fwMedium);
+      // }
+      .info2 {
+        text-align: center;
+        @include text(red, $h1, $fwMedium);
       }
     }
   }
