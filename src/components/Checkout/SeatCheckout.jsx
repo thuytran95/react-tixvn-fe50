@@ -1,20 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ListSeatCheckOut from "../ListSeatCheckout";
-import {createAction} from '../../Redux/Actions/index';
-import {CHOOSE_SEAT} from '../../Redux/Actions/type';
-import {useDispatch, useSelector} from 'react-redux';
+import { createAction } from "../../Redux/Actions/index";
+import { CHOOSE_SEAT } from "../../Redux/Actions/type";
+import { useDispatch, useSelector } from "react-redux";
+import { Modal } from "react-responsive-modal";
+import "react-responsive-modal/styles.css";
+import Countdown, {
+  zeroPad,
+  calcTimeDelta,
+  formatTimeDelta,
+} from "react-countdown";
 
 import "./SeatCheckout.scss";
 
 const SeatCheckout = () => {
-
   const dispatch = useDispatch();
-  const {ngayChieu,tenCumRap,tenRap,hinhAnh} = useSelector((state) => state.booking.thongTinPhim);
+  const { ngayChieu, tenCumRap, tenRap, hinhAnh } = useSelector(
+    (state) => state.booking.thongTinPhim
+  );
   const listSeat = useSelector((state) => state.booking.danhSachGhe);
   const listTheater = useSelector((state) => state.theater.theaterSchedule);
   // console.log(listTheater);
-
-
+  let refreshPage = () => {
+    window.location.reload(false);
+  };
+ 
+  const renderer = ({ hours, minutes, seconds, completed }) => {
+    if (completed) {
+      // Render a complete state
+      return (
+        <>
+          <Modal open={true} closeOnOverlayClick={false} showCloseIcon={false}>
+            <span>
+              Đã hết thời gian giữ ghế. Vui lòng thực hiện đơn hàng trong thời
+              hạn 5 phút.
+              <span
+                onClick={() => {
+                  refreshPage();
+                }}
+                style={{ color: "red", cursor: "pointer" }}
+              >
+                {" "}
+                Đặt vé lại
+              </span>
+            </span>
+          </Modal>
+        </>
+      );
+    } else {
+      // Render a countdown
+      return (
+        <span>
+          {zeroPad(minutes)}:{zeroPad(seconds)}
+        </span>
+      );
+    }
+  };
 
   const active =
     "list__seat__item list__seat__item__active list__seat__item__cursor";
@@ -34,7 +75,7 @@ const SeatCheckout = () => {
       return active;
     } else {
       if (ticketType === "Thuong") {
-        // vé thường 
+        // vé thường
         return null;
       } else {
         // vé vip
@@ -44,15 +85,15 @@ const SeatCheckout = () => {
   };
 
   const renderSeat = () => {
-
     return listSeat.map((ghe, index) => {
-      
       return (
         <ListSeatCheckOut
           key={index}
-          props={statusSeat(ghe.daDat, ghe.dangChon,ghe.loaiGhe)}
-          tenGhe = {ghe.tenGhe}
-          onClick={()=>{dispatch(createAction(CHOOSE_SEAT,ghe))}}
+          props={statusSeat(ghe.daDat, ghe.dangChon, ghe.loaiGhe)}
+          tenGhe={ghe.tenGhe}
+          onClick={() => {
+            dispatch(createAction(CHOOSE_SEAT, ghe));
+          }}
         />
       );
     });
@@ -65,7 +106,7 @@ const SeatCheckout = () => {
           <div className="logoCinema">
             <img
               className="logo"
-              src={""}
+              src="https://s3img.vcdn.vn/123phim/2018/09/f32670fd0eb083c9c4c804f0f3a252ed.png"
               alt="logo"
             />
           </div>
@@ -79,8 +120,9 @@ const SeatCheckout = () => {
         <div className="SeatCheckout__topContent__rightTitle">
           <p className="info1">thời gian giữ ghế</p>
           <p className="info2">
-            <span className="minute"></span>
-            <span className="second"></span>
+            <span className="SeatCheckout__topContent__rightTitle__setTime">
+              <Countdown date={Date.now() + 300000} renderer={renderer} />
+            </span>
           </p>
         </div>
       </div>

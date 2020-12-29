@@ -139,6 +139,7 @@ const MovieSchedule = (props) => {
                     key={i}
                     className="btn-default"
                     href="#"
+                    target="_blank"
                   >
                     <span> {time.ngayChieuGioChieu}</span> ~{time.gioChieu}
                   </NavLink>
