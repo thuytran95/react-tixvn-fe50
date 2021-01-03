@@ -29,11 +29,6 @@ export default function TicketBookingHistoryUser() {
     setCurrenPage(currenPage > 1 ? currenPage - 1 : currenPage);
 
   // hide and show tr
-  const [show, setShow] = useState(false);
-  const [rowToggle, setRowToggle] = useState(null);
-
-  console.log(rowToggle);
-
   const handleShow = () => {
     $("#booking-history-table").on("click", ".parent", function (e) {
       e.preventDefault();
