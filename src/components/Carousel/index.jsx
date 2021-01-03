@@ -1,15 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import BookingMovie from "../BookingMovie";
 import nextImage from "../../assets/images/logos/next-session.png";
 import preImage from "../../assets/images/logos/back-session.png";
 import "./style.scss";
 
 const CarouselSlider = (props) => {
   const [index, setIndex] = useState(0);
-
-
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
@@ -136,7 +133,6 @@ const CarouselSlider = (props) => {
       ) : (
         ""
       )}
-      <BookingMovie />
     </section>
   );
 };

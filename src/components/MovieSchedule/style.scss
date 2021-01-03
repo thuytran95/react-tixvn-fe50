@@ -58,8 +58,12 @@
         }
       }
     }
+    &__tab__child {
+      background-color: #fff;
+    }
 
     &__child {
+      background-color: color("white");
       &__tab {
         @include list-default;
       }
