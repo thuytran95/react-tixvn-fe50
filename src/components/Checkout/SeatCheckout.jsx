@@ -3,15 +3,16 @@ import ListSeatCheckOut from "../ListSeatCheckout";
 import { createAction } from "../../Redux/Actions/index";
 import { CHOOSE_SEAT } from "../../Redux/Actions/type";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal } from "react-responsive-modal";
-import "react-responsive-modal/styles.css";
-import Countdown, {
-  zeroPad,
-  calcTimeDelta,
-  formatTimeDelta,
-} from "react-countdown";
+// import { Modal } from "react-responsive-modal";
+// import "react-responsive-modal/styles.css";
+// import Countdown, {
+//   zeroPad,
+//   calcTimeDelta,
+//   formatTimeDelta,
+// } from "react-countdown";
 
 import "./SeatCheckout.scss";
+import CheckoutCountDown from "../ChekoutCountDown";
 
 const SeatCheckout = () => {
   const dispatch = useDispatch();
@@ -21,41 +22,41 @@ const SeatCheckout = () => {
   const listSeat = useSelector((state) => state.booking.danhSachGhe);
   const listTheater = useSelector((state) => state.theater.theaterSchedule);
   // console.log(listTheater);
-  let refreshPage = () => {
-    window.location.reload(false);
-  };
+  // let refreshPage = () => {
+  //   window.location.reload(false);
+  // };
  
-  const renderer = ({ hours, minutes, seconds, completed }) => {
-    if (completed) {
-      // Render a complete state
-      return (
-        <>
-          <Modal open={true} closeOnOverlayClick={false} showCloseIcon={false}>
-            <span>
-              Đã hết thời gian giữ ghế. Vui lòng thực hiện đơn hàng trong thời
-              hạn 5 phút.
-              <span
-                onClick={() => {
-                  refreshPage();
-                }}
-                style={{ color: "red", cursor: "pointer" }}
-              >
-                {" "}
-                Đặt vé lại
-              </span>
-            </span>
-          </Modal>
-        </>
-      );
-    } else {
-      // Render a countdown
-      return (
-        <span>
-          {zeroPad(minutes)}:{zeroPad(seconds)}
-        </span>
-      );
-    }
-  };
+  // const renderer = ({ hours, minutes, seconds, completed }) => {
+  //   if (completed) {
+  //     // Render a complete state
+  //     return (
+  //       <>
+  //         <Modal open={true} closeOnOverlayClick={false} showCloseIcon={false}>
+  //           <span>
+  //             Đã hết thời gian giữ ghế. Vui lòng thực hiện đơn hàng trong thời
+  //             hạn 5 phút.
+  //             <span
+  //               onClick={() => {
+  //                 refreshPage();
+  //               }}
+  //               style={{ color: "red", cursor: "pointer" }}
+  //             >
+  //               {" "}
+  //               Đặt vé lại
+  //             </span>
+  //           </span>
+  //         </Modal>
+  //       </>
+  //     );
+  //   } else {
+  //     // Render a countdown
+  //     return (
+  //       <span>
+  //         {zeroPad(minutes)}:{zeroPad(seconds)}
+  //       </span>
+  //     );
+  //   }
+  // };
 
   const active =
     "list__seat__item list__seat__item__active list__seat__item__cursor";
@@ -121,7 +122,8 @@ const SeatCheckout = () => {
           <p className="info1">thời gian giữ ghế</p>
           <p className="info2">
             <span className="SeatCheckout__topContent__rightTitle__setTime">
-              <Countdown date={Date.now() + 300000} renderer={renderer} />
+              {/* <Countdown date={Date.now() + 300000} renderer={renderer} /> */}
+              <CheckoutCountDown time={300000}/>
             </span>
           </p>
         </div>

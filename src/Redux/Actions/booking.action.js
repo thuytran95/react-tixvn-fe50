@@ -5,6 +5,7 @@ import { GET_BOOKING_SUCCESS, GET_BOOKING_FAILED, CHOOSE_SEAT } from "./type";
 import {} from 'react-router-dom'
 export function getBookingRequest(maLichChieu) {
   //hàm chiệu trách nhiệm xữ lý bất đồng bộ
+ 
   return async (dispatch) => {
     //call api
     try {
@@ -35,7 +36,7 @@ export function postBookingRequest(maLichChieu, danhSachVe,history) {
   return async function (dispatch) {
     try {
       // get local
-      const user = JSON.parse(localStorage.getItem("user"));
+      const user = JSON.parse(localStorage.getItem("User"));
       // call api
       const res = await Axios({
         method: "POST",
@@ -45,13 +46,14 @@ export function postBookingRequest(maLichChieu, danhSachVe,history) {
           danhSachVe,
           taiKhoanNguoiDung: user.taiKhoan,
         },
+  
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
       });
       if (res.status === 200 || res.status === 201) {
         alert("thành công");
-        history.push("/home");
+        history.push("/user/thongtincanhan");
       }
       // success
     } catch (error) {
