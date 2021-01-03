@@ -9,6 +9,8 @@ import "./style.scss";
 const CarouselSlider = (props) => {
   const [index, setIndex] = useState(0);
 
+
+
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };

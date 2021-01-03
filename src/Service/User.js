@@ -29,7 +29,19 @@ class UserService {
       url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
       data,
     });
+    
   }
+  // infomationUser(data) {
+  //   return Axios({
+  //     method: "POST",
+  //     url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan",
+  //     data,
+  //   });
+    
+  // }
+  
+
+  
 }
 
 export default UserService;

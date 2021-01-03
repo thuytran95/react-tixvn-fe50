@@ -6,6 +6,7 @@ import {
   USER_SIGNUP_FAILED,
   USER_SIGNUP_REQUEST,
   USER_SIGNUP_SUCCESS,
+  USER_INFOMATION_USER_SUCCESS
 } from "../Actions/type";
 
 let initialState = {
@@ -14,6 +15,7 @@ let initialState = {
   err: null,
   errSignUp: null,
   dataSignUp: null,
+  infomationUser:null
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -42,6 +44,8 @@ const UserReducer = (state = initialState, action) => {
     case USER_SIGNUP_FAILED:
       console.log(payload);
       return { ...state, loading: false, dataSignUp: null, errSignUp: payload };
+      case USER_INFOMATION_USER_SUCCESS : 
+      return {...state,infomationUser:payload}
     default:
       return { ...state };
   }

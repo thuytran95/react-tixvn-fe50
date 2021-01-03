@@ -6,9 +6,10 @@ import {
   } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+
 export default function UserInfomation() {
   const user = useSelector((state) => state.user.data);
- 
+
 
 
   return (

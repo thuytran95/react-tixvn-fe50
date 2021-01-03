@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import logo from "../../assets/images/logos/web-logo.png";
 import avatar from "../../assets/images/logos/avatar.png";
 import changeAvatar from "../../assets/images/logos/changeAvatar.jpg";
-import { NavLink, useLocation, withRouter } from "react-router-dom";
+import { Link, NavLink, useLocation, withRouter } from "react-router-dom";
 import $ from "jquery";
 import { actLogout } from "../../Redux/Actions/user.action";
 import { connect, useSelector } from "react-redux";
 import "./style.scss";
 
 const Header = (props) => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
-  // console.log(user);
+  // const tk = localStorage.getItem('User');
+  // console.log(tk);
+  const taiKhoan = user?.taiKhoan;
 
   const hideModal = () => {
     $("#modalMobile").modal("hide");
@@ -55,6 +59,13 @@ const Header = (props) => {
   }, [width]);
   console.log(width);
 
+  useEffect(() => {
+    // dispatch(getInfomationUser(taiKhoan));
+    // let user = JSON.parse(localStorage.getItem('User'));
+    // console.log(user.taiKhoan);
+    // dispatch(getInfomationUser(user.taiKhoan));
+  }, []);
+
   return (
     <header id="header">
       <div className="header">
@@ -92,10 +103,15 @@ const Header = (props) => {
             </NavLink>
           </ul>
         </nav>
-        <div className="header__login">
+        <div className="header__login  show">
           <NavLink className="header__login__link" to="/login">
+         
             <img src={user ? changeAvatar : avatar} alt="dangnhap" />
             {user ? user.taiKhoan : "Đăng nhập"}
+   
+
+         
+
           </NavLink>
           {user ? (
             <li
@@ -126,6 +142,7 @@ const Header = (props) => {
                 <div className="header__mobile__login" onClick={hideModal}>
                   <NavLink className="header__login__link" to="/login">
                     <img src={user ? changeAvatar : avatar} alt="dangnhap" />
+
                     {user ? user.taiKhoan : "Đăng nhập"}
                   </NavLink>
                   {user ? (
