@@ -170,5 +170,13 @@
         }
       }
     }
+    .news__tab {
+      .nav-link {
+        font-size: fontSize(2);
+        &.active {
+          font-size: fontSize(2.4);
+        }
+      }
+    }
   }
 }

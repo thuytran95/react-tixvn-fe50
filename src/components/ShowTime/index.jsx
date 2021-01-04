@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ModalVideo from "react-modal-video";
 import dataMovie from "../../assets/data/movieListUpComing.json";
 import Slider from "react-slick";
@@ -46,7 +46,7 @@ const ShowTime = (props) => {
         breakpoint: 576,
         settings: {
           slidesToShow: 1,
-          // slidesToScroll: 0,
+          // slidesToScroll: 1,
           touchMove: false,
           rows: 3,
           arrows: false,
@@ -62,8 +62,46 @@ const ShowTime = (props) => {
   };
 
   const [row, setRow] = useState(3);
+  console.log(row);
 
   const movieListUpComing = dataMovie;
+  useEffect(() => {
+    setSettings({
+      dots: false,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      rows: 2,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 992,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+          },
+        },
+        {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 1,
+            // slidesToScroll: 1,
+            touchMove: false,
+            rows: row,
+            arrows: false,
+          },
+        },
+      ],
+    });
+  }, [row]);
 
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
     <span
@@ -178,12 +216,16 @@ const ShowTime = (props) => {
       ) : (
         ""
       )}
-      <div
-        className="text-center showtime__btn"
-        onClick={() => (row <= 3 ? setRow(row + 5) : row)}
-      >
-        <a className="btn-default">XEM THÊM</a>
-      </div>
+      {row <= 3 ? (
+        <div
+          className="text-center showtime__btn"
+          onClick={() => (row <= 3 ? setRow(row + 5) : row)}
+        >
+          <a className="btn-default">XEM THÊM</a>
+        </div>
+      ) : (
+        ""
+      )}
     </section>
   );
 };
