@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ModalVideo from "react-modal-video";
 import dataMovie from "../../assets/data/movieListUpComing.json";
 import Slider from "react-slick";
 import nextImage from "../../assets/images/logos/next-session.png";
@@ -10,6 +11,14 @@ import MovieItem from "../MovieItem";
 
 const ShowTime = (props) => {
   const movieList = props.movieList;
+  const [isOpen, setOpen] = useState(false);
+
+  function youtube_parser(url = " ") {
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    var match = url.match(regExp);
+    return match && match[7].length == 11 ? match[7] : false;
+  }
+
   const [settings, setSettings] = useState({
     dots: false,
     infinite: true,
@@ -48,6 +57,7 @@ const ShowTime = (props) => {
 
   const [iframe, setIframe] = useState("");
   const handleModal = (trailer) => {
+    setOpen(true);
     setIframe(trailer);
   };
 
@@ -156,19 +166,15 @@ const ShowTime = (props) => {
           </div>
         </div>
       </div>
+      {/* modal video */}
       {iframe ? (
-        <div className="modal modal-customize" id="modal-showtime">
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content">
-              <div className="modal-body">
-                <button type="button" className="close" data-dismiss="modal">
-                  &times;
-                </button>
-                <iframe src={iframe} title="trailer" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ModalVideo
+          channel="youtube"
+          autoplay
+          isOpen={isOpen}
+          videoId={youtube_parser(iframe)}
+          onClose={() => setOpen(false)}
+        />
       ) : (
         ""
       )}

@@ -1,18 +1,18 @@
-import React,{useState} from 'react';
-import ModalVideo from 'react-modal-video';
-import {NavLink} from 'react-router-dom'
+import React, { useState } from "react";
+import ModalVideo from "react-modal-video";
+import { NavLink } from "react-router-dom";
 import "./style.scss";
 
-
 export default function MovieDetailMainInfo(props) {
-  const [isOpen, setOpen] = useState(false)
-  const movieDetail = props.movieDetail
-  const trailer = movieDetail?.trailer
-  function youtube_parser(url =" "){
+  const [isOpen, setOpen] = useState(false);
+  const movieDetail = props.movieDetail;
+  const trailer = movieDetail?.trailer;
+
+  function youtube_parser(url = " ") {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     var match = url.match(regExp);
-    return (match&&match[7].length==11)? match[7] : false;
-}
+    return match && match[7].length == 11 ? match[7] : false;
+  }
 
   return (
     <div className="movie__detail__main__top d-flex flex-row">
@@ -28,31 +28,32 @@ export default function MovieDetailMainInfo(props) {
           </div>
 
           <div className="movie__detail__main__top__right__poster__icon">
-            <i  onClick={()=> setOpen(true)} className="fa fa-play"></i>
+            <i onClick={() => setOpen(true)} className="fa fa-play"></i>
           </div>
           {/* modal video */}
           <ModalVideo
-        channel="youtube"
-        autoplay
-        isOpen={isOpen}
-        videoId={youtube_parser(trailer)}
-        onClose={() => setOpen(false)}
-      />
+            channel="youtube"
+            autoplay
+            isOpen={isOpen}
+            videoId={youtube_parser(trailer)}
+            onClose={() => setOpen(false)}
+          />
         </div>
         <div className="movie__detail__main__top__right__content ml-3">
           <p>23.10.2020</p>
           <h3>
-            <span>C18</span> {'  '} 
+            <span>C18</span> {"  "}
             {/* Tiệc Trăng Máu - Blood Moon Party */}
             {movieDetail?.tenPhim}
           </h3>
-          <p>{movieDetail?.lichChieu[0]?.thoiLuong} phút - 0 IMDb - 2D/Digita</p>
-         <NavLink exact to="#showTimeDetail">
-         <button type="button" className="mt-2">
-            Mua Vé
-          </button>
-         </NavLink>
-      
+          <p>
+            {movieDetail?.lichChieu[0]?.thoiLuong} phút - 0 IMDb - 2D/Digita
+          </p>
+          <NavLink exact to="#showTimeDetail">
+            <button type="button" className="mt-2">
+              Mua Vé
+            </button>
+          </NavLink>
         </div>
       </div>
       <div className="movie__detail__main__top__right__box">
