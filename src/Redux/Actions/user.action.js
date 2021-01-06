@@ -97,7 +97,7 @@ export const actSignUpApi = (user, history) => {
 
 // get Ìnofomation
 
-export const getInfomationUser = (taiKhoan,callback,callbackError) => {
+export const getInfomationUser = (taiKhoan, callback, callbackError) => {
   return (dispatch) => {
     Axios({
       method: "POST",
@@ -130,7 +130,7 @@ export function updateInfomatinonUser(data) {
         method: "PUT",
         url:
           "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
-        data:data,
+        data: data,
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },

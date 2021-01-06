@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import logo from "../../assets/images/logos/web-logo.png";
 import avatar from "../../assets/images/logos/avatar.png";
 import changeAvatar from "../../assets/images/logos/changeAvatar.jpg";
-import { Link, NavLink, useLocation, withRouter } from "react-router-dom";
+import { NavLink, useLocation, withRouter } from "react-router-dom";
 import $ from "jquery";
 import { actLogout } from "../../Redux/Actions/user.action";
 import { connect, useSelector } from "react-redux";
@@ -25,6 +25,7 @@ const Header = (props) => {
 
   const location = useLocation();
 
+  // xac dinh vi tri cua element -> scroll
   useEffect(() => {
     if (location.hash) {
       // console.log(location.hash);
@@ -61,13 +62,6 @@ const Header = (props) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [width]);
   console.log(width);
-
-  useEffect(() => {
-    // dispatch(getInfomationUser(taiKhoan));
-    // let user = JSON.parse(localStorage.getItem('User'));
-    // console.log(user.taiKhoan);
-    // dispatch(getInfomationUser(user.taiKhoan));
-  }, []);
 
   return (
     <header id="header">
@@ -108,13 +102,8 @@ const Header = (props) => {
         </nav>
         <div className="header__login  show">
           <NavLink className="header__login__link" to="/login">
-         
             <img src={user ? changeAvatar : avatar} alt="dangnhap" />
             {user ? user.taiKhoan : "Đăng nhập"}
-   
-
-         
-
           </NavLink>
           {user ? (
             <li

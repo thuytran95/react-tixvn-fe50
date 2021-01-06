@@ -1,21 +1,28 @@
 import React from "react";
 import { useState } from "react";
+import ModalVideo from "react-modal-video";
 import Carousel from "react-bootstrap/Carousel";
-import BookingMovie from "../BookingMovie";
 import nextImage from "../../assets/images/logos/next-session.png";
 import preImage from "../../assets/images/logos/back-session.png";
 import "./style.scss";
 
 const CarouselSlider = (props) => {
   const [index, setIndex] = useState(0);
+  const [isOpen, setOpen] = useState(false);
 
-
+  function youtube_parser(url = " ") {
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    var match = url.match(regExp);
+    return match && match[7].length == 11 ? match[7] : false;
+  }
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);
   };
 
   const [iframe, setIframe] = useState(0);
+
+  console.log(iframe);
 
   const movieList = [
     {
@@ -87,10 +94,12 @@ const CarouselSlider = (props) => {
             <div className="carousel__overlay__play btn-play">
               <a
                 className="carousel_popup"
-                href={trailer}
+                href="#modal-carousel"
                 data-toggle="modal"
-                data-target="#modal-carousel"
-                onClick={() => setIframe(trailer)}
+                onClick={() => {
+                  setOpen(true);
+                  setIframe(trailer);
+                }}
               >
                 <i className="fa fa-play"></i>
               </a>
@@ -120,23 +129,18 @@ const CarouselSlider = (props) => {
       >
         {renderMovieList()}
       </Carousel>
+
       {iframe ? (
-        <div className="modal modal-customize" id="modal-carousel">
-          <div className="modal-dialog modal-lg">
-            <div className="modal-content">
-              <div className="modal-body">
-                <button type="button" className="close" data-dismiss="modal">
-                  &times;
-                </button>
-                <iframe src={iframe} title="trailer" frameBorder="0"></iframe>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ModalVideo
+          channel="youtube"
+          autoplay
+          isOpen={isOpen}
+          videoId={youtube_parser(iframe)}
+          onClose={() => setOpen(false)}
+        />
       ) : (
         ""
       )}
-      <BookingMovie />
     </section>
   );
 };
