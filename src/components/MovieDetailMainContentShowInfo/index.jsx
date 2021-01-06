@@ -11,13 +11,15 @@ export default function MovieDetailMainContentShowInfo(props) {
   const dispatch = useDispatch();
 
 
-  // const [loading,setLoading] = useState(true)
+  const [loading,setLoading] = useState(true)
   const lichChieu = useSelector((state) => state.movie?.movieDetail?.lichChieu);
   const listRap =  useSelector((state) => state.theater?.theaterSystemList);
   const danhSachRap = useSelector((state) => state.theater?.theaterSchedule);
   const [activeNgay,setActiveNgay] = useState(0)
   const [activeRap,setActiveRap] = useState(0)
   
+
+
   const ngayChieuGioChieu = lichChieu?.map((item) =>
     format("MM/dd/yyyy", new Date(item.ngayChieuGioChieu))
     // item.ngayChieuGioChieu
@@ -29,14 +31,23 @@ export default function MovieDetailMainContentShowInfo(props) {
   // rap
   const maRap = lichChieu?.map(item => item.thongTinRap.maHeThongRap);
   const maRapNoRepeat = maRap?.filter((value, index, maRap) => maRap.indexOf(value) === index);
-  let rapCoPhim = danhSachRap?.filter(function(obj) { return maRapNoRepeat.indexOf(obj.maHeThongRap) !== -1; });
-
-
+  let rapCoPhim = danhSachRap?.filter(function(obj) { return maRapNoRepeat?.indexOf(obj.maHeThongRap) !== -1; });
+  // console.log(maRap,maRapNoRepeat);
  // lịchpim
     useEffect(()=>{
+
+      // if (activeRap) {
+       
+       
+      // }
+     if (rapCoPhim) {
       dispatch(getTheaterSystemListRequest(rapCoPhim[activeRap]?.maHeThongRap))
+     }
+      
     },[activeRap])
 
+
+   
 
   // console.log(listRap);
 
