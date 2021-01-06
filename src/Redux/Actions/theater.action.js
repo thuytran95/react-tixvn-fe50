@@ -43,10 +43,13 @@ export const getTheaterSystemListRequest = (id) => {
       .then((res) => {
         // console.log(res.data);
         dispatch(createAction(GET_THEATER_SYSTEM_LIST_SUCCESS, res.data));
+
+
       })
       .catch((err) => {
         console.log(err);
         dispatch(createAction(GET_THEATER_SYSTEM_LIST_FAILED, err));
+
       });
   };
 };

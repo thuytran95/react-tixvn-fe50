@@ -11,9 +11,12 @@ import Loader from "../Loader";
 function Layout(props) {
   const dispatch = useDispatch();
   const [loading,setLoading]= useState(true);
+
   useEffect(()=>{
     // dispatch(getInfomationUser(taiKhoan));
     let user = JSON.parse(localStorage.getItem('User'));
+  
+  
     // console.log(user.taiKhoan);
     dispatch(getInfomationUser(user.taiKhoan,()=>{
       setLoading(false);
@@ -21,22 +24,24 @@ function Layout(props) {
       alert('lỗi rồi nè');
       // thông báo lỗi cho UI 
     }));
+  
   },[])
   return (
     <Fragment>
-    {loading? <Loader/>:<Fragment>
+   
       <Header />
       <div className="row">
         <div  className="col-2 px-0">
           <UserInfomation />
         </div>
         <div className="col-10 px-0">
-          {props.children}
+          {loading ? <>...</> : props.children   }
+          {/* {props.children } */}
         </div>
       </div>
       <Footer />
-    </Fragment>}
     </Fragment>
+ 
   );
 }
 

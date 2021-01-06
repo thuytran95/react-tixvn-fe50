@@ -1,6 +1,6 @@
 import React, {  useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateInfomatinonUser,getInfomationUser } from "../../Redux/Actions/user.action";
+import { updateInfomatinonUser } from "../../Redux/Actions/user.action";
 import "./style.scss";
 import { useFormik } from "formik";
 import Loader from "../Loader";
@@ -9,7 +9,7 @@ import Loader from "../Loader";
 export default function InfomationUser() {
   
   const dispatch = useDispatch();
-
+ 
 
 
   const { maLoaiNguoiDung } = useSelector((state) => state?.user?.data) || "";
@@ -114,6 +114,8 @@ export default function InfomationUser() {
     }
     
   });
+
+  
 
   // console.log(formik.errors.hoTen);
   return (

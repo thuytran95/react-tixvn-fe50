@@ -123,7 +123,7 @@ export function updateInfomatinonUser(data) {
   return async function (dispatch) {
     try {
       // get local
-      const user = JSON.parse(localStorage.getItem("user"));
+      const user = JSON.parse(localStorage.getItem("User"));
 
       // call api
       const res = await Axios({

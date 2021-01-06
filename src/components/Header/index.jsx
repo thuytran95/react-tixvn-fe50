@@ -12,8 +12,11 @@ import "./style.scss";
 const Header = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
-  // const tk = localStorage.getItem('User');
+   // const tk = localStorage.getItem('User');
   // console.log(tk);
+
+ 
+
   const taiKhoan = user?.taiKhoan;
 
   const hideModal = () => {

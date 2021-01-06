@@ -53,7 +53,7 @@ export function postBookingRequest(maLichChieu, danhSachVe,history) {
       });
       if (res.status === 200 || res.status === 201) {
         alert("thành công");
-        history.push("/user/thongtincanhan");
+        history.push("/user/lichsudatve");
       }
       // success
     } catch (error) {
