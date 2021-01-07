@@ -8,7 +8,7 @@ import {
   GET_THEATER_SYSTEM_LIST_SUCCESS,
 } from "./type";
 
-export const getScheduleTheaterSystemRequest = (callback) => {
+export const getScheduleTheaterSystemRequest = () => {
   return (dispatch) => {
     const theaterScheduleRequest = theaterService.getScheduleTheaterSystem();
     const theaterSystemListRequest = theaterService.getTheaterSystemList(
@@ -23,7 +23,7 @@ export const getScheduleTheaterSystemRequest = (callback) => {
           // console.log(res_2);
           dispatch(createAction(GET_SCHEDULE_THEATER_SYSTEM_SUCCESS, res_1));
           dispatch(createAction(GET_THEATER_SYSTEM_LIST_SUCCESS, res_2));
-          callback()
+          // callback()
         })
       )
       .catch(

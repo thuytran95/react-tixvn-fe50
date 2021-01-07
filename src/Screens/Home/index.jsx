@@ -10,17 +10,27 @@ import "./style.scss";
 import Loader from "../../components/Loader";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {loading : true};
+  }
+
   renderHTML = () => {
     const { movieList, isLoading } = this.props;
     if (isLoading) return <Loader />;
     if (movieList && movieList.length > 0) {
       return (
         <>
+         {this.state.loading ? <Loader/>: 
+         
+         <>
           <CarouselSlider />
           <ShowTime movieList={movieList} />
           <MovieSchedule />
           <News />
           <AppStore />
+         </>
+         }
         </>
       );
     }
@@ -30,7 +40,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(getMovieListRequest());
+    this.props.dispatch(getMovieListRequest(()=>{this.setState({loading:false})},()=>{alert("lỗi rồi !")}));
   }
 }
 

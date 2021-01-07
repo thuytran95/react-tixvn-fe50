@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import logo from "../../assets/images/logos/web-logo.png";
 import avatar from "../../assets/images/logos/avatar.png";
 import changeAvatar from "../../assets/images/logos/changeAvatar.jpg";
-import { NavLink, useLocation, withRouter } from "react-router-dom";
+import { NavLink, useLocation, withRouter,Link } from "react-router-dom";
 import $ from "jquery";
 import { actLogout } from "../../Redux/Actions/user.action";
 import { connect, useSelector } from "react-redux";
@@ -12,10 +12,8 @@ import "./style.scss";
 const Header = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
-   // const tk = localStorage.getItem('User');
+  // const tk = localStorage.getItem('User');
   // console.log(tk);
-
- 
 
   const taiKhoan = user?.taiKhoan;
 
@@ -101,10 +99,44 @@ const Header = (props) => {
           </ul>
         </nav>
         <div className="header__login  show">
-          <NavLink className="header__login__link" to="/login">
-            <img src={user ? changeAvatar : avatar} alt="dangnhap" />
-            {user ? user.taiKhoan : "Đăng nhập"}
-          </NavLink>
+          {user ? (
+            <>
+              <>
+                <div
+                  className="nav-link  p-0"
+           
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <img src={changeAvatar} alt="dangnhap" />
+                  {user.taiKhoan}
+                </div>
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <Link className="dropdown-item" to="/user/thongtincanhan">
+                    Thông tin cá nhân
+                  </Link>
+                  <Link className="dropdown-item" to="/user/thaydoimatkhau">
+                    Đổi mật khẩu
+                  </Link>
+                  <Link className="dropdown-item" to="/user/lichsudatve">
+                   Lịch sử đặt vé
+                  </Link>
+                </div>
+             
+              </>
+            </>
+          ) : (
+            <NavLink className="header__login__link" to="/login">
+              <img src={avatar} alt="dangnhap" />
+              "Đăng nhập"
+            </NavLink>
+          )}
           {user ? (
             <li
               className="header__logout"

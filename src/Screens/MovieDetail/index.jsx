@@ -14,7 +14,7 @@ export default function MovieDetail(props) {
   // console.log('moveis',movieDetail);
 
   useEffect(()=>{
-    dispatch(getScheduleTheaterSystemRequest(),()=>{setLoading(false)})
+    dispatch(getScheduleTheaterSystemRequest())
   },[])
 
   useEffect(() => {

@@ -1,15 +1,15 @@
-import Axios from "axios";
-import { Button } from "bootstrap";
+
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+
+// import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import { postBookingRequest } from "../../Redux/Actions/booking.action";
 import "./DetailCheckout.scss";
 
 const DetailCheckout = () => {
-  const [quantitySeat, setQuantitySeat] = useState(null);
+  // const [quantitySeat, setQuantitySeat] = useState(null);
+ 
   const { maLichChieu } = useParams();
   const history = useHistory();
   const gheDaDat = useSelector((state) => state.booking.gheDangDat);
@@ -20,7 +20,7 @@ const DetailCheckout = () => {
   const user = useSelector((state) => state.user.data);
 
   const styleButon = () => {
-    if (gheDaDat.length < 1 || gheDaDat == undefined) {
+    if (gheDaDat.length < 1 || gheDaDat === undefined) {
       return "DetailCheckout__buyTicket";
     } else {
       return "DetailCheckout__buyTicketactive";

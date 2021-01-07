@@ -146,7 +146,12 @@
 @include MediaQuery($lg) {
   .movie__detail__main__top {
     height: 120%;
+    
   }
+  .movie__detail__main__top__right__box__number{
+    top:48%;
+  }
+  
 }
 @include MediaQuery($sm) {
   .movie__detail__main__top {

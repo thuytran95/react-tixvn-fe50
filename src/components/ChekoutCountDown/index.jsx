@@ -3,8 +3,7 @@ import { Modal } from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
 import Countdown, {
   zeroPad,
-  calcTimeDelta,
-  formatTimeDelta,
+ 
 } from "react-countdown";
 function CheckoutCountDown(props) {
     const time = props.time;
