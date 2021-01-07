@@ -22,7 +22,7 @@ const CarouselSlider = (props) => {
 
   const [iframe, setIframe] = useState(0);
 
-  console.log(iframe);
+  // console.log(iframe);
 
   const movieList = [
     {
