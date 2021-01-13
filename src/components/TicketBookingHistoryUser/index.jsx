@@ -60,13 +60,9 @@ export default function TicketBookingHistoryUser() {
     ));
   };
 
-  // const gheDaDat = Object.keys(danhSachGhe[0]).map((key,index)=>[danhSachGhe[0][key]["maCumRap"],danhSachGhe[0][key]["maHeThongRap"]])
-
-  // console.log("thongtindatve :",b);
-  // const { maLoaiNguoiDung } = useSelector((state) => state?.user?.data) || "";
   return (
     <div className="tiket__booking__history">
-      <h4 className="text-center"> lịch sử đặt vé</h4>
+      <h4 className="text-center"> Lịch sử đặt vé</h4>
       <div className="tiket__booking__history__content">
         <div className="tiket__booking__history__content__table">
           <table

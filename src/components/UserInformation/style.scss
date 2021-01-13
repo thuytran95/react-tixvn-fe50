@@ -1,13 +1,9 @@
 @import "../../styles/index.scss";
 .use__infomation {
-  height: 95vh;
-  background-color:#e6ccb2;
-  // background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);
- 
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  height: 100vh;
+  background-color: #e6ccb2;
   &__nav {
     padding: spacing(5) spacing(0);
-
 
     height: 100%;
     &__header {
@@ -38,34 +34,33 @@
         @include text(color("darkergrey"), $h1, $fwMedium);
         text-align: center;
         cursor: pointer;
-     
       }
     }
   }
 }
 
-.styleNavLink{
+.styleNavLink {
   text-align: center;
   width: 100%;
   padding: spacing(1) spacing(0);
   text-decoration: none !important;
   @include text(color("darkergrey"), $h1, $fwMedium);
-  i{
+  i {
     display: none;
   }
-  &:hover{
+  &:hover {
     @include text(color("darkergrey"), $h1, $fwMedium);
   }
 }
-.styleNavLinkActive{
+.styleNavLinkActive {
   text-align: center;
   @include text(color("lightwhite"), $h1, $fwMedium);
   background-color: #9c6644;
-  
+
   width: 100%;
   padding: spacing(1) spacing(0);
   text-decoration: none !important;
-  &:hover{
+  &:hover {
     color: color("lightwhite");
     // background-color: color("blue");
     background-color: #9c6644;
@@ -73,26 +68,22 @@
 }
 
 @include MediaQuery($sm) {
-
-  .use__infomation__nav__header{
-    img{
+  .use__infomation__nav__header {
+    img {
       width: 50px;
       margin-bottom: spacing(1);
     }
-    p{
+    p {
       display: none;
     }
   }
 
-  .styleNavLink{
-    span{
+  .styleNavLink {
+    span {
       display: none;
     }
-    i{
+    i {
       display: block;
     }
   }
-
-
-
 }
