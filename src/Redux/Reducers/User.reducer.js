@@ -6,7 +6,8 @@ import {
   USER_SIGNUP_FAILED,
   USER_SIGNUP_REQUEST,
   USER_SIGNUP_SUCCESS,
-  USER_INFOMATION_USER_SUCCESS
+  USER_INFOMATION_USER_SUCCESS,
+  REDIRECT_TO_HOME,
 } from "../Actions/type";
 
 let initialState = {
@@ -15,7 +16,7 @@ let initialState = {
   err: null,
   errSignUp: null,
   dataSignUp: null,
-  infomationUser:null
+  infomationUser: null,
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -37,15 +38,17 @@ const UserReducer = (state = initialState, action) => {
         errSignUp: null,
         dataSignUp: null,
       };
+    case REDIRECT_TO_HOME:
+      return { ...state, err: null };
     case USER_SIGNUP_REQUEST:
       return { ...state, loading: true };
     case USER_SIGNUP_SUCCESS:
       return { ...state, loading: false, dataSignUp: payload };
     case USER_SIGNUP_FAILED:
-      console.log(payload);
+      // console.log(payload);
       return { ...state, loading: false, dataSignUp: null, errSignUp: payload };
-      case USER_INFOMATION_USER_SUCCESS : 
-      return {...state,infomationUser:payload}
+    case USER_INFOMATION_USER_SUCCESS:
+      return { ...state, infomationUser: payload };
     default:
       return { ...state };
   }

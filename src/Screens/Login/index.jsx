@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { NavLink, Redirect, withRouter } from "react-router-dom";
 import Loader from "../../components/Loader";
-import { actLoginApi } from "../../Redux/Actions/user.action";
+import { actLoginApi, actRedirect } from "../../Redux/Actions/user.action";
 import "./style.scss";
 
 class LoginPage extends Component {
@@ -33,7 +33,15 @@ class LoginPage extends Component {
   renderNotice = () => {
     const { err } = this.props;
     if (err) {
-      return <div className="alert alert-danger">{err.response.data}</div>;
+      return (
+        <>
+          <div className="alert alert-danger">{err.response.data}</div>
+          <div>
+            Bạn chưa có tài khoản?
+            <NavLink to="/signup">Đăng ký</NavLink>
+          </div>
+        </>
+      );
     }
   };
 
@@ -74,7 +82,11 @@ class LoginPage extends Component {
               </button>
             </form>
             <div className="login__close">
-              <NavLink className="btn-close" to="/home">
+              <NavLink
+                className="btn-close"
+                to="/home"
+                onClick={this.props.redirectToHome}
+              >
                 <i className="fa fa-times"></i>
               </NavLink>
             </div>
@@ -96,6 +108,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchLogin: (user, history) => {
       dispatch(actLoginApi(user, history));
+    },
+    redirectToHome: () => {
+      dispatch(actRedirect());
     },
   };
 };

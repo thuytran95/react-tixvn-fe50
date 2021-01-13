@@ -12,9 +12,8 @@ import {
   USER_SIGNUP_REQUEST,
   USER_INFOMATION_USER_SUCCESS,
   USER_INFOMATION_USER_FAILED,
+  REDIRECT_TO_HOME,
 } from "./type";
-
-const TIME_EXP = 3600000;
 
 export const actLoginApi = (user, history) => {
   return (dispatch) => {
@@ -52,14 +51,6 @@ export const actLogout = (history) => {
   return { type: USER_CLEAR_DATA };
 };
 
-// export const setTimeoutLogout = (history, expTimeout) => {
-//   return (dispatch) => {
-//     setTimeout(() => {
-//       dispatch(actLogout(history));
-//     }, expTimeout);
-//   };
-// };
-
 export const actTryLogin = (history) => {
   return (dispatch) => {
     if (!localStorage.getItem("User")) {
@@ -84,7 +75,7 @@ export const actSignUpApi = (user, history) => {
       .then((res) => {
         console.log(res.data);
         dispatch(createAction(USER_SIGNUP_SUCCESS, res.data));
-
+        window.alert("Đăng ký thành công");
         // redirect qua login
         history.replace("/login");
       })
@@ -144,3 +135,9 @@ export function updateInfomatinonUser(data) {
     }
   };
 }
+
+export const actRedirect = () => {
+  return (dispatch) => {
+    dispatch(createAction(REDIRECT_TO_HOME, null));
+  };
+};

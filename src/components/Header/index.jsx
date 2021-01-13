@@ -101,33 +101,31 @@ const Header = (props) => {
         <div className="header__login  show">
           {user ? (
             <>
-              <>
-                <div
-                  className="nav-link  p-0"
-                  id="navbarDropdownMenuLink"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <img src={changeAvatar} alt="dangnhap" />
-                  {user.taiKhoan}
-                </div>
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <Link className="dropdown-item" to="/user/thongtincanhan">
-                    Thông tin cá nhân
-                  </Link>
-                  <Link className="dropdown-item" to="/user/thaydoimatkhau">
-                    Đổi mật khẩu
-                  </Link>
-                  <Link className="dropdown-item" to="/user/lichsudatve">
-                    Lịch sử đặt vé
-                  </Link>
-                </div>
-              </>
+              <div
+                className="nav-link  p-0"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <img src={changeAvatar} alt="dangnhap" />
+                {user.taiKhoan}
+              </div>
+              <div
+                className="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <Link className="dropdown-item" to="/user/thongtincanhan">
+                  Thông tin cá nhân
+                </Link>
+                <Link className="dropdown-item" to="/user/thaydoimatkhau">
+                  Đổi mật khẩu
+                </Link>
+                <Link className="dropdown-item" to="/user/lichsudatve">
+                  Lịch sử đặt vé
+                </Link>
+              </div>
             </>
           ) : (
             <NavLink className="header__login__link" to="/login">

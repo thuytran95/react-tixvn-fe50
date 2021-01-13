@@ -17,15 +17,12 @@ const SignUpScreen = (props) => {
   };
 
   const renderNotice = () => {
-    const { errSignUp, dataSignUp } = props;
+    const { errSignUp } = props;
     console.log(errSignUp);
     if (errSignUp) {
       return (
         <div className="alert alert-danger">{errSignUp.response.data}</div>
       );
-    }
-    if (dataSignUp) {
-      return window.alert("Đăng ký thành công");
     }
   };
 

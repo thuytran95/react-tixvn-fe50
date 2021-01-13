@@ -22,15 +22,14 @@ function ScheduleMobileItem(props) {
   const setColor = listColor.filter(
     (color) => color.maHeThongRap === maHeThongRap
   )[0].color;
-  console.log(lstCumRap);
 
   const renderMovieSchedule = (showtimList) => {
     let renderContent = showtimList.map((item, index) => {
       // lay ngay dau tien trong danh sach phim
       let date = item.lstLichChieuTheoPhim[0].ngayChieuGioChieu;
       let dateFormat = format("yyyy-MM-dd", new Date(date));
-      console.log(date);
-      console.log(dateFormat);
+      // console.log(date);
+      // console.log(dateFormat);
       //loc toan bo ngay dau tien
       let timeList = [];
 
