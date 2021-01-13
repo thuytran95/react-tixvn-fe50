@@ -8,23 +8,22 @@ import format from "date-format";
 export default function MovieDetailMainContentShowInfo(props) {
   const dispatch = useDispatch();
 
-  // const [loading,setLoading] = useState(true)
   const lichChieu = useSelector((state) => state.movie?.movieDetail?.lichChieu);
   const listRap = useSelector((state) => state.theater?.theaterSystemList);
   const danhSachRap = useSelector((state) => state.theater?.theaterSchedule);
   const [activeNgay, setActiveNgay] = useState(0);
   const [activeRap, setActiveRap] = useState(0);
+  const [theaterID, setTheaterID] = useState({ maHeThongRap: "BHDStar" });
 
-  const ngayChieuGioChieu = lichChieu?.map(
-    (item) => format("MM/dd/yyyy", new Date(item.ngayChieuGioChieu))
-    // item.ngayChieuGioChieu
+  const ngayChieuGioChieu = lichChieu?.map((item) =>
+    format("MM/dd/yyyy", new Date(item.ngayChieuGioChieu))
   );
   const ngayChieu = ngayChieuGioChieu?.filter(
     (value, index, ngayChieuGioChieu) =>
       ngayChieuGioChieu.indexOf(value) === index
   );
 
-  console.log(lichChieu);
+  // console.log(lichChieu);
 
   // rap
   const maRap = lichChieu?.map((item) => item.thongTinRap.maHeThongRap);
@@ -32,16 +31,15 @@ export default function MovieDetailMainContentShowInfo(props) {
     (value, index, maRap) => maRap.indexOf(value) === index
   );
   let rapCoPhim = danhSachRap?.filter(function (obj) {
-    return maRapNoRepeat.indexOf(obj.maHeThongRap) !== -1;
+    return maRapNoRepeat?.indexOf(obj.maHeThongRap) !== -1;
   });
-
+  // console.log(maRap, maRapNoRepeat);
   // lịchpim
   useEffect(() => {
-    if (activeRap) {
+    if (rapCoPhim) {
       dispatch(getTheaterSystemListRequest(rapCoPhim[activeRap]?.maHeThongRap));
     }
   }, [activeRap]);
-  console.log(activeRap);
 
   // console.log(listRap);
 
@@ -50,7 +48,7 @@ export default function MovieDetailMainContentShowInfo(props) {
       format("MM/dd/yyyy", new Date(item.ngayChieuGioChieu)) ===
       ngayChieu[activeNgay]
   );
-  // console.log(thongTinRap,"ss");
+  // console.log(thongTinRap, "ss");
   const thongTinRapActive = thongTinRap?.map((item) => item.thongTinRap);
   const rapCoPhimActive = thongTinRapActive?.map((item) => item.maCumRap);
   const thongTinRapCoPhim = listRap?.filter(function (obj) {
@@ -85,7 +83,6 @@ export default function MovieDetailMainContentShowInfo(props) {
 
       default:
         return "";
-        break;
     }
   };
 
@@ -107,7 +104,7 @@ export default function MovieDetailMainContentShowInfo(props) {
 
   const setActiveNgayColor = (index, value) => {
     setActiveNgay(index);
-    console.log(value);
+    // console.log(value);
   };
 
   const renderNgayChieu = () => {
@@ -138,6 +135,7 @@ export default function MovieDetailMainContentShowInfo(props) {
         key={index}
         onClick={() => {
           setActiveRapColor(index, item.maHeThongRap);
+          setTheaterID({ maHeThongRap: item.maHeThongRap });
         }}
       >
         <div className="col-xs-2 col-sm-2 col-md-4  show__info__movies__pcinema__name__logo">
@@ -158,6 +156,7 @@ export default function MovieDetailMainContentShowInfo(props) {
         ngayChieu={ngayChieu[activeNgay]}
         maRap={listMaRapDuocChonKhongLap}
         key={index}
+        theaterID={theaterID}
       />
     ));
   };
@@ -168,29 +167,10 @@ export default function MovieDetailMainContentShowInfo(props) {
         <div className="container-fluid">
           <div className="row">
             <div className=" reponsive-2  col-sm-12 	col-md-3  ">
-              {/* item1 */}
-              {/* <div className="row show__info__movies__pcinema__name show__info__movies__pcinema__name__active">
-                <div className="col-xs-2 col-sm-2  col-md-4  show__info__movies__pcinema__name__logo">
-                  <img src={BdhStar} alt="" />
-                </div>
-
-                <div className="col-xs-10 col-sm-10 col-md-8">
-                  <h4 className="">BHD Star Cineplex</h4>
-                </div>
-              </div> */}
-              {/* item1 */}
               {renderCumRapPhim()}
             </div>
             <div className="col-sm-12 	col-md-9 pr-0  ">
               <div className="show__info__movies__time ">
-                {/* <div className="show__info__movies__time__item show__info__movies__time__item__active">
-                  <p>Thứ 2</p>
-                  <h6>01</h6>
-                </div>
-                <div className="show__info__movies__time__item">
-                  <p>Thứ 2</p>
-                  <h6>01</h6>
-                </div> */}
                 {renderNgayChieu()}
               </div>
 

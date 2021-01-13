@@ -7,7 +7,7 @@ import { getInfomationUser } from "../../Redux/Actions/user.action";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { Fragment } from "react";
-import Loader from "../Loader";
+// import Loader from "../Loader";
 function Layout(props) {
   const dispatch = useDispatch();
   const [loading,setLoading]= useState(true);
@@ -31,10 +31,10 @@ function Layout(props) {
    
       <Header />
       <div className="row">
-        <div  className="col-2 px-0">
+        <div  className="col-2 col-sm-3 col-md-2 px-0">
           <UserInfomation />
         </div>
-        <div className="col-10 px-0">
+        <div className="col-10 col-sm-9 col-md-10 px-0">
           {loading ? <>...</> : props.children   }
           {/* {props.children } */}
         </div>

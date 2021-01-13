@@ -13,16 +13,6 @@ const SignUpScreen = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const handleSubmit = (values) => {
-    // console.log(values);
-    // return userService
-    //   .signUp(values)
-    //   .then((res) => {
-    //     console.log(res);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-
     dispatch(actSignUpApi(values, history));
   };
 
@@ -160,7 +150,13 @@ const SignUpScreen = (props) => {
                     <option>GP09</option>
                     <option>GP10</option>
                   </Field>
-                  <ErrorMessage name="maNhom"></ErrorMessage>
+                  <ErrorMessage name="maNhom">
+                    {(message) => (
+                      <div className="alert text-danger alert-validation ">
+                        {message}
+                      </div>
+                    )}
+                  </ErrorMessage>
                 </div>
                 <div className="text-center mt-5">
                   <button className="btn btn-success" type="submit">

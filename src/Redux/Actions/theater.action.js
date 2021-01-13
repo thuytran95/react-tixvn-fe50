@@ -23,6 +23,7 @@ export const getScheduleTheaterSystemRequest = () => {
           // console.log(res_2);
           dispatch(createAction(GET_SCHEDULE_THEATER_SYSTEM_SUCCESS, res_1));
           dispatch(createAction(GET_THEATER_SYSTEM_LIST_SUCCESS, res_2));
+          // callback()
         })
       )
       .catch(
@@ -36,7 +37,7 @@ export const getScheduleTheaterSystemRequest = () => {
   };
 };
 
-export const getTheaterSystemListRequest = (id) => {
+export const getTheaterSystemListRequest = (id,callback) => {
   return (dispatch) => {
     theaterService
       .getTheaterSystemList(id)
