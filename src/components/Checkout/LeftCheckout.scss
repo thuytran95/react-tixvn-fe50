@@ -1,22 +1,31 @@
+@import "../../styles/index.scss";
 .LeftCheckout {
-    grid-area: LeftCheckout;
-    min-height: calc(100% - 80px);
+    // grid-area: LeftCheckout;
+
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    top: 80px;
-    float: left;
-    width: 26%;
-    position: fixed;
-    z-index: 1;
-    left: -22%;
-    &__modalleft {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
+    // top: 80px;
+    // float: left;
+    // width: 26%;
+    // position: fixed;
+    // z-index: 1;
+    // left: -22%;
+    // &__modalleft {
+    //   position: absolute;
+    //   top: 0;
+    //   bottom: 0;
+    //   left: 0;
+    //   right: 0;
       background: #000;
       opacity: 0.7;
-    }
+    // }
+    width: 80px;
+    height: calc(100vh - 80px);
+}
+
+@include MediaQuery($lg){
+  .LeftCheckout {
+    display: none;
+  }
 }

@@ -1,13 +1,19 @@
 import React from "react";
 import "./LeftCheckout.scss";
+import {useSelector} from 'react-redux'
 
 const LeftCheckout = ({image}) => {
-
+  const { hinhAnh } = useSelector(
+    (state) => state.booking.thongTinPhim
+  );
+  console.log(hinhAnh);
   return (
     <div
       className="LeftCheckout"
       style={{
-        backgroundImage: "url(" + image  + ")",
+        backgroundRepeat:"no-repeat",
+        backgroundSize:"cover",
+        backgroundImage: "url(" + hinhAnh  + ")",
       }}
     >
       <div className="LeftCheckout__modalleft"></div>

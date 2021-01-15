@@ -1,4 +1,3 @@
-
 import React from "react";
 
 // import { useState } from "react";
@@ -9,7 +8,7 @@ import "./DetailCheckout.scss";
 
 const DetailCheckout = () => {
   // const [quantitySeat, setQuantitySeat] = useState(null);
- 
+
   const { maLichChieu } = useParams();
   const history = useHistory();
   const gheDaDat = useSelector((state) => state.booking.gheDangDat);
@@ -151,8 +150,8 @@ const DetailCheckout = () => {
             đã đăng nhập
           </span>
         </div>
+      
       </div>
-
       <div className={styleButon()}>
         <button
           onClick={() => {
@@ -163,6 +162,7 @@ const DetailCheckout = () => {
           Đặt Vé
         </button>
       </div>
+     
     </div>
   );
 };

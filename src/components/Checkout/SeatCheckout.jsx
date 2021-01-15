@@ -3,6 +3,7 @@ import ListSeatCheckOut from "../ListSeatCheckout";
 import { createAction } from "../../Redux/Actions/index";
 import { CHOOSE_SEAT } from "../../Redux/Actions/type";
 import { useDispatch, useSelector } from "react-redux";
+import {getCinemaSystemInformati} from '../../Redux/Actions/theater.action'
 // import { Modal } from "react-responsive-modal";
 // import "react-responsive-modal/styles.css";
 // import Countdown, {
@@ -15,12 +16,18 @@ import "./SeatCheckout.scss";
 import CheckoutCountDown from "../ChekoutCountDown";
 
 const SeatCheckout = () => {
+  const [loading,setLoading] = useState(true)
   const dispatch = useDispatch();
   const { ngayChieu, tenCumRap, tenRap, hinhAnh } = useSelector(
     (state) => state.booking.thongTinPhim
   );
+  useEffect(()=>{
+    dispatch(getCinemaSystemInformati(()=>{setLoading(false)}))
+  },[])
   const listSeat = useSelector((state) => state.booking.danhSachGhe);
-  const listTheater = useSelector((state) => state.theater.theaterSchedule);
+  const listCumRap = useSelector((state) => state.theater.listHeThongRap);
+  
+
   // console.log(listTheater);
   // let refreshPage = () => {
   //   window.location.reload(false);

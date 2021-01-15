@@ -144,3 +144,9 @@
     }
   }
 }
+
+@include MediaQuery($xs) {
+  button.list__seat__item__btn {
+    width: 18px;
+  }
+}
