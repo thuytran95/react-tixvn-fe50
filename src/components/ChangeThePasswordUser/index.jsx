@@ -84,7 +84,7 @@ export default function ChangeThePasswordUser() {
             <input
               type="password"
               className="form-control"
-              placeholder="Mật khâu mới"
+              placeholder="Mật khẩu mới"
               name="matKhauMoi"
               onChange={formik.handleChange}
               value={formik.values.matKhauMoi}

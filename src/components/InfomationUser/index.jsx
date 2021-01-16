@@ -1,60 +1,42 @@
-import React, {  useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateInfomatinonUser } from "../../Redux/Actions/user.action";
 import "./style.scss";
 import { useFormik } from "formik";
 import Loader from "../Loader";
 
-
 export default function InfomationUser() {
-  
   const dispatch = useDispatch();
- 
-
 
   const { maLoaiNguoiDung } = useSelector((state) => state?.user?.data) || "";
   const { hoTen, taiKhoan, soDT, email, maNhom, matKhau } =
     useSelector((state) => state?.user?.infomationUser) || "";
-    
-    
-    
-
-
-  // const dispatch = useDispatch();
-  // const [hotens, setHoten] = useState(hoTen);
-  // const [taiKhoans, setTaiKhoan] = useState("");
-  // const [soDTs, setSoDT] = useState("");
-  // const [emails, setEmail] = useState("");
-  // const [maNhoms, setMaNhom] = useState("");
-  // const [maLoaiNguoiDungs, setMaNguoiDung] = useState("");
 
   const [disable, setDisable] = useState(!"disabled");
   const [checked, setChecked] = useState(false);
-  const checkUpdate = ()=>{
-    if(checked){
-      setDisable(!dispatch)
+  const checkUpdate = () => {
+    if (checked) {
+      setDisable(!dispatch);
     }
-  }
+  };
 
-  const checkStart = ()=>{
-    setChecked(!checked)
-  }
+  const checkStart = () => {
+    setChecked(!checked);
+  };
 
-  const disableChekbot = ()=>{
-    if(formik.errors.hoTen){
-      return "disabled"
-    } if(formik.errors.soDT){
-      return "disabled"
+  const disableChekbot = () => {
+    if (formik.errors.hoTen) {
+      return "disabled";
     }
-    if(formik.errors.email){
-      return "disabled"
-    }else{
-      return !"disabled"
+    if (formik.errors.soDT) {
+      return "disabled";
     }
-  }
- 
-
-
+    if (formik.errors.email) {
+      return "disabled";
+    } else {
+      return !"disabled";
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -88,50 +70,52 @@ export default function InfomationUser() {
         })
       );
 
-     checkStart()
-  
+      checkStart();
     },
-    validate:values =>{
-      let errors = {}
+    validate: (values) => {
+      let errors = {};
 
-      if(!values.hoTen){
-        errors.hoTen = "Vui lòng nhập họ tên !"
-      }else if(values.hoTen.length < 3){
-        errors.hoTen = "Độ dài lớn hơn 3 kí tự !"
-      }
-    
-      if(!values.email){
-        errors.email = "Vui lòng nhập email !"
-      }else if(!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(values.email)){
-        errors.email = 'Vui lòng nhâp đúng định dạnh email !'
+      if (!values.hoTen) {
+        errors.hoTen = "Vui lòng nhập họ tên !";
+      } else if (values.hoTen.length < 3) {
+        errors.hoTen = "Độ dài lớn hơn 3 kí tự !";
       }
 
-      if(!values.soDT){
-        errors.soDT = "Vui lòng nhập sđt !"
+      if (!values.email) {
+        errors.email = "Vui lòng nhập email !";
+      } else if (
+        !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+          values.email
+        )
+      ) {
+        errors.email = "Vui lòng nhâp đúng định dạnh email !";
       }
 
-      return errors
-    }
-    
+      if (!values.soDT) {
+        errors.soDT = "Vui lòng nhập sđt !";
+      }
+
+      return errors;
+    },
   });
-
-  
 
   // console.log(formik.errors.hoTen);
   return (
-  
-        <div className="information__user">
+    <div className="information__user">
       <div className="information__user__content">
         <h1 className="information__user__content__tittle">
           Thông tin cá nhân
         </h1>
-        <div className="custom-control custom-switch information__user__content__switch" >
-          <input 
+        <div className="custom-control custom-switch information__user__content__switch">
+          <input
             type="checkbox"
             className="custom-control-input"
             id="customSwitch1"
             checked={checked}
-            onChange={() => setChecked(!checked)} onClick={()=>{checkUpdate()}}
+            onChange={() => setChecked(!checked)}
+            onClick={() => {
+              checkUpdate();
+            }}
             disabled={disableChekbot()}
           />
 
@@ -145,7 +129,7 @@ export default function InfomationUser() {
           onSubmit={formik.handleSubmit}
         >
           <div className="form-group row">
-            <label className="col-sm-3 col-12 col-form-label">Họ tên : </label>
+            <label className="col-sm-3 col-12 col-form-label">Họ tên: </label>
             <div className="col-sm-9 information__user__content__form__input">
               <input
                 type="text"
@@ -153,13 +137,17 @@ export default function InfomationUser() {
                 name="hoTen"
                 onChange={formik.handleChange}
                 value={formik.values.hoTen}
-                disabled={checked ?  disable : "disabled"}
+                disabled={checked ? disable : "disabled"}
               />
-              {formik.errors.hoTen ? <div className="alert-danger mt-1 text-center">{formik.errors.hoTen}</div> : null}
+              {formik.errors.hoTen ? (
+                <div className="alert-danger mt-1 text-center">
+                  {formik.errors.hoTen}
+                </div>
+              ) : null}
             </div>
           </div>
           <div className="form-group row ">
-            <label className="col-sm-3 col-form-label">Tài khoản :</label>
+            <label className="col-sm-3 col-form-label">Tài khoản:</label>
             <div className="col-sm-9 information__user__content__form__input">
               <input
                 type="text"
@@ -172,7 +160,7 @@ export default function InfomationUser() {
             </div>
           </div>
           <div className="form-group row">
-            <label className="col-sm-3 col-form-label">Sđt :</label>
+            <label className="col-sm-3 col-form-label">Sđt:</label>
             <div className="col-sm-9 information__user__content__form__input">
               <input
                 type="text"
@@ -180,14 +168,17 @@ export default function InfomationUser() {
                 name="soDT"
                 onChange={formik.handleChange}
                 value={formik.values.soDT}
-                disabled={checked ?  disable : "disabled"}
-                
+                disabled={checked ? disable : "disabled"}
               />
-               {formik.errors.soDT ? <div className="alert-danger mt-1 text-center">{formik.errors.soDT}</div> : null}
+              {formik.errors.soDT ? (
+                <div className="alert-danger mt-1 text-center">
+                  {formik.errors.soDT}
+                </div>
+              ) : null}
             </div>
           </div>
           <div className="form-group row">
-            <label className="col-sm-3 col-form-label">Email :</label>
+            <label className="col-sm-3 col-form-label">Email:</label>
             <div className="col-sm-9 information__user__content__form__input">
               <input
                 type="text"
@@ -195,15 +186,18 @@ export default function InfomationUser() {
                 onChange={formik.handleChange}
                 value={formik.values.email}
                 name="email"
-                disabled={checked ?  disable : "disabled"}
+                disabled={checked ? disable : "disabled"}
               />
-               {formik.errors.email ? <div className="alert-danger mt-1 text-center">{formik.errors.email}</div> : null}
+              {formik.errors.email ? (
+                <div className="alert-danger mt-1 text-center">
+                  {formik.errors.email}
+                </div>
+              ) : null}
             </div>
-           
           </div>
 
           <div className="form-group row  d-none">
-            <label className="col-sm-3 col-form-label">Mã Nhóm :</label>
+            <label className="col-sm-3 col-form-label">Mã Nhóm:</label>
             <div className="col-sm-9 information__user__content__form__input">
               <input
                 type="text"
@@ -211,13 +205,13 @@ export default function InfomationUser() {
                 onChange={formik.handleChange}
                 value={formik.values.maNhom}
                 name="maNhom"
-                disabled={checked ?  disable : "disabled"}
+                disabled={checked ? disable : "disabled"}
               />
             </div>
           </div>
 
           <div className="form-group row  d-none">
-            <label className="col-sm-3 col-form-label">Mã người dùng :</label>
+            <label className="col-sm-3 col-form-label">Mã người dùng:</label>
             <div className="col-sm-9 information__user__content__form__input">
               <input
                 type="text"
@@ -225,13 +219,13 @@ export default function InfomationUser() {
                 onChange={formik.handleChange}
                 value={formik.values.maLoaiNguoiDung}
                 name="maLoaiNguoiDung"
-                disabled={checked ?  disable : "disabled"}
+                disabled={checked ? disable : "disabled"}
               />
             </div>
           </div>
 
           <div className="form-group row d-none">
-            <label className="col-sm-3 col-form-label">matKhau :</label>
+            <label className="col-sm-3 col-form-label">matKhau:</label>
             <div className="col-sm-9 information__user__content__form__input">
               <input
                 type="text"
@@ -239,24 +233,26 @@ export default function InfomationUser() {
                 onChange={formik.handleChange}
                 value={formik.values.matKhau}
                 name="matKhau"
-                disabled={checked ?  disable : "disabled"}
+                disabled={checked ? disable : "disabled"}
               />
             </div>
           </div>
 
-      
-          <div className={checked ? "information__user__content__form__button" : " d-none"}>
-          <button type="submit"  className="btn btn-success"  disabled={disableChekbot()}>
-            Cập nhập tài khoản
-          </button>
-   
+          <div
+            className={
+              checked ? "information__user__content__form__button" : " d-none"
+            }
+          >
+            <button
+              type="submit"
+              className="btn btn-success"
+              disabled={disableChekbot()}
+            >
+              Cập nhập tài khoản
+            </button>
           </div>
         </form>
       </div>
     </div>
- 
-  
-
-
-      );
+  );
 }

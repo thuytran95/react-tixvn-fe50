@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ModalVideo from "react-modal-video";
 import dataMovie from "../../assets/data/movieListUpComing.json";
 import Slider from "react-slick";
 import nextImage from "../../assets/images/logos/next-session.png";
 import preImage from "../../assets/images/logos/back-session.png";
+import MovieItem from "../MovieItem";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style.scss";
-import MovieItem from "../MovieItem";
 
 const ShowTime = (props) => {
   const movieList = props.movieList;
@@ -16,10 +16,10 @@ const ShowTime = (props) => {
   function youtube_parser(url = " ") {
     var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
     var match = url.match(regExp);
-    return match && match[7].length == 11 ? match[7] : false;
+    return match && match[7].length === 11 ? match[7] : false;
   }
 
-  const [settings, setSettings] = useState({
+  const settings = {
     dots: false,
     infinite: true,
     speed: 500,
@@ -46,14 +46,14 @@ const ShowTime = (props) => {
         breakpoint: 576,
         settings: {
           slidesToShow: 1,
-          // slidesToScroll: 1,
-          touchMove: false,
-          rows: 3,
+          slidesToScroll: 1,
+          touchMove: true,
+          rows: 5,
           arrows: false,
         },
       },
     ],
-  });
+  };
 
   const [iframe, setIframe] = useState("");
   const handleModal = (trailer) => {
@@ -61,47 +61,7 @@ const ShowTime = (props) => {
     setIframe(trailer);
   };
 
-  const [row, setRow] = useState(3);
-  console.log(row);
-
   const movieListUpComing = dataMovie;
-  useEffect(() => {
-    setSettings({
-      dots: false,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 4,
-      slidesToScroll: 4,
-      rows: 2,
-      initialSlide: 0,
-      responsive: [
-        {
-          breakpoint: 992,
-          settings: {
-            slidesToShow: 3,
-            slidesToScroll: 3,
-          },
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2,
-            slidesToScroll: 2,
-          },
-        },
-        {
-          breakpoint: 576,
-          settings: {
-            slidesToShow: 1,
-            // slidesToScroll: 1,
-            touchMove: false,
-            rows: row,
-            arrows: false,
-          },
-        },
-      ],
-    });
-  }, [row]);
 
   const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
     <span
@@ -216,16 +176,10 @@ const ShowTime = (props) => {
       ) : (
         ""
       )}
-      {row <= 3 ? (
-        <div
-          className="text-center showtime__btn"
-          onClick={() => (row <= 3 ? setRow(row + 5) : row)}
-        >
-          <a className="btn-default">XEM THÊM</a>
-        </div>
-      ) : (
-        ""
-      )}
+
+      <div className="text-center showtime__btn">
+        <a className="btn-default">XEM THÊM</a>
+      </div>
     </section>
   );
 };

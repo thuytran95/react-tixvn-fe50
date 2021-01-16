@@ -3,10 +3,8 @@ import { NavLink, useHistory } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import "./style.scss";
 import { signUpUserSchema } from "../../Service/User";
-import { userService } from "../../Service";
 import { connect, useDispatch } from "react-redux";
 import { actSignUpApi } from "../../Redux/Actions/user.action";
-import Loader from "../../components/Loader";
 
 const SignUpScreen = (props) => {
   // console.log(props);
@@ -30,7 +28,11 @@ const SignUpScreen = (props) => {
     <div id="signup">
       <div className="signup signup--customize">
         <div className="signup__wrapper">
-          <img className="signup__logo" src="../images/logos/group@2x.png" />
+          <img
+            className="signup__logo"
+            src="../images/logos/group@2x.png"
+            alt="dang-ky"
+          />
           {renderNotice()}
           <Formik
             initialValues={{

@@ -12,10 +12,6 @@ import "./style.scss";
 const Header = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
-  // const tk = localStorage.getItem('User');
-  // console.log(tk);
-
-  const taiKhoan = user?.taiKhoan;
 
   const hideModal = () => {
     $("#modalMobile").modal("hide");
@@ -52,6 +48,7 @@ const Header = (props) => {
       if (width >= 992) {
         $("body").removeClass("modal-open");
         $(".modal-backdrop").remove();
+        $(".modal-backdrop.show.fade").remove();
         $("body").css({ padding: "0" });
       }
     }
@@ -59,7 +56,7 @@ const Header = (props) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [width]);
-  console.log(width);
+  // console.log(width);
 
   return (
     <header id="header">
@@ -193,6 +190,43 @@ const Header = (props) => {
                   <NavLink to="/#appstore" onClick={hideModal}>
                     <span className="header__mobile__link">Ứng dụng</span>
                   </NavLink>
+                  {user ? (
+                    <>
+                      <li className="header__mobile__link">
+                        <a href="#userInfor" data-toggle="collapse">
+                          Thông tin người dùng
+                        </a>
+                      </li>
+                      <div
+                        className="collapse hide header__mobile__linklist"
+                        id="userInfor"
+                      >
+                        <Link
+                          className="header__mobile__linklist__item"
+                          to="/user/thongtincanhan"
+                          onClick={hideModal}
+                        >
+                          Thông tin cá nhân
+                        </Link>
+                        <Link
+                          className="header__mobile__linklist__item"
+                          to="/user/thaydoimatkhau"
+                          onClick={hideModal}
+                        >
+                          Đổi mật khẩu
+                        </Link>
+                        <Link
+                          className="header__mobile__linklist__item"
+                          to="/user/lichsudatve"
+                          onClick={hideModal}
+                        >
+                          Lịch sử đặt vé
+                        </Link>
+                      </div>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </ul>
               </div>
             </div>

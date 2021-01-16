@@ -8,6 +8,7 @@
 
   .header {
     position: relative;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,6 +115,19 @@
 
     &__mobile {
       opacity: 0;
+      &__list {
+        @include list-default;
+      }
+      &__linklist {
+        &__item {
+          display: block;
+          padding: spacing(0.8, 0);
+          &:hover {
+            text-decoration: none;
+            color: color("primary");
+          }
+        }
+      }
     }
   }
 }
@@ -176,7 +190,7 @@
           &::after {
             content: "";
             position: absolute;
-            top: 50%;
+            top: 60%;
             right: 0;
             width: 15px;
             height: 15px;
@@ -206,6 +220,14 @@
           padding: spacing(2, 0);
           font-size: fontSize(2);
           font-weight: $fwRegular;
+          &:nth-child(5) {
+            a {
+              &:hover {
+                text-decoration: none;
+              }
+            }
+            padding: spacing(2) 0 spacing(0.5) 0;
+          }
         }
       }
     }

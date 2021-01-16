@@ -58,7 +58,6 @@ export const actTryLogin = (history) => {
     }
 
     // dispatch(createAction(USER_LOGIN_REQUEST, null));
-
     const user = JSON.parse(localStorage.getItem("User"));
     setHeaders(user.accessToken);
     dispatch(createAction(USER_LOGIN_SUCCESS, user));
@@ -85,8 +84,6 @@ export const actSignUpApi = (user, history) => {
       });
   };
 };
-
-// get Ìnofomation
 
 export const getInfomationUser = (taiKhoan, callback, callbackError) => {
   return (dispatch) => {

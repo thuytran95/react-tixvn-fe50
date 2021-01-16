@@ -42,8 +42,6 @@ export default function UserInfomation() {
                 <span>Lịch sử đặt vé</span>
                 <i className="fa fa-history"></i>
               </NavLink>
-
-             
             </div>
           </nav>
         </div>

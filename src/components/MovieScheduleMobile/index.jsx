@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getScheduleTheaterSystemRequest } from "../../Redux/Actions/theater.action";
+import Footer from "../Footer";
 import ScheduleMobileItem from "../ScheduleMobileItem";
 import "./style.scss";
 
@@ -12,7 +13,7 @@ const MovieScheduleMobile = (props) => {
   }, []);
 
   const theaterList = useSelector((state) => state.theater.theaterSchedule);
-  console.log(theaterList);
+  // console.log(theaterList);
 
   return (
     <>
@@ -27,6 +28,7 @@ const MovieScheduleMobile = (props) => {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 };
