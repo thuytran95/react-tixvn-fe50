@@ -139,11 +139,11 @@ export default function MovieDetailMainContentShowInfo(props) {
         }}
       >
         <div className="col-xs-2 col-sm-2 col-md-4  show__info__movies__pcinema__name__logo">
-          <img src={item.logo} alt="" />
+          <img src={item.logo} alt="logo-he-thong-rap" />
         </div>
 
         <div className="col-xs-10 col-sm-10 col-md-8">
-          <h4 className="">{item.tenHeThongRap}</h4>
+          <h4>{item.tenHeThongRap}</h4>
         </div>
       </div>
     ));
@@ -166,15 +166,15 @@ export default function MovieDetailMainContentShowInfo(props) {
       <div className="show__info__movies pl-0 pl-md-3">
         <div className="container-fluid">
           <div className="row">
-            <div className=" reponsive-2  col-sm-12 	col-md-3  ">
+            <div className=" reponsive-2 col-sm-12 col-md-3">
               {renderCumRapPhim()}
             </div>
-            <div className="col-sm-12 	col-md-9 pr-0  ">
+            <div className="col-sm-12 col-md-9 pr-0">
               <div className="show__info__movies__time ">
                 {renderNgayChieu()}
               </div>
 
-              <div className="show__info__movies__list ">{renderRapPhim()}</div>
+              <div className="show__info__movies__list">{renderRapPhim()}</div>
             </div>
           </div>
         </div>

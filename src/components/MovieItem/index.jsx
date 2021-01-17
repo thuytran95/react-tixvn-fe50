@@ -1,10 +1,15 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
 import { capitalizeWords } from "../../Helpers";
+import { actRedirectToMovieDetail } from "../../Redux/Actions/movie.action";
 import "./style.scss";
 
-export default function MovieItem(props) {
+function MovieItem(props) {
   const movie = props.movie;
+  // console.log(props);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   return (
     <div className="col mvshowtime" key={movie.maPhim}>
@@ -16,6 +21,10 @@ export default function MovieItem(props) {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             cursor: "pointer",
+          }}
+          onClick={() => {
+            // console.log(movie.maPhim);
+            dispatch(actRedirectToMovieDetail(history, movie.maPhim));
           }}
         >
           <div className="mvshowtime__overlay">
@@ -64,3 +73,5 @@ export default function MovieItem(props) {
     </div>
   );
 }
+
+export default MovieItem;

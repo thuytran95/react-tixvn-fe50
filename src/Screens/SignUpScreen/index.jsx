@@ -14,16 +14,6 @@ const SignUpScreen = (props) => {
     dispatch(actSignUpApi(values, history));
   };
 
-  const renderNotice = () => {
-    const { errSignUp } = props;
-    console.log(errSignUp);
-    if (errSignUp) {
-      return (
-        <div className="alert alert-danger">{errSignUp.response.data}</div>
-      );
-    }
-  };
-
   return (
     <div id="signup">
       <div className="signup signup--customize">
@@ -33,7 +23,7 @@ const SignUpScreen = (props) => {
             src="../images/logos/group@2x.png"
             alt="dang-ky"
           />
-          {renderNotice()}
+
           <Formik
             initialValues={{
               taiKhoan: "",

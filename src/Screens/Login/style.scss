@@ -69,6 +69,14 @@
       }
     }
   }
+  .signup__link {
+    margin-left: spacing(0.5);
+    color: color("primary");
+    text-decoration: none;
+    &:hover {
+      color: color("green");
+    }
+  }
 }
 
 @media screen and (max-width: 576px) {

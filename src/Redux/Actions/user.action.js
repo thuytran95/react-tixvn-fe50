@@ -2,6 +2,7 @@ import { createAction } from ".";
 import { userService } from "../../Service";
 import setHeaders from "../../utils/setHeaders";
 import Axios from "axios";
+import swal from "sweetalert";
 import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -12,7 +13,7 @@ import {
   USER_SIGNUP_REQUEST,
   USER_INFOMATION_USER_SUCCESS,
   USER_INFOMATION_USER_FAILED,
-  REDIRECT_TO_HOME,
+  REDIRECT_CLEAR_ERROR,
 } from "./type";
 
 export const actLoginApi = (user, history) => {
@@ -38,6 +39,11 @@ export const actLoginApi = (user, history) => {
       })
       .catch((err) => {
         console.log(err);
+        swal({
+          title: "Đăng nhập thất bại",
+          text: `${err.response.data}`,
+          icon: "warning",
+        });
         dispatch(createAction(USER_LOGIN_FAILED, err));
       });
   };
@@ -74,12 +80,21 @@ export const actSignUpApi = (user, history) => {
       .then((res) => {
         console.log(res.data);
         dispatch(createAction(USER_SIGNUP_SUCCESS, res.data));
-        window.alert("Đăng ký thành công");
+
+        swal({
+          title: "Đăng ký thành công!",
+          icon: "success",
+        });
         // redirect qua login
         history.replace("/login");
       })
       .catch((err) => {
         console.log(err);
+        swal({
+          title: "Đăng ký thất bại!",
+          text: `${err.response.data}`,
+          icon: "warning",
+        });
         dispatch(createAction(USER_SIGNUP_FAILED, err));
       });
   };
@@ -135,6 +150,6 @@ export function updateInfomatinonUser(data) {
 
 export const actRedirect = () => {
   return (dispatch) => {
-    dispatch(createAction(REDIRECT_TO_HOME, null));
+    dispatch(createAction(REDIRECT_CLEAR_ERROR, null));
   };
 };

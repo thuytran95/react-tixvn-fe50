@@ -19,12 +19,7 @@ export default function MovieDetailMainInfo(props) {
       <div className="movie__detail__main__top__right">
         <div className="movie__detail__main__top__right__poster">
           <div className="movie__detail__main__top__right__poster__image">
-            <img
-              // src="https://s3img.vcdn.vn/mobile/123phim/2020/10/tiec-trang-mau-blood-moon-party-16016226514166_215x318.png"
-              // alt="ss"
-              src={movieDetail?.hinhAnh}
-              alt={movieDetail?.biDanh}
-            />
+            <img src={movieDetail?.hinhAnh} alt={movieDetail?.biDanh} />
           </div>
 
           <div className="movie__detail__main__top__right__poster__icon">
@@ -43,7 +38,6 @@ export default function MovieDetailMainInfo(props) {
           <p>23.10.2020</p>
           <h3>
             <span>C18</span> {"  "}
-            {/* Tiệc Trăng Máu - Blood Moon Party */}
             {movieDetail?.tenPhim}
           </h3>
           <p>

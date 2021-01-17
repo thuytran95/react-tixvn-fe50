@@ -26,7 +26,7 @@ export default function MovieDetail(props) {
           setLoading(false);
         },
         () => {
-          alert("lỗi rồi");
+          alert("Sự cố máy chủ!");
         }
       )
     );

@@ -7,9 +7,6 @@ import  './style.scss'
 export default function MovieDetailMainTop(props) {
 
   const movieDetail = props.movieDetail;
-
- 
-  // src="https://s3img.vcdn.vn/123phim/2020/10/tiec-trang-mau-blood-moon-party-16016223447390.png"
   
   return (
     <div className="movie__detail__top">

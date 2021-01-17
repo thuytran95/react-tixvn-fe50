@@ -25,7 +25,7 @@ class LoginPage extends Component {
 
   handleLogin = (e) => {
     e.preventDefault();
-    console.log(this.props);
+    // console.log(this.props);
 
     this.props.fetchLogin(this.state, this.props.history);
   };
@@ -34,13 +34,16 @@ class LoginPage extends Component {
     const { err } = this.props;
     if (err) {
       return (
-        <>
-          <div className="alert alert-danger">{err.response.data}</div>
-          <div>
-            Bạn chưa có tài khoản?
-            <NavLink to="/signup">Đăng ký</NavLink>
-          </div>
-        </>
+        <div style={{ marginTop: "15px" }}>
+          Bạn chưa có tài khoản?
+          <NavLink
+            to="/signup"
+            className="signup__link"
+            onClick={this.props.redirectToSignup}
+          >
+            Đăng ký
+          </NavLink>
+        </div>
       );
     }
   };
@@ -53,12 +56,16 @@ class LoginPage extends Component {
       <div id="login">
         <div className="login login--customize">
           <div className="login__wrapper">
-            <img className="login__logo" src="../images/logos/group@2x.png" />
+            <img
+              className="login__logo"
+              src="../images/logos/group@2x.png"
+              alt="logo"
+            />
             <div className="login__message">
               Đăng nhập để được nhiều ưu đãi, mua vé và bảo mật thông tin!
             </div>
+            {this.renderNotice()}
             <form className="mt-5" onSubmit={this.handleLogin}>
-              {this.renderNotice()}
               <div className="form-group text-left">
                 <label>Tài khoản:</label>
                 <input
@@ -110,6 +117,9 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actLoginApi(user, history));
     },
     redirectToHome: () => {
+      dispatch(actRedirect());
+    },
+    redirectToSignup: () => {
       dispatch(actRedirect());
     },
   };
