@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import format from "date-format";
 import { useState } from "react";
 import { calculatingEndtime, renderNameTheater } from "../../Helpers";
@@ -117,7 +117,7 @@ function ScheduleMobileItem(props) {
       <div id={maHeThongRap} className="collapse hide">
         <ul className="schedule__mobile__list">
           {lstCumRap.map((item, index) => {
-            const { maCumRap, danhSachPhim, tenCumRap, diaChi } = item;
+            const { danhSachPhim, tenCumRap, diaChi } = item;
             // console.log(danhSachPhim);
             return (
               <li className="schedule__mobile__child" key={index}>

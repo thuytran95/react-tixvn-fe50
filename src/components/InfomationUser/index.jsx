@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateInfomatinonUser } from "../../Redux/Actions/user.action";
 import "./style.scss";
 import { useFormik } from "formik";
-import Loader from "../Loader";
 
 export default function InfomationUser() {
   const dispatch = useDispatch();

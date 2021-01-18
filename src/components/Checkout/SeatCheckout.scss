@@ -7,7 +7,7 @@
   // margin-top: 10px;
   // padding-top: 20px;
   margin-top: spacing(1);
-  height: calc(100vh - 80px);
+  // height: calc(100vh - 80px);
   &__topContent {
     display: grid;
     grid-template-columns: 75% 25%;
@@ -98,7 +98,6 @@
 }
 
 @include MediaQuery($md) {
- 
   .namescreen {
     img {
       max-width: 700px;
@@ -128,7 +127,7 @@
   .listSeat {
     max-width: 400px;
     &__title {
-     width: 10%;
+      width: 10%;
     }
     &__content {
       width: 90%;
@@ -138,5 +137,4 @@
       cursor: unset;
     }
   }
-
 }

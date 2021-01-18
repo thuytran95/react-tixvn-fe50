@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
-import "./style.scss";
 import cgvHungVuong from "../../assets/images/logos/cgv-hung-vuong-plaza-15380175133678.jpg";
 import format from "date-format";
 import { Link } from "react-router-dom";
-import { get } from "jquery";
 import { renderNameTheater } from "../../Helpers";
+import "./style.scss";
+
 export default function MovieDetailMainContentShowInfoItem(props) {
   const { tenCumRap, diaChi } = props.item;
   const thongTinRap = props.time;
   const maRap = props.maRap;
-  const ngayChieu = props.ngayChieu;
   const theaterID = props.theaterID;
   const gioRap = thongTinRap?.filter(function (obj) {
     return maRap.indexOf(obj.maRap) !== -1;

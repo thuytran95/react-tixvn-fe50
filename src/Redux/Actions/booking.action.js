@@ -1,11 +1,11 @@
 import { createAction } from "./index";
 // import moduleName from '../../Service/booking'
 import Axios from "axios";
-import { GET_BOOKING_SUCCESS, GET_BOOKING_FAILED, CHOOSE_SEAT } from "./type";
-import {} from 'react-router-dom'
-export function getBookingRequest(maLichChieu,callBack,errorCallback) {
+import { GET_BOOKING_SUCCESS, GET_BOOKING_FAILED } from "./type";
+import {} from "react-router-dom";
+export function getBookingRequest(maLichChieu, callBack, errorCallback) {
   //hàm chiệu trách nhiệm xữ lý bất đồng bộ
- 
+
   return async (dispatch) => {
     //call api
     try {
@@ -20,7 +20,7 @@ export function getBookingRequest(maLichChieu,callBack,errorCallback) {
         //dispatch lên reducer
 
         dispatch(createAction(GET_BOOKING_SUCCESS, res.data));
-        callBack()
+        callBack();
       }
     } catch (error) {
       //failed
@@ -28,13 +28,13 @@ export function getBookingRequest(maLichChieu,callBack,errorCallback) {
       //dispatch lên reducer
 
       dispatch(createAction(GET_BOOKING_FAILED, error));
-      errorCallback()
+      errorCallback();
     }
   };
 }
 
 // đăt vế
-export function postBookingRequest(maLichChieu, danhSachVe,history) {
+export function postBookingRequest(maLichChieu, danhSachVe, history) {
   return async function (dispatch) {
     try {
       // get local
@@ -48,7 +48,7 @@ export function postBookingRequest(maLichChieu, danhSachVe,history) {
           danhSachVe,
           taiKhoanNguoiDung: user.taiKhoan,
         },
-  
+
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
@@ -63,4 +63,3 @@ export function postBookingRequest(maLichChieu, danhSachVe,history) {
     }
   };
 }
-
