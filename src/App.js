@@ -60,9 +60,6 @@ function App(props) {
         </Route>
         <ProtectedRoute path="/checkout/:maLichChieu" Component={Checkout} />
 
-        {/* <Route path="/checkout/:maLichChieu">
-          <Checkout />
-        </Route> */}
         <Route path="/signup">
           <SignUpScreen />
         </Route>

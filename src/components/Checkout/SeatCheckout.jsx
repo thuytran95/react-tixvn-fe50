@@ -9,9 +9,9 @@ import "./SeatCheckout.scss";
 import CheckoutCountDown from "../ChekoutCountDown";
 
 const SeatCheckout = () => {
-  const [loading, setLoading] = useState(true);
+  const [setLoading] = useState(true);
   const dispatch = useDispatch();
-  const { ngayChieu, tenCumRap, tenRap, hinhAnh } = useSelector(
+  const { ngayChieu, tenCumRap, tenRap } = useSelector(
     (state) => state.booking.thongTinPhim
   );
   useEffect(() => {
@@ -83,7 +83,7 @@ const SeatCheckout = () => {
           </div>
         </div>
         <div className="SeatCheckout__topContent__rightTitle">
-          <p className="info1">thời gian giữ ghế</p>
+          <p className="info1">Thời gian giữ ghế</p>
           <p className="info2">
             <span className="SeatCheckout__topContent__rightTitle__setTime">
               <CheckoutCountDown time={300000} />

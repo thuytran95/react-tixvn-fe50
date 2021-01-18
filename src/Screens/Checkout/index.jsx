@@ -26,7 +26,7 @@ const Checkout = () => {
           setLoading(false);
         },
         () => {
-          alert("lỗi rồi !");
+          alert("Lỗi hệ thông!");
         }
       )
     );

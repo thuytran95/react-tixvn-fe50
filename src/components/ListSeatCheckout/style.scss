@@ -1,52 +1,4 @@
 @import "../../styles/index.scss";
-// .list__seat {
-//     display: inline-block;
-//     margin-right: 5px;
-//   &__item {
-//       display: inline-block;
-//       border-bottom: 4px solid yellowgreen;
-//       padding: 0 5px 2px 5px;
-//       border-bottom-left-radius: 5px;
-//       border-bottom-right-radius: 5px;
-//       position: relative;
-//       &::before{
-
-//           content: "";
-
-//         border: 2px solid yellowgreen;
-//         position: absolute;
-//         left: -1px;
-//         top: 3px;
-//         width: 2px;
-//         height: 25px;
-//         border-radius: 3px ;
-//         border-bottom-left-radius: 50px
-
-//       }
-//       &::after{
-//         content: "";
-
-//         border: 2px solid yellowgreen;
-//         position: absolute;
-//         right: -1px;
-//         top: 3px;
-//         width: 2px;
-//         height: 25px;
-//         border-radius: 3px ;
-//         border-bottom-right-radius: 50px
-//       }
-//   &__btn{
-//     border-radius: 4px;
-//     background-color: yellowgreen;
-//     outline: none;
-//     border: none;
-//     padding: 0px 8px;
-//     cursor: pointer;
-
-//   }
-
-//   }
-// }
 
 .list__seat {
   display: inline-block;
@@ -69,13 +21,13 @@
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
       border-top: none;
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
       button {
         background-color: yellowgreen;
         cursor: pointer;
-        span{
+        span {
           visibility: unset;
         }
       }
@@ -87,15 +39,12 @@
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
       border-top: none;
-    
+
       button:disabled {
         background-color: pink;
       }
       button {
         background-color: pink;
-        // span{
-        //   visibility: unset;
-        // }
       }
     }
     &__vip {
@@ -106,13 +55,12 @@
       border-top-right-radius: 2px;
       border-top: none;
       cursor: pointer;
-      &:hover{
+      &:hover {
         cursor: pointer;
       }
       button {
         background-color: #f7b500;
         cursor: pointer;
-       
       }
     }
 
@@ -124,11 +72,9 @@
       outline: none !important;
       border: none;
       width: 26px;
-
       text-align: center;
-     
-    
-      span{
+
+      span {
         display: flex;
         justify-content: center;
         @include text(color("darkergrey"), $title3, $fwRegular);
@@ -148,5 +94,8 @@
 @include MediaQuery($xs) {
   button.list__seat__item__btn {
     width: 18px;
+    span {
+      font-size: $base;
+    }
   }
 }
