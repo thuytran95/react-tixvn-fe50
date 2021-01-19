@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ModalVideo from "react-modal-video";
 import dataMovie from "../../assets/data/movieListUpComing.json";
 import Slider from "react-slick";
