@@ -36,7 +36,7 @@ export default function MovieDetailMainContentShowInfo(props) {
 
   const [theaterID, setTheaterID] = useState(rapCoPhim[activeRap].maHeThongRap);
 
-  const [color, setColor] = useState("#8bc541");
+  const [color, setColor] = useState();
 
   const listColor = [
     { maHeThongRap: "BHDStar", color: "#8bc541" },

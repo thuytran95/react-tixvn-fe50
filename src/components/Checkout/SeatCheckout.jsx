@@ -3,7 +3,7 @@ import ListSeatCheckOut from "../ListSeatCheckout";
 import { createAction } from "../../Redux/Actions/index";
 import { CHOOSE_SEAT } from "../../Redux/Actions/type";
 import { useDispatch, useSelector } from "react-redux";
-import { getCinemaSystemInformati } from "../../Redux/Actions/theater.action";
+import { getCinemaSystemInformation } from "../../Redux/Actions/theater.action";
 
 import "./SeatCheckout.scss";
 import CheckoutCountDown from "../ChekoutCountDown";
@@ -16,7 +16,7 @@ const SeatCheckout = () => {
   );
   useEffect(() => {
     dispatch(
-      getCinemaSystemInformati(() => {
+      getCinemaSystemInformation(() => {
         setLoading(false);
       })
     );

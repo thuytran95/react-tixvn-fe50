@@ -1,4 +1,3 @@
-import moment from "moment";
 export const hiddenName = (name, length) => {
   if (name.length > length) return name.substr(0, length) + "...";
   return name;
@@ -40,9 +39,6 @@ export const renderNameTheater = (name, color) => {
   });
 };
 
-export const calculatingEndtime = (string) => {
-  // console.log(string);
-  const time = moment(string).add(1.5, "hours").format("LT");
-  // console.log(time);
-  return time;
+export const add_minutes = function (dt, minutes) {
+  return new Date(dt.getTime() + minutes * 60000);
 };

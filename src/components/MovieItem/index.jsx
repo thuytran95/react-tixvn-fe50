@@ -58,7 +58,7 @@ function MovieItem(props) {
               <span className="btn-age">C16</span>
               {capitalizeWords(movie.tenPhim)}
             </h4>
-            <p className="card-text mt-2">100 phút</p>
+            <p className="card-text mt-2">120 phút</p>
           </div>
           <div className="mvshowtime__addToCart">
             <NavLink

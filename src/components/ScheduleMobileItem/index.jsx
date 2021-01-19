@@ -1,7 +1,7 @@
 import React from "react";
 import format from "date-format";
 import { useState } from "react";
-import { calculatingEndtime, renderNameTheater } from "../../Helpers";
+import { add_minutes, renderNameTheater } from "../../Helpers";
 import arrow from "../../assets/images/logos/next-session.png";
 import "./style.scss";
 import { NavLink } from "react-router-dom";
@@ -38,7 +38,10 @@ function ScheduleMobileItem(props) {
           "yyyy-MM-dd",
           new Date(lichChieu.ngayChieuGioChieu)
         );
-        const giochieu = calculatingEndtime(lichChieu.ngayChieuGioChieu);
+        const giochieu = add_minutes(
+          new Date(lichChieu.ngayChieuGioChieu),
+          120
+        ).toString();
         // neu ngay chieu trung v ngay dau tien thi push vao mang moi
         if (formatNgayChieu === dateFormat) {
           const infoSchedule = {
@@ -47,7 +50,7 @@ function ScheduleMobileItem(props) {
               "hh:mm",
               new Date(lichChieu.ngayChieuGioChieu)
             ),
-            gioChieu: giochieu,
+            gioChieu: format("hh:mm", new Date(giochieu)),
           };
           timeList.push(infoSchedule);
         }

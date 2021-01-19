@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
 import Footer from "../../components/Footer";
 import Loader from "../../components/Loader";
 import MovieDetailMainContent from "../../components/MovieDetailMainContent";
@@ -26,7 +27,10 @@ export default function MovieDetail(props) {
           setLoading(false);
         },
         () => {
-          alert("Sự cố máy chủ!");
+          swal({
+            title: "Sự cố máy chủ",
+            icon: "error",
+          });
         }
       )
     );

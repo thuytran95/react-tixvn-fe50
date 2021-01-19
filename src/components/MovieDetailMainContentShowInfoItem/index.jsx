@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import cgvHungVuong from "../../assets/images/logos/cgv-hung-vuong-plaza-15380175133678.jpg";
 import format from "date-format";
 import { Link } from "react-router-dom";
-import { renderNameTheater } from "../../Helpers";
+import { add_minutes, renderNameTheater } from "../../Helpers";
 import "./style.scss";
 
 export default function MovieDetailMainContentShowInfoItem(props) {
@@ -20,30 +20,28 @@ export default function MovieDetailMainContentShowInfoItem(props) {
     setShow(!show);
   };
 
-  var add_minutes = function (dt, minutes) {
-    return new Date(dt.getTime() + minutes * 60000);
-  };
-
   const renderGioChieu = () => {
-    return gioRap.map((item, index) => (
-      <Link
-        to={`/checkout/${item.maLichChieu}`}
-        key={index}
-        className="mt-1"
-        target="_blank"
-      >
-        <span>{format("hh:mm", new Date(item.ngayChieuGioChieu))}</span> ~{" "}
-        {format(
-          "hh:mm",
-          new Date(
-            add_minutes(
-              new Date(item.ngayChieuGioChieu),
-              item.thoiLuong
-            ).toString()
-          )
-        )}
-      </Link>
-    ));
+    return gioRap.map((item, index) => {
+      return (
+        <Link
+          to={`/checkout/${item.maLichChieu}`}
+          key={index}
+          className="mt-1"
+          target="_blank"
+        >
+          <span>{format("hh:mm", new Date(item.ngayChieuGioChieu))}</span> ~{" "}
+          {format(
+            "hh:mm",
+            new Date(
+              add_minutes(
+                new Date(item.ngayChieuGioChieu),
+                item.thoiLuong
+              ).toString()
+            )
+          )}
+        </Link>
+      );
+    });
   };
   return (
     <div className="show__item__item ">

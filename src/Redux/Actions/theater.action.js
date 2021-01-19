@@ -53,7 +53,7 @@ export const getTheaterSystemListRequest = (id, callback) => {
   };
 };
 
-export const getCinemaSystemInformati = (callback) => {
+export const getCinemaSystemInformation = (callback) => {
   return (dispatch) => {
     theaterService
       .getCinemaSystemInformation()
