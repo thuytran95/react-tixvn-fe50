@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import ModalVideo from "react-modal-video";
 import { NavLink } from "react-router-dom";
+import { youtube_parser } from "../../Helpers";
 import "./style.scss";
 
 export default function MovieDetailMainInfo(props) {
   const [isOpen, setOpen] = useState(false);
   const movieDetail = props.movieDetail;
   const trailer = movieDetail?.trailer;
-
-  function youtube_parser(url = " ") {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = url.match(regExp);
-    return match && match[7].length === 11 ? match[7] : false;
-  }
 
   return (
     <div className="movie__detail__main__top d-flex flex-row">

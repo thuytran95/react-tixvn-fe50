@@ -42,3 +42,9 @@ export const renderNameTheater = (name, color) => {
 export const add_minutes = function (dt, minutes) {
   return new Date(dt.getTime() + minutes * 60000);
 };
+
+export const youtube_parser = function (url = " ") {
+  var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  var match = url.match(regExp);
+  return match && match[7].length === 11 ? match[7] : false;
+};
