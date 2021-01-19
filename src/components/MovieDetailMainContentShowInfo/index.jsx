@@ -13,7 +13,6 @@ export default function MovieDetailMainContentShowInfo(props) {
   const danhSachRap = useSelector((state) => state.theater?.theaterSchedule);
   const [activeNgay, setActiveNgay] = useState(0);
   const [activeRap, setActiveRap] = useState(0);
-  const [theaterID, setTheaterID] = useState({ maHeThongRap: "BHDStar" });
 
   const ngayChieuGioChieu = lichChieu?.map((item) =>
     format("MM/dd/yyyy", new Date(item.ngayChieuGioChieu))
@@ -34,14 +33,35 @@ export default function MovieDetailMainContentShowInfo(props) {
     return maRapNoRepeat?.indexOf(obj.maHeThongRap) !== -1;
   });
   // console.log(maRap, maRapNoRepeat);
+
+  const [theaterID, setTheaterID] = useState(rapCoPhim[activeRap].maHeThongRap);
+
+  const [color, setColor] = useState("#8bc541");
+
+  const listColor = [
+    { maHeThongRap: "BHDStar", color: "#8bc541" },
+    { maHeThongRap: "CGV", color: "red" },
+    { maHeThongRap: "CineStar", color: "#df0d7a" },
+    { maHeThongRap: "Galaxy", color: "#ff9800" },
+    { maHeThongRap: "LotteCinima", color: "#ca4137" },
+    { maHeThongRap: "MegaGS", color: "#9c9c9c" },
+  ];
+
+  // set color
+  useEffect(() => {
+    const index = listColor.findIndex(
+      (item) => item.maHeThongRap === theaterID
+    );
+
+    setColor(listColor[index].color);
+  }, [theaterID]);
+
   // lịchpim
   useEffect(() => {
     if (rapCoPhim) {
       dispatch(getTheaterSystemListRequest(rapCoPhim[activeRap]?.maHeThongRap));
     }
   }, [activeRap]);
-
-  // console.log(listRap);
 
   const thongTinRap = lichChieu?.filter(
     (item) =>
@@ -123,7 +143,6 @@ export default function MovieDetailMainContentShowInfo(props) {
   };
   const setActiveRapColor = (index, value) => {
     setActiveRap(index);
-    console.log(value);
   };
 
   const renderCumRapPhim = () => {
@@ -135,7 +154,7 @@ export default function MovieDetailMainContentShowInfo(props) {
         key={index}
         onClick={() => {
           setActiveRapColor(index, item.maHeThongRap);
-          setTheaterID({ maHeThongRap: item.maHeThongRap });
+          setTheaterID(item.maHeThongRap);
         }}
       >
         <div className="col-xs-2 col-sm-2 col-md-4  show__info__movies__pcinema__name__logo">
@@ -156,7 +175,7 @@ export default function MovieDetailMainContentShowInfo(props) {
         ngayChieu={ngayChieu[activeNgay]}
         maRap={listMaRapDuocChonKhongLap}
         key={index}
-        theaterID={theaterID}
+        color={color}
       />
     ));
   };

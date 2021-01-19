@@ -9,34 +9,10 @@ export default function MovieDetailMainContentShowInfoItem(props) {
   const { tenCumRap, diaChi } = props.item;
   const thongTinRap = props.time;
   const maRap = props.maRap;
-  const theaterID = props.theaterID;
+  const color = props.color;
   const gioRap = thongTinRap?.filter(function (obj) {
     return maRap.indexOf(obj.maRap) !== -1;
   });
-
-  // console.log(theaterID);
-
-  const [color, setColor] = useState("#8bc541");
-
-  const listColor = [
-    { maHeThongRap: "BHDStar", color: "#8bc541" },
-    { maHeThongRap: "CGV", color: "red" },
-    { maHeThongRap: "CineStar", color: "#df0d7a" },
-    { maHeThongRap: "Galaxy", color: "#ff9800" },
-    { maHeThongRap: "LotteCinima", color: "#ca4137" },
-    { maHeThongRap: "MegaGS", color: "#9c9c9c" },
-  ];
-
-  // set color
-  useEffect(() => {
-    const index = listColor.findIndex(
-      (item) => item.maHeThongRap === theaterID.maHeThongRap
-    );
-
-    setColor(listColor[index].color);
-  }, [theaterID]);
-
-  console.log(color);
 
   // console.log(gioRap);
   const [show, setShow] = useState(true);
