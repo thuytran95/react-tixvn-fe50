@@ -91,8 +91,7 @@ const MovieSchedule = (props) => {
         // lay ngay dau tien trong danh sach phim
         let date = item.lstLichChieuTheoPhim[0].ngayChieuGioChieu;
         let dateFormat = format("yyyy-MM-dd", new Date(date));
-        console.log(date);
-        console.log(dateFormat);
+
         //loc toan bo ngay dau tien
         let timeList = [];
 
