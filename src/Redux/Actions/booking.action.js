@@ -5,6 +5,7 @@ import { GET_BOOKING_SUCCESS, GET_BOOKING_FAILED, CHOOSE_SEAT } from "./type";
 import {} from 'react-router-dom'
 export function getBookingRequest(maLichChieu,callBack,errorCallback) {
   //hàm chiệu trách nhiệm xữ lý bất đồng bộ
+  
  
   return async (dispatch) => {
     //call api
