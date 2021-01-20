@@ -43,7 +43,7 @@ const Checkout = () => {
               <div className="col-12 pl-0">
                 <StepCheckout />
               </div>
-              <div className="row">
+              <div style={{minHeight:"calc(100vh - 80px)"}} className="row" >
                 <div className="col-xl-1 pl-0">
                   <LeftCheckout />
                 </div>
