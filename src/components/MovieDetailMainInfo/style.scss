@@ -109,8 +109,8 @@
             stroke: color("blackgrey");
           }
           &:nth-child(2) {
-            stroke-dashoffset: calc(345 - (345 * 9.3 * 10) / 100);
-            stroke: color("green");
+            // stroke-dashoffset: calc(345 - (345 * 9.3 * 10) / 100);
+            // stroke: color("green");
           }
         }
       }

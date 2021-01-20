@@ -8,6 +8,13 @@ export default function MovieDetailMainInfo(props) {
   const [isOpen, setOpen] = useState(false);
   const movieDetail = props.movieDetail;
   const trailer = movieDetail?.trailer;
+  const numberDanhGia = (345 - (345 *  movieDetail.danhGia * 10) / 100)
+  
+  const divStyle = {
+    strokeDashoffset:"calc(" + numberDanhGia + ")",
+              stroke:"green"
+              
+  };
 
   return (
     <div className="movie__detail__main__top d-flex flex-row">
@@ -46,14 +53,14 @@ export default function MovieDetailMainInfo(props) {
         </div>
       </div>
       <div className="movie__detail__main__top__right__box">
-        <div className="movie__detail__main__top__right__box__percent">
+        <div  className="movie__detail__main__top__right__box__percent">
           <svg>
             <circle cx="55" cy="55" r="55"></circle>
-            <circle cx="55" cy="55" r="55"></circle>
+            <circle    style={divStyle}  cx="55" cy="55" r="55"></circle>
           </svg>
         </div>
         <div className="movie__detail__main__top__right__box__number">
-          <span>9.3</span>
+          <span>{movieDetail.danhGia}</span>
         </div>
         <div className="movie__detail__main__top__right__box__star">
           <i className="fa fa-star"></i>
