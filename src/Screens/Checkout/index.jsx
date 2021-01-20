@@ -52,7 +52,7 @@ const Checkout = () => {
                 </div>
               </div>
             </div>
-            <div className="col-xl-3">
+            <div className="col-xl-3 p-0">
               <DetailCheckout />
             </div>
           </div>

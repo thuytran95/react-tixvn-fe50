@@ -12,6 +12,7 @@ const LeftCheckout = () => {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundImage: "url(" + hinhAnh + ")",
+      
       }}
     >
       <div className="LeftCheckout__modalleft"></div>
