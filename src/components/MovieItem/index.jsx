@@ -20,7 +20,7 @@ function MovieItem(props) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [width]);
-  console.log(width);
+  // console.log(width);
 
   return (
     <div className="col mvshowtime" key={movie.maPhim}>
