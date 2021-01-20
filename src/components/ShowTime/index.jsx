@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ModalVideo from "react-modal-video";
 import dataMovie from "../../assets/data/movieListUpComing.json";
 import Slider from "react-slick";
@@ -8,16 +8,11 @@ import MovieItem from "../MovieItem";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style.scss";
+import { youtube_parser } from "../../Helpers";
 
 const ShowTime = (props) => {
   const movieList = props.movieList;
   const [isOpen, setOpen] = useState(false);
-
-  function youtube_parser(url = " ") {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = url.match(regExp);
-    return match && match[7].length === 11 ? match[7] : false;
-  }
 
   const settings = {
     dots: false,

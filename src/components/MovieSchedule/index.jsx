@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { calculatingEndtime, renderNameTheater } from "../../Helpers";
+import { add_minutes, renderNameTheater } from "../../Helpers";
 import {
   getScheduleTheaterSystemRequest,
   getTheaterSystemListRequest,
@@ -101,7 +101,10 @@ const MovieSchedule = (props) => {
             "yyyy-MM-dd",
             new Date(lichChieu.ngayChieuGioChieu)
           );
-          const giochieu = calculatingEndtime(lichChieu.ngayChieuGioChieu);
+          const giochieu = add_minutes(
+            new Date(lichChieu.ngayChieuGioChieu),
+            120
+          ).toString();
           // neu ngay chieu trung v ngay dau tien thi push vao mang moi
           if (formatNgayChieu === dateFormat) {
             const infoSchedule = {
@@ -110,7 +113,7 @@ const MovieSchedule = (props) => {
                 "hh:mm",
                 new Date(lichChieu.ngayChieuGioChieu)
               ),
-              gioChieu: giochieu,
+              gioChieu: format("hh:mm", new Date(giochieu)),
             };
             timeList.push(infoSchedule);
           }
@@ -128,7 +131,7 @@ const MovieSchedule = (props) => {
                 <span className="btn-age">C16</span>
                 {item.tenPhim}
               </div>
-              <div className="desc">90 phút - TIX 0 - IMDb 8.8</div>
+              <div className="desc">120 phút - TIX 0 - IMDb 8.8</div>
             </div>
             <div className="digital">2D Digital</div>
             <div className="movie-schedule__showtimes">

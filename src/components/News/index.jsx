@@ -105,11 +105,17 @@ const News = () => {
                             </p>
                             <div className="social">
                               <div className="social-icon icon-like">
-                                <img src="./images/news/icons/like.png" />
+                                <img
+                                  src="./images/news/icons/like.png"
+                                  alt="like"
+                                />
                                 <span>{newsItem.like}</span>
                               </div>
                               <div className="social-icon icon-comment ">
-                                <img src="./images/news/icons/comment.png" />
+                                <img
+                                  src="./images/news/icons/comment.png"
+                                  alt="comment"
+                                />
                                 <span>{newsItem.comment}</span>
                               </div>
                             </div>

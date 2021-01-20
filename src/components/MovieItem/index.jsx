@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { capitalizeWords } from "../../Helpers";
@@ -10,6 +10,17 @@ function MovieItem(props) {
   // console.log(props);
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [width]);
+  console.log(width);
 
   return (
     <div className="col mvshowtime" key={movie.maPhim}>
@@ -23,8 +34,9 @@ function MovieItem(props) {
             cursor: "pointer",
           }}
           onClick={() => {
-            // console.log(movie.maPhim);
-            dispatch(actRedirectToMovieDetail(history, movie.maPhim));
+            if (width < 578) {
+              dispatch(actRedirectToMovieDetail(history, movie.maPhim));
+            }
           }}
         >
           <div className="mvshowtime__overlay">
@@ -58,7 +70,7 @@ function MovieItem(props) {
               <span className="btn-age">C16</span>
               {capitalizeWords(movie.tenPhim)}
             </h4>
-            <p className="card-text mt-2">100 phút</p>
+            <p className="card-text mt-2">120 phút</p>
           </div>
           <div className="mvshowtime__addToCart">
             <NavLink

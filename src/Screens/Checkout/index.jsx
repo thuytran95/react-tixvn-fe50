@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import DetailCheckout from "../../components/Checkout/DetailCheckout";
 import LeftCheckout from "../../components/Checkout/LeftCheckout";
 import SeatCheckout from "../../components/Checkout/SeatCheckout";
@@ -26,7 +26,7 @@ const Checkout = () => {
           setLoading(false);
         },
         () => {
-          alert("lỗi rồi !");
+          alert("Lỗi hệ thông!");
         }
       )
     );
@@ -39,12 +39,12 @@ const Checkout = () => {
       ) : (
         <div className="Checkout">
           <div className="row">
-            <div className="col-xl-9  pl-0">
+            <div className="col-xl-9 pl-0">
               <div className="col-12 pl-0">
                 <StepCheckout />
               </div>
               <div className="row">
-                <div className=" col-xl-1 pl-0">
+                <div className="col-xl-1 pl-0">
                   <LeftCheckout />
                 </div>
                 <div className="col-xl-11 d-flex justify-content-center align-items-center">
@@ -52,7 +52,7 @@ const Checkout = () => {
                 </div>
               </div>
             </div>
-            <div className=" col-xl-3  ">
+            <div className="col-xl-3">
               <DetailCheckout />
             </div>
           </div>

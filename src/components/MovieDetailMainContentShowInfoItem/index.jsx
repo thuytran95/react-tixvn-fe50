@@ -1,43 +1,18 @@
 import React, { useEffect, useState } from "react";
-import "./style.scss";
 import cgvHungVuong from "../../assets/images/logos/cgv-hung-vuong-plaza-15380175133678.jpg";
 import format from "date-format";
 import { Link } from "react-router-dom";
-import { get } from "jquery";
-import { renderNameTheater } from "../../Helpers";
+import { add_minutes, renderNameTheater } from "../../Helpers";
+import "./style.scss";
+
 export default function MovieDetailMainContentShowInfoItem(props) {
   const { tenCumRap, diaChi } = props.item;
   const thongTinRap = props.time;
   const maRap = props.maRap;
-  const ngayChieu = props.ngayChieu;
-  const theaterID = props.theaterID;
+  const color = props.color;
   const gioRap = thongTinRap?.filter(function (obj) {
     return maRap.indexOf(obj.maRap) !== -1;
   });
-
-  // console.log(theaterID);
-
-  const [color, setColor] = useState("#8bc541");
-
-  const listColor = [
-    { maHeThongRap: "BHDStar", color: "#8bc541" },
-    { maHeThongRap: "CGV", color: "red" },
-    { maHeThongRap: "CineStar", color: "#df0d7a" },
-    { maHeThongRap: "Galaxy", color: "#ff9800" },
-    { maHeThongRap: "LotteCinima", color: "#ca4137" },
-    { maHeThongRap: "MegaGS", color: "#9c9c9c" },
-  ];
-
-  // set color
-  useEffect(() => {
-    const index = listColor.findIndex(
-      (item) => item.maHeThongRap === theaterID.maHeThongRap
-    );
-
-    setColor(listColor[index].color);
-  }, [theaterID]);
-
-  console.log(color);
 
   // console.log(gioRap);
   const [show, setShow] = useState(true);
@@ -45,30 +20,28 @@ export default function MovieDetailMainContentShowInfoItem(props) {
     setShow(!show);
   };
 
-  var add_minutes = function (dt, minutes) {
-    return new Date(dt.getTime() + minutes * 60000);
-  };
-
   const renderGioChieu = () => {
-    return gioRap.map((item, index) => (
-      <Link
-        to={`/checkout/${item.maLichChieu}`}
-        key={index}
-        className="mt-1"
-        target="_blank"
-      >
-        <span>{format("hh:mm", new Date(item.ngayChieuGioChieu))}</span> ~{" "}
-        {format(
-          "hh:mm",
-          new Date(
-            add_minutes(
-              new Date(item.ngayChieuGioChieu),
-              item.thoiLuong
-            ).toString()
-          )
-        )}
-      </Link>
-    ));
+    return gioRap.map((item, index) => {
+      return (
+        <Link
+          to={`/checkout/${item.maLichChieu}`}
+          key={index}
+          className="mt-1"
+          target="_blank"
+        >
+          <span>{format("hh:mm", new Date(item.ngayChieuGioChieu))}</span> ~{" "}
+          {format(
+            "hh:mm",
+            new Date(
+              add_minutes(
+                new Date(item.ngayChieuGioChieu),
+                item.thoiLuong
+              ).toString()
+            )
+          )}
+        </Link>
+      );
+    });
   };
   return (
     <div className="show__item__item ">

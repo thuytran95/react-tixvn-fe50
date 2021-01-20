@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
 import logo from "../../assets/images/logos/web-logo.png";
 import avatar from "../../assets/images/logos/avatar.png";
 import changeAvatar from "../../assets/images/logos/changeAvatar.jpg";
@@ -10,7 +9,6 @@ import { connect, useSelector } from "react-redux";
 import "./style.scss";
 
 const Header = (props) => {
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.user.data);
 
   const hideModal = () => {

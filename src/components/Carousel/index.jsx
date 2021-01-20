@@ -5,16 +5,11 @@ import Carousel from "react-bootstrap/Carousel";
 import nextImage from "../../assets/images/logos/next-session.png";
 import preImage from "../../assets/images/logos/back-session.png";
 import "./style.scss";
+import { youtube_parser } from "../../Helpers";
 
 const CarouselSlider = (props) => {
   const [index, setIndex] = useState(0);
   const [isOpen, setOpen] = useState(false);
-
-  function youtube_parser(url = " ") {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-    var match = url.match(regExp);
-    return match && match[7].length == 11 ? match[7] : false;
-  }
 
   const handleSelect = (selectedIndex, e) => {
     setIndex(selectedIndex);

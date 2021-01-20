@@ -1,13 +1,7 @@
 @import "../../styles/index.scss";
 .SeatCheckout {
-  // grid-area: SeatCheckout;
-  // max-width: 900px;
-  // margin: 0 auto;
-  // margin-left: 4.3%;
-  // margin-top: 10px;
-  // padding-top: 20px;
   margin-top: spacing(1);
-  height: calc(100vh - 80px);
+
   &__topContent {
     display: grid;
     grid-template-columns: 75% 25%;
@@ -98,7 +92,6 @@
 }
 
 @include MediaQuery($md) {
- 
   .namescreen {
     img {
       max-width: 700px;
@@ -128,7 +121,7 @@
   .listSeat {
     max-width: 400px;
     &__title {
-     width: 10%;
+      width: 10%;
     }
     &__content {
       width: 90%;
@@ -138,5 +131,4 @@
       cursor: unset;
     }
   }
-
 }

@@ -4,8 +4,6 @@ import logoDangNhap from "../../assets/images/logos/changeAvatar.jpg";
 import { useSelector } from "react-redux";
 const StepCheckout = () => {
   const user = useSelector((state) => state.user.data);
-  let demoImageAccount =
-    "https://graph.facebook.com/1887047281446229/picture?type=square";
 
   return (
     <div className="StepCheckout">

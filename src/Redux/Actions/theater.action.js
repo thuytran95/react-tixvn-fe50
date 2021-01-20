@@ -6,8 +6,7 @@ import {
   GET_SCHEDULE_THEATER_SYSTEM_SUCCESS,
   GET_THEATER_SYSTEM_LIST_FAILED,
   GET_THEATER_SYSTEM_LIST_SUCCESS,
-  GET_CINEMA_SYSTEM_INFOMATION_FAILED,
-  GET_CINEMA_SYSTEM_INFOMATION_SUCCESS
+  GET_CINEMA_SYSTEM_INFOMATION_SUCCESS,
 } from "./type";
 
 export const getScheduleTheaterSystemRequest = () => {
@@ -39,38 +38,33 @@ export const getScheduleTheaterSystemRequest = () => {
   };
 };
 
-export const getTheaterSystemListRequest = (id,callback) => {
+export const getTheaterSystemListRequest = (id, callback) => {
   return (dispatch) => {
     theaterService
       .getTheaterSystemList(id)
       .then((res) => {
         // console.log(res.data);
         dispatch(createAction(GET_THEATER_SYSTEM_LIST_SUCCESS, res.data));
-
-
       })
       .catch((err) => {
         console.log(err);
         dispatch(createAction(GET_THEATER_SYSTEM_LIST_FAILED, err));
-
       });
   };
 };
 
-export  const getCinemaSystemInformati=(callback)=>{
+export const getCinemaSystemInformation = (callback) => {
   return (dispatch) => {
     theaterService
       .getCinemaSystemInformation()
       .then((res) => {
         // console.log(res.data);
         dispatch(createAction(GET_CINEMA_SYSTEM_INFOMATION_SUCCESS, res.data));
-        callback()
-
+        callback();
       })
       .catch((err) => {
         console.log(err);
         dispatch(createAction(GET_SCHEDULE_THEATER_SYSTEM_FAILED, err));
-       
       });
   };
-}
+};

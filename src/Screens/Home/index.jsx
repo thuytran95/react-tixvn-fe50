@@ -6,34 +6,23 @@ import News from "../../components/News";
 import ShowTime from "../../components/ShowTime";
 import MovieSchedule from "../../components/MovieSchedule";
 import AppStore from "../../components/AppStore";
-import "./style.scss";
 import Loader from "../../components/Loader";
 import Footer from "../../components/Footer";
+import "./style.scss";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { loading: true };
-  }
-
   renderHTML = () => {
     const { movieList, isLoading } = this.props;
     if (isLoading) return <Loader />;
     if (movieList && movieList.length > 0) {
       return (
         <>
-          {this.state.loading ? (
-            <Loader />
-          ) : (
-            <>
-              <CarouselSlider />
-              <ShowTime movieList={movieList} />
-              <MovieSchedule />
-              <News />
-              <AppStore />
-              <Footer />
-            </>
-          )}
+          <CarouselSlider />
+          <ShowTime movieList={movieList} />
+          <MovieSchedule />
+          <News />
+          <AppStore />
+          <Footer />
         </>
       );
     }
@@ -43,16 +32,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(
-      getMovieListRequest(
-        () => {
-          this.setState({ loading: false });
-        },
-        () => {
-          alert("lỗi rồi !");
-        }
-      )
-    );
+    this.props.dispatch(getMovieListRequest());
   }
 }
 
@@ -60,6 +40,7 @@ const mapStateToProps = (state) => {
   return {
     movieList: state.movie.movieList,
     isLoading: state.movie.isLoading,
+    loading: state.user.loading,
   };
 };
 
